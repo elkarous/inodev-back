@@ -23,7 +23,6 @@ import com.brightcoding.app.ws.responses.CondidatResponse;
 import com.brightcoding.app.ws.services.CondidatService;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import org.springframework.web.multipart.MultipartFile;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
@@ -127,7 +126,6 @@ public class CondidatController {
             @PathVariable String id , @RequestPart(value = "condidat") String condidatRequest,
             @RequestPart(value = "photo", required = false) MultipartFile file) throws JsonProcessingException {
 
-        CondidatDto condidatDto = new CondidatDto();
         CondidatEntity off = new ObjectMapper().readValue(condidatRequest, CondidatEntity.class);
 
         CondidatDto updateCondidat = condidatService.updateCondidat(id, off);
@@ -164,7 +162,7 @@ public class CondidatController {
     @GetMapping(path="/img/{id}")
     public byte[] getPhoto(@PathVariable String id) throws Exception{
         CondidatDto condidatDto = condidatService.getCondidatByUserId(id);
-        return Files.readAllBytes(Paths.get("C:/Users/jarra/Downloads/inodevConception/spring-boot-v1/src/web/Images/"+condidatDto.getPhoto()));
+        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Desktop/Platform Stage_Code Source/spring/src/web/Images/"+condidatDto.getPhoto()));
 
     }
     @DeleteMapping(path="/{id}")

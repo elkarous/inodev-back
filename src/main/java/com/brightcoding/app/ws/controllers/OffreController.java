@@ -216,9 +216,9 @@ public class OffreController {
         OffreEntity offre = repository.findByOffreId(id);
         System.out.println(offre.getImage());
         System.out.println(context.getRealPath("/fdfd"));
-        boolean isExit = new File("C:/Users/jarra/Downloads/inodevConception/spring-boot-v1/src/web/Images/"+offre.getImage()).exists();
+        boolean isExit = new File("C:/Users/ASUS/Desktop/Platform Stage_Code Source/spring/src/web/Images/"+offre.getImage()).exists();
         System.out.println(isExit);
-        return Files.readAllBytes(Paths.get("C:/Users/jarra/Downloads/inodevConception/spring-boot-v1/src/web/Images/"+offre.getImage()));
+        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Desktop/Platform Stage_Code Source/spring/src/web/Images/"+offre.getImage()));
     }
     @DeleteMapping("/{id}")
     public String delete(@PathVariable(value = "id") String Id)

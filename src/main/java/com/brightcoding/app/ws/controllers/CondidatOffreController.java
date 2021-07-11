@@ -68,7 +68,7 @@ public class CondidatOffreController {
         CondidatEntity c = condidatRepository.findById(co.getCondidat().getId());
         co.setStatut(0);
 System.out.println("send .....");
-        CondidatOffreEntity of = repository.save(co);
+       repository.save(co);
 mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
 
         System.out.println("saye ........");
@@ -79,8 +79,6 @@ mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
     @GetMapping("/exist/{id}")
     public Integer exist (@PathVariable(name="id") Integer offreId, Principal principale) throws JsonParseException, JsonMappingException, Exception
     {
-
-        CondidatOffreEntity co = new CondidatOffreEntity();
         CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName());
         OffreEntity offre = of.findByaId(offreId);
 
