@@ -33,7 +33,7 @@ public class DocumentServiceImp implements DocumentService {
     @Override
     public List<DocumentDto> getAllDocument(String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         List<DocumentEntity> documents = currentCondidat.getAdmin() == 1?  (List<DocumentEntity>) documentRepository.findAll() : documentRepository.findByCondidat(currentCondidat);
 
@@ -47,7 +47,7 @@ public class DocumentServiceImp implements DocumentService {
     @Override
     public DocumentDto createDocument(DocumentDto document, String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         ModelMapper modelMapper = new ModelMapper();
         CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);

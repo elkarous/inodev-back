@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CondidatRepository extends PagingAndSortingRepository<CondidatEntity, String>{
@@ -18,10 +19,10 @@ public interface CondidatRepository extends PagingAndSortingRepository<CondidatE
     Page<CondidatEntity> findAllCondidats(Pageable pageableRequest);
     @Query("FROM CondidatEntity condidat")
     List<CondidatEntity> findAllaCondidats();
-
+    Boolean existsByEmail(String email);
     CondidatEntity findByUserId(String userId);
     CondidatEntity findById(Long id);
-    CondidatEntity findByEmail(String email);
+    Optional<CondidatEntity> findByEmail(String email);
     @Query(value="SELECT * FROM condidats c WHERE (c.first_name LIKE %:search% OR c.last_name LIKE %:search%) AND c.email_verification_status = :status", nativeQuery=true)
     Page<CondidatEntity> findAllCondidatByCriteria(Pageable pageableRequest, @Param("search") String search, @Param("status") int status);
 }

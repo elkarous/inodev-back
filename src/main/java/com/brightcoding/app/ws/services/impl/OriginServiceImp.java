@@ -32,7 +32,7 @@ public class OriginServiceImp implements OriginService {
     @Override
     public List<OriginDto> getAllSource(String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         List<OriginEntity> sources = currentCondidat.getAdmin() == 1? (List<OriginEntity>) originRepository.findAll() : originRepository.findByCondidat(currentCondidat);
 
@@ -46,7 +46,7 @@ public class OriginServiceImp implements OriginService {
     @Override
     public OriginDto createSource(OriginDto education, String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         ModelMapper modelMapper = new ModelMapper();
         CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);

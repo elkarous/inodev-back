@@ -33,7 +33,7 @@ public class QuestionServiceImp implements QuestionService {
     @Override
     public List<QuestionDto> getAllQuestion(String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         List<QuestionEntity> educations = currentCondidat.getAdmin() == 1? (List<QuestionEntity>) educationRepository.findAll() : educationRepository.findByCondidat(currentCondidat);
 
@@ -47,7 +47,7 @@ public class QuestionServiceImp implements QuestionService {
     @Override
     public QuestionDto createQuestion(QuestionDto education, String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         ModelMapper modelMapper = new ModelMapper();
         CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);

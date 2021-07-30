@@ -30,7 +30,55 @@ public class CondidatEntity extends UserEntity implements Serializable {
     private Date date_birthday;
     @Column(nullable=true, length=50)
     private String nationality;
-    @Column(nullable=true)
+    public CondidatEntity(String firstName, String phone, String lastName, String gender, Date date_birthday,
+			String nationality, String photo, List<EducationEntity> education, List<ExperienceEntity> experience,
+			List<SkillsEntity> skills, List<CondidatOffreEntity> condidatoffre, AuthProvider provider,
+			String providerId, List<OriginEntity> source, List<QuestionEntity> question,
+			List<DocumentEntity> document) {
+		super();
+		this.firstName = firstName;
+		this.phone = phone;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.date_birthday = date_birthday;
+		this.nationality = nationality;
+		this.photo = photo;
+		this.education = education;
+		this.experience = experience;
+		this.skills = skills;
+		this.condidatoffre = condidatoffre;
+		this.provider = provider;
+		this.providerId = providerId;
+		this.source = source;
+		this.question = question;
+		this.document = document;
+	}
+
+	public List<CondidatOffreEntity> getCondidatoffre() {
+		return condidatoffre;
+	}
+
+	public void setCondidatoffre(List<CondidatOffreEntity> condidatoffre) {
+		this.condidatoffre = condidatoffre;
+	}
+
+	public AuthProvider getProvider() {
+		return provider;
+	}
+
+	public void setProvider(AuthProvider provider) {
+		this.provider = provider;
+	}
+
+	public String getProviderId() {
+		return providerId;
+	}
+
+	public void setProviderId(String providerId) {
+		this.providerId = providerId;
+	}
+
+	@Column(nullable=true)
     private String photo;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     private List<EducationEntity> education;
@@ -41,6 +89,11 @@ public class CondidatEntity extends UserEntity implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     List<CondidatOffreEntity> condidatoffre;
+    
+    @Enumerated(EnumType.STRING)
+    private AuthProvider provider;
+
+    private String providerId;
 
     public List<ExperienceEntity> getExperience() {
         return experience;
@@ -142,7 +195,13 @@ public class CondidatEntity extends UserEntity implements Serializable {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-    @Override
+    
+    public CondidatEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public String toString() {
         return "Condidat [firstName=" + firstName + ", photo=" + photo + ", phone=" + phone + ", lastName=" + lastName + ", date_birthday=" + date_birthday
                 + ", gender=" + gender + ", nationality=" + nationality + ", email=" + getEmail()+ ", userId=" + getUserId() + "]";
