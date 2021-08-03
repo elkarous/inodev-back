@@ -1,17 +1,17 @@
 package com.brightcoding.app.ws.services.impl;
 
-import com.brightcoding.app.ws.entities.AddressEntity;
+
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.EducationEntity;
-import com.brightcoding.app.ws.entities.UserEntity;
+import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.EducationRepository;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.services.EducationService;
 import com.brightcoding.app.ws.shared.Utils;
-import com.brightcoding.app.ws.shared.dto.AddressDto;
+
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import com.brightcoding.app.ws.shared.dto.EducationDto;
-import com.brightcoding.app.ws.shared.dto.UserDto;
+
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.BeanUtils;
@@ -38,7 +38,7 @@ public class EducationServiceImp implements EducationService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
 
-        List<EducationEntity> educations = currentCondidat.getAdmin() == 1? (List<EducationEntity>) educationRepository.findAll() : educationRepository.findByCondidat(currentCondidat);
+        List<EducationEntity> educations = currentCondidat.getRole() == Role.Admin? (List<EducationEntity>) educationRepository.findAll() : educationRepository.findByCondidat(currentCondidat);
 
         Type listType = new TypeToken<List<EducationEntity>>() {}.getType();
         List<EducationDto> educationsDto = new ModelMapper().map(educations, listType);

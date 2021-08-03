@@ -1,16 +1,10 @@
 package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
-import com.brightcoding.app.ws.entities.EducationEntity;
-import com.brightcoding.app.ws.entities.UserEntity;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.repositories.UserRepository;
 import com.brightcoding.app.ws.services.CondidatService;
 import com.brightcoding.app.ws.shared.Utils;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
-import com.brightcoding.app.ws.shared.dto.EducationDto;
-import com.brightcoding.app.ws.shared.dto.UserDto;
-import org.apache.commons.io.FilenameUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +16,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
+
 import java.util.ArrayList;
 import java.util.List;
 

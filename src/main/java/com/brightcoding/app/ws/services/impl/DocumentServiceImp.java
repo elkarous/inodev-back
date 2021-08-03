@@ -2,6 +2,7 @@ package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.DocumentEntity;
+import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.DocumentRepository;
 import com.brightcoding.app.ws.services.DocumentService;
@@ -35,7 +36,7 @@ public class DocumentServiceImp implements DocumentService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
 
-        List<DocumentEntity> documents = currentCondidat.getAdmin() == 1?  (List<DocumentEntity>) documentRepository.findAll() : documentRepository.findByCondidat(currentCondidat);
+        List<DocumentEntity> documents = currentCondidat.getRole()== Role.Admin?  (List<DocumentEntity>) documentRepository.findAll() : documentRepository.findByCondidat(currentCondidat);
 
         Type listType = new TypeToken<List<DocumentEntity>>() {}.getType();
         List<DocumentDto> documentsDto = new ModelMapper().map(documents, listType);

@@ -4,10 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "offre")
@@ -40,12 +39,20 @@ public class OffreEntity {
     List<CondidatOffreEntity> condidatoffre;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
     private List<SkillsEntity> skills;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
-    private List<SpecialiteEntity> specialite;
+   @ManyToOne
+   private Project project;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
     private List<Event> event;
 
-    public Long getSupervisor() {
+    public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Long getSupervisor() {
         return supervisor;
     }
 
@@ -173,13 +180,7 @@ public class OffreEntity {
         this.skills = skills;
     }
 
-    public List<SpecialiteEntity> getSpecialite() {
-        return specialite;
-    }
-
-    public void setSpecialite(List<SpecialiteEntity> specialite) {
-        this.specialite = specialite;
-    }
+ 
 
     public String getDuree() {
         return duree;

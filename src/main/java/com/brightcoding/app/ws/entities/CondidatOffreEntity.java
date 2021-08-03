@@ -18,9 +18,27 @@ public class CondidatOffreEntity {
 
     LocalDateTime registeredAt;
 
-    int statut;
+  private Status status;
+    
+    private int note;
 
-    public Long getId() {
+    public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public int getNote() {
+		return note;
+	}
+
+	public void setNote(int note) {
+		this.note = note;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -59,12 +77,6 @@ public class CondidatOffreEntity {
     public void setRegisteredAt(LocalDateTime registeredAt) {
         this.registeredAt = registeredAt;
     }
-
-    public int getStatut() {
-        return statut;
     }
 
-    public void setStatut(int statut) {
-        this.statut = statut;
-    }
-}
+  

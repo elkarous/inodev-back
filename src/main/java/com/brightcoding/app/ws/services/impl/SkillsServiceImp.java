@@ -1,6 +1,7 @@
 package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.entities.SkillsEntity;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.SkillsRepository;
@@ -35,13 +36,13 @@ public class SkillsServiceImp implements SkillsService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
         List<SkillsEntity> educations;
-if( currentCondidat.getAdmin() == 0) {
+if( currentCondidat.getRole() == Role.Admin) {
     educations = educationRepository.findByCondidat(currentCondidat);
 }
-else if (currentCondidat.getAdmin() == 1){
+else if (currentCondidat.getRole() == Role.Student){
     educations =  (List<SkillsEntity>) educationRepository.findAll();
 }
-else if (currentCondidat.getAdmin() == 2){
+else if (currentCondidat.getRole() == Role.Superviser){
     educations =  (List<SkillsEntity>) educationRepository.findAll();
 }
 else {

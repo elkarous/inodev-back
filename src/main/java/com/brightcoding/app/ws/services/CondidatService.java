@@ -8,7 +8,7 @@ import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface CondidatService {
+public interface CondidatService extends UserDetailsService {
     CondidatDto createCondidat(CondidatDto condidat) ;
 
     List<CondidatDto> getCondidat(int page, int limit, String search, int status);

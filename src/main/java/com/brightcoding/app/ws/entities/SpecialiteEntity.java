@@ -1,5 +1,7 @@
 package com.brightcoding.app.ws.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,10 +13,18 @@ public class SpecialiteEntity {
     private String  specialiteId;
     private String nom;
     private String image;
-    @ManyToOne
-    private OffreEntity offre;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="speciality" )
+    private List<SubDecipline> subDecipline;
 
-    public Integer getId() {
+    public List<SubDecipline> getSubDecipline() {
+		return subDecipline;
+	}
+
+	public void setSubDecipline(List<SubDecipline> subDecipline) {
+		this.subDecipline = subDecipline;
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -46,11 +56,5 @@ public class SpecialiteEntity {
         this.image = image;
     }
 
-    public OffreEntity getOffre() {
-        return offre;
-    }
-
-    public void setOffre(OffreEntity offre) {
-        this.offre = offre;
-    }
+   
 }

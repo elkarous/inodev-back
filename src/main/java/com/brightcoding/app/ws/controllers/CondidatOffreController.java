@@ -42,7 +42,7 @@ public class CondidatOffreController {
     @Autowired
     Utils util;
     @PostMapping("/{id}")
-    public String create (@PathVariable(name="id") Integer offreId, @RequestBody Integer specialite, Principal principale) throws JsonParseException, JsonMappingException, Exception
+    public String create (@PathVariable(name="id") Integer offreId, @RequestBody Status specialite, Principal principale) throws JsonParseException, JsonMappingException, Exception
     {
 
         CondidatOffreEntity co = new CondidatOffreEntity();
@@ -51,7 +51,7 @@ public class CondidatOffreController {
         Integer checkUser = repository.findreg(offre.getId(), currentCondidat.getId());
         if(checkUser != null) throw new RuntimeException("User Alrady Exists !");
         co.setOffre(offre);
-        co.setStatut(specialite);
+        co.setStatus(specialite);
         co.setCondidat(currentCondidat);
         co.setRegisteredAt(LocalDateTime.now());
         co.setCondidatoffreId(util.generateStringId(30));
@@ -65,13 +65,12 @@ public class CondidatOffreController {
     {
 
         CondidatOffreEntity co = repository.findByaId(offreId);
-        CondidatEntity c = condidatRepository.findById(co.getCondidat().getId());
-        co.setStatut(0);
-System.out.println("send .....");
+        CondidatEntity c = condidatRepository.findById(co.getCondidat().getId()).get();
+        co.setStatus(Status.Accepted);
+
        repository.save(co);
 mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
 
-        System.out.println("saye ........");
         return ("okokok");
 
     }

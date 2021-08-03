@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brightcoding.app.ws.entities.AddressEntity;
-import com.brightcoding.app.ws.entities.UserEntity;
+import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.Role;
+
 import com.brightcoding.app.ws.repositories.AddressRepository;
-import com.brightcoding.app.ws.repositories.UserRepository;
+import com.brightcoding.app.ws.repositories.CondidatRepository;
+
 import com.brightcoding.app.ws.services.AddressService;
 import com.brightcoding.app.ws.shared.Utils;
 import com.brightcoding.app.ws.shared.dto.AddressDto;
@@ -24,7 +27,7 @@ public class AddressServiceImpl implements AddressService {
 	AddressRepository addressRepository;
 	
 	@Autowired
-	UserRepository userRepository;
+	CondidatRepository userRepository;
 	
 	@Autowired
 	Utils util;
@@ -32,9 +35,9 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public List<AddressDto> getAllAddresses(String email) {
 		
-		UserEntity currentUser = userRepository.findByEmail(email);
+		CondidatEntity currentUser = userRepository.findByEmail(email);
 		
-		List<AddressEntity> addresses = currentUser.getAdmin() == 1? (List<AddressEntity>) addressRepository.findAll() : addressRepository.findByUser(currentUser);
+		List<AddressEntity> addresses = currentUser.getRole() == Role.Admin? (List<AddressEntity>) addressRepository.findAll() : addressRepository.findByUser(currentUser);
 		
 		Type listType = new TypeToken<List<AddressDto>>() {}.getType();
 		List<AddressDto> addressesDto = new ModelMapper().map(addresses, listType);
@@ -46,7 +49,7 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public AddressDto createAddress(AddressDto address, String email) {
 		
-		UserEntity currentUser = userRepository.findByEmail(email);
+		CondidatEntity currentUser = userRepository.findByEmail(email);
 		
 		ModelMapper modelMapper = new ModelMapper();
 		UserDto userDto = modelMapper.map(currentUser, UserDto.class);

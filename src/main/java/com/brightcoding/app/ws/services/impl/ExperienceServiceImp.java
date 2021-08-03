@@ -2,6 +2,7 @@ package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.ExperienceEntity;
+import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.ExperienceRepository;
 import com.brightcoding.app.ws.services.ExperienceService;
@@ -36,7 +37,7 @@ public class ExperienceServiceImp implements ExperienceService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
 
-        List<ExperienceEntity> experience = currentCondidat.getAdmin() == 1? (List<ExperienceEntity>) experienceRepository.findAll() : experienceRepository.findByCondidat(currentCondidat);
+        List<ExperienceEntity> experience = currentCondidat.getRole() == Role.Admin? (List<ExperienceEntity>) experienceRepository.findAll() : experienceRepository.findByCondidat(currentCondidat);
 
         Type listType = new TypeToken<List<ExperienceEntity>>() {}.getType();
         List<ExperienceDto> experienceDto = new ModelMapper().map(experience, listType);

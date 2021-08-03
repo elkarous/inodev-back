@@ -12,17 +12,23 @@ import java.util.List;
 @Table(name = "condidat")
 @JsonInclude(value= JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class CondidatEntity extends UserEntity implements Serializable {
+public class CondidatEntity  implements Serializable {
+	
+	
+	
     private static final long serialVersionUID = -5763827745308343856L;
-
+    
+    
+    
+    @Id
+	@GeneratedValue
+	private long id;
     @Column(nullable=true, length=50)
     private String firstName;
-
     @Column(nullable=true, length=50)
     private String phone;
     @Column(nullable=true, length=50)
     private String lastName;
-
     @Column(nullable=true, length=50)
     private String gender;
     @Temporal(TemporalType.DATE)
@@ -31,22 +37,121 @@ public class CondidatEntity extends UserEntity implements Serializable {
     @Column(nullable=true, length=50)
     private String nationality;
     @Column(nullable=true)
+	private String userId;
+    @Column(nullable=true, length=50)
+    private String familyPhone ;
+	@Column(nullable=false, length=120, unique=true)
+	private String email;
+	@Column(nullable=true)
+	private Role role;
+	@Column(name = "reset_token")
+	private String resetToken;
+	@Column(nullable=false)
+	private String encryptedPassword;
+    @Column(nullable=true)
     private String photo;
+    @Column(nullable=true)
+    private   Application application;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     private List<EducationEntity> education;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     private List<ExperienceEntity> experience;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     private List<SkillsEntity> skills;
-
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     List<CondidatOffreEntity> condidatoffre;
-
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    private List<QuestionEntity> question;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    private List<DocumentEntity> document;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    private List<Hobbies> hobbies ;
+    
+    
+//getter and setters and constructors
+    
+    
+    public long getId() {
+		return id;
+	}
+    
     public List<ExperienceEntity> getExperience() {
         return experience;
     }
 
-    public void setExperience(List<ExperienceEntity> experience) {
+    public List<Hobbies> getHobbies() {
+		return hobbies;
+	}
+
+	public void setHobbies(List<Hobbies> hobbies) {
+		this.hobbies = hobbies;
+	}
+
+	public String getFamilyPhone() {
+		return familyPhone;
+	}
+
+	public void setFamilyPhone(String familyPhone) {
+		this.familyPhone = familyPhone;
+	}
+
+	public Application getApplication() {
+		return application;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
+	}
+
+	public String getResetToken() {
+		return resetToken;
+	}
+
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public String getEncryptedPassword() {
+		return encryptedPassword;
+	}
+
+	public void setEncryptedPassword(String encryptedPassword) {
+		this.encryptedPassword = encryptedPassword;
+	}
+
+	public List<CondidatOffreEntity> getCondidatoffre() {
+		return condidatoffre;
+	}
+
+	public void setCondidatoffre(List<CondidatOffreEntity> condidatoffre) {
+		this.condidatoffre = condidatoffre;
+	}
+
+	public void setExperience(List<ExperienceEntity> experience) {
         this.experience = experience;
     }
 
@@ -66,13 +171,6 @@ public class CondidatEntity extends UserEntity implements Serializable {
         this.photo = photo;
     }
 
-    public List<OriginEntity> getSource() {
-        return source;
-    }
-
-    public void setSource(List<OriginEntity> source) {
-        this.source = source;
-    }
 
     public List<QuestionEntity> getQuestion() {
         return question;
@@ -90,12 +188,8 @@ public class CondidatEntity extends UserEntity implements Serializable {
         this.document = document;
     }
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
-    private List<OriginEntity> source;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
-    private List<QuestionEntity> question;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
-    private List<DocumentEntity> document;
+    
+   
 
     public String getFirstName() {
         return firstName;
@@ -142,10 +236,13 @@ public class CondidatEntity extends UserEntity implements Serializable {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-    @Override
-    public String toString() {
-        return "Condidat [firstName=" + firstName + ", photo=" + photo + ", phone=" + phone + ", lastName=" + lastName + ", date_birthday=" + date_birthday
-                + ", gender=" + gender + ", nationality=" + nationality + ", email=" + getEmail()+ ", userId=" + getUserId() + "]";
-    }
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
+    
+   
 
 }

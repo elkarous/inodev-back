@@ -24,7 +24,7 @@ public class CondidatDto extends UserDto implements Serializable {
     }
     private List<ExperienceEntity> experience;
     private List<SkillsEntity> skills;
-    private List<OriginEntity> source;
+
     private List<QuestionEntity> question;
     private List<DocumentEntity> document;
     public void setEducation(List<EducationDto> education) {
@@ -97,13 +97,7 @@ public class CondidatDto extends UserDto implements Serializable {
         this.skills = skills;
     }
 
-    public List<OriginEntity> getSource() {
-        return source;
-    }
-
-    public void setSource(List<OriginEntity> source) {
-        this.source = source;
-    }
+   
 
     public List<QuestionEntity> getQuestion() {
         return question;

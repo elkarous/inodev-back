@@ -1,7 +1,7 @@
 package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.services.EmailService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;

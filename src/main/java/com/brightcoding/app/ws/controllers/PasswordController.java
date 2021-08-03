@@ -6,10 +6,12 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.brightcoding.app.ws.entities.UserEntity;
-import com.brightcoding.app.ws.repositories.UserRepository;
+import com.brightcoding.app.ws.entities.CondidatEntity;
+
+import com.brightcoding.app.ws.repositories.CondidatRepository;
+
 import com.brightcoding.app.ws.services.EmailService;
-import com.brightcoding.app.ws.services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -29,7 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class PasswordController {
 
     @Autowired
-    private UserRepository userService;
+    private CondidatRepository userService;
 
     @Autowired
     private EmailService emailService;
@@ -48,14 +50,14 @@ public class PasswordController {
     public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String userEmail, HttpServletRequest request) {
 
         // Lookup user in database by e-mail
-        Optional<UserEntity> optional = Optional.ofNullable(userService.findByEmail(userEmail));
+        Optional<CondidatEntity> optional = Optional.ofNullable(userService.findByEmail(userEmail));
 
         if (!optional.isPresent()) {
             modelAndView.addObject("errorMessage", "We didn't find an account for that e-mail address.");
         } else {
 
             // Generate random 36-character string token for reset password
-            UserEntity user = optional.get();
+        	CondidatEntity user = optional.get();
             user.setResetToken(UUID.randomUUID().toString());
 
             // Save token to database
@@ -86,7 +88,7 @@ public class PasswordController {
     @RequestMapping(value = "/reset", method = RequestMethod.GET)
     public ModelAndView displayResetPasswordPage(ModelAndView modelAndView, @RequestParam("token") String token) {
 
-        Optional<UserEntity> user = userService.findUserByResetToken(token);
+        Optional<CondidatEntity> user = userService.findUserByResetToken(token);
 
         if (user.isPresent()) { // Token found in DB
             modelAndView.addObject("resetToken", token);
@@ -103,12 +105,12 @@ public class PasswordController {
     public ModelAndView setNewPassword(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
 
         // Find the user associated with the reset token
-        Optional<UserEntity> user = userService.findUserByResetToken(requestParams.get("token"));
+        Optional<CondidatEntity> user = userService.findUserByResetToken(requestParams.get("token"));
 
         // This should always be non-null but we check just in case
         if (user.isPresent()) {
 
-            UserEntity resetUser = user.get();
+        	CondidatEntity resetUser = user.get();
 
             // Set new password
             resetUser.setEncryptedPassword (bCryptPasswordEncoder.encode(requestParams.get("password")));

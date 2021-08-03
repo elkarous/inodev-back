@@ -18,7 +18,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.brightcoding.app.ws.SpringApplicationContext;
 import com.brightcoding.app.ws.requests.UserLoginRequest;
-import com.brightcoding.app.ws.services.UserService;
+import com.brightcoding.app.ws.services.CondidatService;
+import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import com.brightcoding.app.ws.shared.dto.UserDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -58,9 +59,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 		String userName = ((User) auth.getPrincipal()).getUsername();
 
-		UserService userService = (UserService)SpringApplicationContext.getBean("userSeviceImpl");
+		CondidatService userService = (CondidatService) SpringApplicationContext.getBean("CondidatSeviceImpl");
 
-		UserDto userDto = userService.getUser(userName);
+		CondidatDto userDto = (CondidatDto) userService.loadUserByUsername(userName);
 
 		String token = Jwts.builder()
 				.setSubject(userName)

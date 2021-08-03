@@ -2,6 +2,7 @@ package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.QuestionEntity;
+import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.QuestionRepository;
 import com.brightcoding.app.ws.services.QuestionService;
@@ -35,7 +36,7 @@ public class QuestionServiceImp implements QuestionService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
 
-        List<QuestionEntity> educations = currentCondidat.getAdmin() == 1? (List<QuestionEntity>) educationRepository.findAll() : educationRepository.findByCondidat(currentCondidat);
+        List<QuestionEntity> educations = currentCondidat.getRole() == Role.Admin? (List<QuestionEntity>) educationRepository.findAll() : educationRepository.findByCondidat(currentCondidat);
 
         Type listType = new TypeToken<List<QuestionEntity>>() {}.getType();
         List<QuestionDto> educationsDto = new ModelMapper().map(educations, listType);
