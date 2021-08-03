@@ -35,7 +35,7 @@ public class ExperienceServiceImp implements ExperienceService {
     @Override
     public List<ExperienceDto> getAllExperience(String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         List<ExperienceEntity> experience = currentCondidat.getRole() == Role.Admin? (List<ExperienceEntity>) experienceRepository.findAll() : experienceRepository.findByCondidat(currentCondidat);
 
@@ -49,7 +49,7 @@ public class ExperienceServiceImp implements ExperienceService {
     @Override
     public ExperienceDto createExperience(ExperienceDto experience, String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         ModelMapper modelMapper = new ModelMapper();
         CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);

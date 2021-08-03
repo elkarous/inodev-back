@@ -162,7 +162,7 @@ public class CondidatController {
     @GetMapping(path="/img/{id}")
     public byte[] getPhoto(@PathVariable String id) throws Exception{
         CondidatDto condidatDto = condidatService.getCondidatByUserId(id);
-        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Desktop/Platform Stage_Code Source/spring/src/web/Images/"+condidatDto.getPhoto()));
+        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Desktop/Platform Stage_Code Source/inodev-back-main/src/web/Images/"+condidatDto.getPhoto()));
 
     }
     @DeleteMapping(path="/{id}")

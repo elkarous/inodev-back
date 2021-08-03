@@ -36,6 +36,7 @@ public class CondidatEntity  implements Serializable {
     private Date date_birthday;
     @Column(nullable=true, length=50)
     private String nationality;
+
     @Column(nullable=true)
 	private String userId;
     @Column(nullable=true, length=50)
@@ -60,6 +61,7 @@ public class CondidatEntity  implements Serializable {
     private List<SkillsEntity> skills;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     List<CondidatOffreEntity> condidatoffre;
+
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     private List<QuestionEntity> question;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
@@ -75,6 +77,7 @@ public class CondidatEntity  implements Serializable {
 		return id;
 	}
     
+
     public List<ExperienceEntity> getExperience() {
         return experience;
     }
@@ -237,6 +240,7 @@ public class CondidatEntity  implements Serializable {
         this.nationality = nationality;
     }
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -244,5 +248,18 @@ public class CondidatEntity  implements Serializable {
 	
     
    
+
+    
+    public CondidatEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+    public String toString() {
+        return "Condidat [firstName=" + firstName + ", photo=" + photo + ", phone=" + phone + ", lastName=" + lastName + ", date_birthday=" + date_birthday
+                + ", gender=" + gender + ", nationality=" + nationality + ", email=" + getEmail()+ ", userId=" + getUserId() + "]";
+    }
+
 
 }

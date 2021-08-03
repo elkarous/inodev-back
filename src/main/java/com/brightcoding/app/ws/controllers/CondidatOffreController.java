@@ -46,7 +46,7 @@ public class CondidatOffreController {
     {
 
         CondidatOffreEntity co = new CondidatOffreEntity();
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName());
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName()).get();
        OffreEntity offre = of.findByaId(offreId);
         Integer checkUser = repository.findreg(offre.getId(), currentCondidat.getId());
         if(checkUser != null) throw new RuntimeException("User Alrady Exists !");
@@ -78,7 +78,7 @@ mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
     @GetMapping("/exist/{id}")
     public Integer exist (@PathVariable(name="id") Integer offreId, Principal principale) throws JsonParseException, JsonMappingException, Exception
     {
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName());
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName()).get();
         OffreEntity offre = of.findByaId(offreId);
 
         Integer checkUser = repository.findreg(offre.getId(), currentCondidat.getId());
@@ -93,7 +93,7 @@ mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
     {
 
         CondidatOffreEntity co = new CondidatOffreEntity();
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName());
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName()).get();
 
         List app = repository.findBycondidat(currentCondidat.getId());
             return app;
@@ -134,7 +134,7 @@ mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
     {
 
         CondidatOffreEntity co = new CondidatOffreEntity();
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName());
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(principale.getName()).get();
         OffreEntity offre = of.findByaId(offreId);
 
         Long checkUser = repository.finddet(offre.getId(), currentCondidat.getId());

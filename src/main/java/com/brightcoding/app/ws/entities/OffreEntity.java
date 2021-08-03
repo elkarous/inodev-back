@@ -19,6 +19,7 @@ public class OffreEntity {
     @Id
     private Integer id;
     private String image;
+    private String acronym;
     private String type;
     private String offreId;
     private String nom;
@@ -207,4 +208,12 @@ public class OffreEntity {
     public OffreEntity () {
         super();
     }
+
+	public String getAcronym() {
+		return acronym;
+	}
+
+	public void setAcronym(String acronym) {
+		this.acronym = acronym;
+	}
 }

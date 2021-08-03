@@ -145,7 +145,7 @@ public class SpecialiteController {
     @GetMapping(path="/Imgarticles/{id}")
     public byte[] getPhoto(@PathVariable("id") String id) throws Exception{
         SpecialiteEntity offre = repository.findBySpecialiteId(id);
-        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Desktop/Platform Stage_Code Source/spring/src/web/spe/"+offre.getImage()));
+        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Desktop/Platform Stage_Code Source/inodev-back-main/src/web/spe/"+offre.getImage()));
     }
     @DeleteMapping("/{id}")
     public String delete(@PathVariable(value = "id") String Id)

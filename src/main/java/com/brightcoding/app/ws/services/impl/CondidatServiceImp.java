@@ -37,7 +37,7 @@ public class CondidatServiceImp implements CondidatService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        CondidatEntity condidatEntity = condidatRepository.findByEmail(email);
+        CondidatEntity condidatEntity = condidatRepository.findByEmail(email).get();
 
         if(condidatEntity == null) throw new UsernameNotFoundException(email);
 
@@ -115,7 +115,7 @@ public class CondidatServiceImp implements CondidatService {
     }
     @Override
     public CondidatDto createCondidat( CondidatDto condidat) {
-        CondidatEntity checkUser = condidatRepository.findByEmail(condidat.getEmail());
+        CondidatEntity checkUser = condidatRepository.findByEmail(condidat.getEmail()).get();
 
 
         if (checkUser != null) throw new RuntimeException("User Alrady Exists !");

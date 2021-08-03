@@ -34,7 +34,7 @@ public class SkillsServiceImp implements SkillsService {
     @Override
     public List<SkillsDto> getAllSkills(String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
         List<SkillsEntity> educations;
 if( currentCondidat.getRole() == Role.Admin) {
     educations = educationRepository.findByCondidat(currentCondidat);
@@ -57,7 +57,7 @@ return null; }
     @Override
     public SkillsDto createSkills(SkillsDto education, String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         ModelMapper modelMapper = new ModelMapper();
         CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);

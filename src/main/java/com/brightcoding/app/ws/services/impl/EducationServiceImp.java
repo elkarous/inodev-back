@@ -36,7 +36,7 @@ public class EducationServiceImp implements EducationService {
     @Override
     public List<EducationDto> getAllEducation(String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         List<EducationEntity> educations = currentCondidat.getRole() == Role.Admin? (List<EducationEntity>) educationRepository.findAll() : educationRepository.findByCondidat(currentCondidat);
 
@@ -50,7 +50,7 @@ public class EducationServiceImp implements EducationService {
     @Override
     public EducationDto createEducation(EducationDto education, String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email);
+        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
         ModelMapper modelMapper = new ModelMapper();
         CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);
