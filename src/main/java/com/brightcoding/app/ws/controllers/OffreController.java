@@ -50,7 +50,7 @@ public class OffreController {
         ServletContext context;
     @Autowired
     Utils util;
-    @GetMapping
+/*    @GetMapping
     public List getAllOffres() {
 
         List  offres = new ArrayList<>();
@@ -147,7 +147,7 @@ public class OffreController {
      /*   List<CondidatEntity> c = condidatRepository.findAllaCondidats();
         for (int i = 0; i < c.size(); i++) {
             mail.sendSimpleMessage(c.get(i).getEmail(), "Nous avons publie un offre consulte notre platform sur http://localhost:4200/offre/cat/" + off.getType(), "Nouveau offre");
-        }*/
+        }
         OffreEntity of = repository.save(off);
             return (of.getSupervisor());
 
@@ -247,5 +247,5 @@ public class OffreController {
         repository.save(article);
         return ("ok");
 
-    }
+    }*/
 }

@@ -43,7 +43,7 @@ public class MainController {
     Iterable<Event> events(@RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from, @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to, @RequestParam("id")  Integer id) {
         return er.findBetween(from, to, id);
     }
-
+/*
     @PostMapping("/api/events/create")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Transactional
@@ -78,7 +78,7 @@ public class MainController {
         er.save(e);
 
         return e;
-    }
+    }*/
 
     @PostMapping("/api/events/delete")
     @Transactional

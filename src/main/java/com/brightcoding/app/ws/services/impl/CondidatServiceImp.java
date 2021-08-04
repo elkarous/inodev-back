@@ -115,27 +115,30 @@ public class CondidatServiceImp implements CondidatService {
     }
     @Override
     public CondidatDto createCondidat( CondidatDto condidat) {
-        CondidatEntity checkUser = condidatRepository.findByEmail(condidat.getEmail()).get();
+       
 
 
-        if (checkUser != null) throw new RuntimeException("User Alrady Exists !");
+    
+        	 
+            ModelMapper modelMapper = new ModelMapper();
 
- 
+            CondidatEntity condidatEntity = modelMapper.map(condidat, CondidatEntity.class);
+            condidatRepository.save(condidatEntity);
 
+            condidatEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(condidat.getEncryptedPassword()));
 
-        ModelMapper modelMapper = new ModelMapper();
+            condidatEntity.setUserId(util.generateStringId(32));
 
-        CondidatEntity condidatEntity = modelMapper.map(condidat, CondidatEntity.class);
+            CondidatEntity newCondidat = condidatRepository.save(condidatEntity);
 
-        condidatEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(condidat.getEncryptedPassword()));
+            CondidatDto condidatDto =  modelMapper.map(newCondidat, CondidatDto.class);
+        	
+        
+        
+        	
+       
 
-        condidatEntity.setUserId(util.generateStringId(32));
-
-        CondidatEntity newCondidat = condidatRepository.save(condidatEntity);
-
-        CondidatDto condidatDto =  modelMapper.map(newCondidat, CondidatDto.class);
-
-        return condidatDto;
+        return condidat;
     }
     @Override
     public void delete(String userId) {

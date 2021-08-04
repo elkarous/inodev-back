@@ -47,8 +47,7 @@ public class SpecialiteController {
 
     @GetMapping
     public List getAllspef() {
-        System.out.println("Get all spe...");
-
+    
         List offres = repository.findAll();
 
         return offres;
@@ -57,18 +56,18 @@ public class SpecialiteController {
     public List getNom(@PathVariable(value = "name")String name)
     {
         List offre = new ArrayList<>();
-        repository.findByName(name).forEach(offre::add);
+        repository.findByName(name) .forEach(offre::add);
 
         return offre;
     }
-    @GetMapping("/o/{id}")
+  /*  @GetMapping("/o/{id}")
     public List getofrreID(@PathVariable(value = "id")Integer id)
     {
         List offre = new ArrayList<>();
         repository.findByoffreID(id).forEach(offre::add);
 
         return offre;
-    }
+    }*/
     @GetMapping ("/getAll")
     public ResponseEntity<List<String>> getAll()
     {

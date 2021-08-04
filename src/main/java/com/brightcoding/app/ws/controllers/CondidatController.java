@@ -57,20 +57,12 @@ public class CondidatController {
         return new ResponseEntity<List<CondidatResponse>>(condidatsResponse, HttpStatus.OK);
     }
 
-        @PostMapping(
-    )
+     @PostMapping("/add")
+    public void createCondidat(  @RequestBody CondidatDto condidatDto) {
+    	 condidatDto.setRole(Role.Admin);
+         condidatService.createCondidat(condidatDto);
 
-    public ResponseEntity<CondidatResponse> createCondidat(
-            @RequestBody CondidatRequest condidatRequest) throws Exception {
 
-        ModelMapper modelMapper = new ModelMapper();
-        CondidatDto condidatDto = modelMapper.map(condidatRequest, CondidatDto.class);
-            condidatDto.setRole(Role.Admin);;
-        CondidatDto createCondidat = condidatService.createCondidat(condidatDto);
-
-        CondidatResponse condidatResponse =  modelMapper.map(createCondidat, CondidatResponse.class);
-
-            return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.CREATED);
 
     }
     @PostMapping("/suprvisor"
@@ -90,8 +82,10 @@ public class CondidatController {
         return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.CREATED);
 
     }
-    @PostMapping("/company"
-    )
+    
+    
+    
+    @PostMapping("/company" )
 
     public ResponseEntity<CondidatResponse> createsociete(
             @RequestBody @Valid CondidatRequest condidatRequest) throws Exception {

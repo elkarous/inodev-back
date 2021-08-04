@@ -41,7 +41,7 @@ public class CondidatOffreController {
     ServletContext context;
     @Autowired
     Utils util;
-    @PostMapping("/{id}")
+/*    @PostMapping("/{id}")
     public String create (@PathVariable(name="id") Integer offreId, @RequestBody Status specialite, Principal principale) throws JsonParseException, JsonMappingException, Exception
     {
 
@@ -99,14 +99,14 @@ mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
             return app;
 
     }
-    @GetMapping("/myapp/{id}")
-    public List filter (@PathVariable Integer id) throws JsonParseException, JsonMappingException, Exception
+ /*   @GetMapping("/myapp/{id}")
+    public List filter (@PathVariable Long id) throws JsonParseException, JsonMappingException, Exception
     {
         List app = repository.filter(id);
         return app;
 
-    }
-
+    }*/
+/*
     @GetMapping("/calendar/{id}")
     public List calendar (@PathVariable Integer id) throws JsonParseException, JsonMappingException, Exception
     {
@@ -128,7 +128,6 @@ mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
         return app;
 
     }
-
     @DeleteMapping("/exist/{id}")
     public String delete (@PathVariable(name="id") Integer offreId, Principal principale) throws JsonParseException, JsonMappingException, Exception
     {
@@ -143,5 +142,6 @@ mail.sendSimpleMessage(c.getEmail(), "te9belt fi offre", "mabrouk");
         repository.delete(c);
  return "ok";
     }
+*/
 
 }

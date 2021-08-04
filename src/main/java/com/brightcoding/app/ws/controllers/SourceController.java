@@ -4,6 +4,8 @@ import com.brightcoding.app.ws.requests.OriginRequest;
 import com.brightcoding.app.ws.responses.OriginResponse;
 import com.brightcoding.app.ws.services.OriginService;
 import com.brightcoding.app.ws.shared.dto.EventDto;
+import com.brightcoding.app.ws.shared.dto.OriginDto;
+
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.BeanUtils;
@@ -27,7 +29,7 @@ public class SourceController {
     @GetMapping
     public ResponseEntity<List<OriginResponse>> getSource(Principal principal) {
 
-        List<EventDto> education = educationService.getAllSource(principal.getName());
+        List<OriginDto> education = educationService.getAllSource(principal.getName());
 
         Type listType = new TypeToken<List<OriginResponse>>() {}.getType();
         List<OriginResponse> OriginResponse = new ModelMapper().map(education, listType);
@@ -55,7 +57,7 @@ public class SourceController {
     @GetMapping("/{id}")
     public  ResponseEntity<OriginResponse> getOneSource(@PathVariable(name="id") String educationId) {
 
-        EventDto EventDto = educationService.getSource(educationId);
+        OriginDto EventDto = educationService.getSource(educationId);
 
         ModelMapper modelMapper = new ModelMapper();
 

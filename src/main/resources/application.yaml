@@ -12,7 +12,7 @@ server:
 spring:
     datasource:
         password: ''
-        url: jdbc:mysql://localhost:3306/inodev
+        url: jdbc:mysql://localhost:3306/my_app_db
         username: root
     jackson:
         serialization:
