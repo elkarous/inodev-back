@@ -33,15 +33,15 @@ public class ProjectController {
 			
 		}
 	    @GetMapping("/{id}")
-		public ProjectDto getProjectById(@PathVariable long id) {
+		public ProjectDto getProjectById(@PathVariable("Id") long id) {
 			return projectService.getProject(id);
 		}
 	    @DeleteMapping("/{id}")
-		public void deleteProject(@PathVariable(name="id")long id) {
+		public void deleteProject(@PathVariable("id")long id) {
 			 projectService.deleteProject(id);
 		}
 	    @PutMapping("/{id}")
-		public ProjectDto updateProject(@RequestBody @PathVariable Long Id, ProjectDto ProjectDto) {
+		public ProjectDto updateProject( @PathVariable ("Id" ) Long Id, @RequestBody ProjectDto ProjectDto) {
 			return projectService.updateproject(Id, ProjectDto);
 		}
 	    
