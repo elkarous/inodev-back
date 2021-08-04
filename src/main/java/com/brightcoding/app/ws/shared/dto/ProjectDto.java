@@ -18,6 +18,22 @@ public class ProjectDto {
 	
 		     private List<OffreDto> offers;
 
+		public ProjectDto() {
+				super();
+				// TODO Auto-generated constructor stub
+			}
+		
+
+		public String getDescription() {
+			return description;
+		}
+
+
+		public void setDescription(String description) {
+			this.description = description;
+		}
+
+
 		public long getId() {
 			return id;
 		}
@@ -26,13 +42,7 @@ public class ProjectDto {
 			this.id = id;
 		}
 
-		public String getDescription() {
-			return description;
-		}
-
-		public void setDescription(String description) {
-			this.description = description;
-		}
+	
 
 		public String getNom() {
 			return nom;
@@ -77,22 +87,9 @@ public class ProjectDto {
 			this.offers = offers;
 		}
 
-		public void setProjectId(String generateStringId) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public Object getdescription() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public Object getnom() {
-			// TODO Auto-generated method stub
-			return null;
-		}
+	}
 
 		
 		  
-}
+
 	
