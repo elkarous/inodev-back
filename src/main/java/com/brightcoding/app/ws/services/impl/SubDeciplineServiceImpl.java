@@ -7,12 +7,13 @@ import javax.management.RuntimeErrorException;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.brightcoding.app.ws.entities.SubDecipline;
 import com.brightcoding.app.ws.repositories.SubDeciplineRepository;
 import com.brightcoding.app.ws.services.SubDeciplineService;
 import com.brightcoding.app.ws.shared.dto.SubDeciplineDto;
-
+@Service
 public class SubDeciplineServiceImpl implements SubDeciplineService {
 	@Autowired
 	SubDeciplineRepository subDeciplineRepository;

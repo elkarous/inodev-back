@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.brightcoding.app.ws.entities.Hobbies;
 import com.brightcoding.app.ws.entities.SkillsEntity;
@@ -15,6 +16,7 @@ import com.brightcoding.app.ws.services.HobbiesService;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import com.brightcoding.app.ws.shared.dto.HobbiesDto;
 import com.brightcoding.app.ws.shared.dto.SkillsDto;
+@Service
 
 public class HobbiesServiceImpl  implements  HobbiesService{
 	@Autowired
