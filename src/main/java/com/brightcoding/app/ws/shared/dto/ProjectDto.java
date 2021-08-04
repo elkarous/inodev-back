@@ -6,7 +6,7 @@ import java.util.List;
 import com.brightcoding.app.ws.entities.OffreEntity;
 import com.brightcoding.app.ws.entities.SubDecipline;
 
-public class projectDto {
+public class ProjectDto {
 	
 		 private long id;
 		 private String description;
@@ -58,7 +58,7 @@ public class projectDto {
 			this.subDecipline = subDecipline;
 		}
 
-		public projectDto(long id, String description, String nom, String acronyme, SubDecipline subDecipline,
+		public ProjectDto(long id, String description, String nom, String acronyme, SubDecipline subDecipline,
 				List<OffreDto> offers) {
 			super();
 			this.id = id;
@@ -75,6 +75,21 @@ public class projectDto {
 
 		public void setOffers(List<OffreDto> offers) {
 			this.offers = offers;
+		}
+
+		public void setProjectId(String generateStringId) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public Object getdescription() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Object getnom() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 		

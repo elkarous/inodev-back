@@ -80,6 +80,8 @@ public class Project {
 			this.subDecipline = subDecipline;
 			this.offers = offers;
 		}
+
+		
 		  
 		  
 		 
