@@ -3,7 +3,7 @@ package com.brightcoding.app.ws.controllers;
 import com.brightcoding.app.ws.requests.OriginRequest;
 import com.brightcoding.app.ws.responses.OriginResponse;
 import com.brightcoding.app.ws.services.OriginService;
-import com.brightcoding.app.ws.shared.dto.OriginDto;
+import com.brightcoding.app.ws.shared.dto.EventDto;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.BeanUtils;
@@ -27,7 +27,7 @@ public class SourceController {
     @GetMapping
     public ResponseEntity<List<OriginResponse>> getSource(Principal principal) {
 
-        List<OriginDto> education = educationService.getAllSource(principal.getName());
+        List<EventDto> education = educationService.getAllSource(principal.getName());
 
         Type listType = new TypeToken<List<OriginResponse>>() {}.getType();
         List<OriginResponse> OriginResponse = new ModelMapper().map(education, listType);
@@ -44,8 +44,8 @@ public class SourceController {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        OriginDto OriginDto = modelMapper.map(OriginRequest, OriginDto.class);
-        OriginDto createEducation = educationService.createSource(OriginDto, principale.getName());
+        EventDto EventDto = modelMapper.map(OriginRequest, EventDto.class);
+        EventDto createEducation = educationService.createSource(EventDto, principale.getName());
 
         OriginResponse newEducation = modelMapper.map(createEducation, OriginResponse.class);
 
@@ -55,11 +55,11 @@ public class SourceController {
     @GetMapping("/{id}")
     public  ResponseEntity<OriginResponse> getOneSource(@PathVariable(name="id") String educationId) {
 
-        OriginDto OriginDto = educationService.getSource(educationId);
+        EventDto EventDto = educationService.getSource(educationId);
 
         ModelMapper modelMapper = new ModelMapper();
 
-        OriginResponse OriginResponse = modelMapper.map(OriginDto, OriginResponse.class);
+        OriginResponse OriginResponse = modelMapper.map(EventDto, OriginResponse.class);
 
         return new ResponseEntity<OriginResponse>(OriginResponse, HttpStatus.OK);
     }
@@ -80,11 +80,11 @@ public class SourceController {
     )
     public ResponseEntity<OriginResponse> updateSource(@PathVariable String id , @RequestBody OriginRequest OriginRequest) {
 
-        OriginDto OriginDto = new OriginDto();
+        EventDto EventDto = new EventDto();
 
-        BeanUtils.copyProperties(OriginRequest, OriginDto);
+        BeanUtils.copyProperties(OriginRequest, EventDto);
 
-        OriginDto updateEducation = educationService.updateSource(id, OriginDto);
+        EventDto updateEducation = educationService.updateSource(id, EventDto);
 
         OriginResponse OriginResponse = new OriginResponse();
 

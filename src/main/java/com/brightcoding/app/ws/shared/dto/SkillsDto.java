@@ -1,6 +1,6 @@
 package com.brightcoding.app.ws.shared.dto;
 
-import com.brightcoding.app.ws.entities.CondidatEntity;
+
 
 
 public class SkillsDto {

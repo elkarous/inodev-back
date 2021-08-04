@@ -36,8 +36,10 @@ public class CondidatEntity  implements Serializable {
     private Date date_birthday;
     @Column(nullable=true, length=50)
     private String nationality;
-
     @Column(nullable=true)
+    private AuthProvider authProvider;
+   
+	@Column(nullable=true)
 	private String userId;
     @Column(nullable=true, length=50)
     private String familyPhone ;
@@ -247,7 +249,15 @@ public class CondidatEntity  implements Serializable {
 
 	
     
-   
+	 public AuthProvider getAuthProvider() {
+			return authProvider;
+		}
+
+
+		public void setAuthProvider(AuthProvider authProvider) {
+			this.authProvider = authProvider;
+		}
+
 
     
     public CondidatEntity() {

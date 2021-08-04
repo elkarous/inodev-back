@@ -20,7 +20,7 @@ import com.brightcoding.app.ws.SpringApplicationContext;
 import com.brightcoding.app.ws.requests.UserLoginRequest;
 import com.brightcoding.app.ws.services.CondidatService;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
-import com.brightcoding.app.ws.shared.dto.UserDto;
+import com.brightcoding.app.ws.shared.dto.ResourceDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Jwts;

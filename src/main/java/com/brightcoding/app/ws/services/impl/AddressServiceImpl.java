@@ -18,7 +18,7 @@ import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.services.AddressService;
 import com.brightcoding.app.ws.shared.Utils;
 import com.brightcoding.app.ws.shared.dto.AddressDto;
-import com.brightcoding.app.ws.shared.dto.UserDto;
+import com.brightcoding.app.ws.shared.dto.ResourceDto;
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -52,10 +52,10 @@ public class AddressServiceImpl implements AddressService {
 		CondidatEntity currentUser = userRepository.findByEmail(email);
 		
 		ModelMapper modelMapper = new ModelMapper();
-		UserDto userDto = modelMapper.map(currentUser, UserDto.class);
+		ResourceDto resourceDto = modelMapper.map(currentUser, ResourceDto.class);
 		
 		address.setAddressId(util.generateStringId(30));
-		address.setUser(userDto);
+		address.setUser(resourceDto);
 		
 		AddressEntity addressEntity = modelMapper.map(address, AddressEntity.class); 
 		

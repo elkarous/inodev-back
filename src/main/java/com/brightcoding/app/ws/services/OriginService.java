@@ -1,15 +1,15 @@
 package com.brightcoding.app.ws.services;
 
-import com.brightcoding.app.ws.shared.dto.OriginDto;
+import com.brightcoding.app.ws.shared.dto.EventDto;
 
 import java.util.List;
 
 public interface OriginService {
-    List<OriginDto> getAllSource(String email);
+    List<EventDto> getAllSource(String email);
 
-    OriginDto createSource(OriginDto source, String email);
+    EventDto createSource(EventDto source, String email);
 
-    OriginDto getSource(String sourceId);
-    OriginDto updateSource(String Id, OriginDto originDto);
+    EventDto getSource(String sourceId);
+    EventDto updateSource(String Id, EventDto eventDto);
     void deleteSource(String sourceId);
 }

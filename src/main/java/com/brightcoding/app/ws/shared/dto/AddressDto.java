@@ -9,7 +9,7 @@ public class AddressDto {
 	private String street;
 	private String postal;
 	private String type;
-	private UserDto user;
+	private ResourceDto user;
 	
 	public long getId() {
 		return id;
@@ -47,10 +47,10 @@ public class AddressDto {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public UserDto getUser() {
+	public ResourceDto getUser() {
 		return user;
 	}
-	public void setUser(UserDto user) {
+	public void setUser(ResourceDto user) {
 		this.user = user;
 	}
 	public String getAddressId() {
