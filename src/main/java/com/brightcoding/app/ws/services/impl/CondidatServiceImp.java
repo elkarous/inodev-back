@@ -120,19 +120,14 @@ public class CondidatServiceImp implements CondidatService {
 
         if (checkUser != null) throw new RuntimeException("User Alrady Exists !");
 
-       /*for(int i=0; i < condidat.getEducation().size(); i++) {
-        EducationDto education = condidat.getEducation().get(i);
-        education.setCondidat(condidat);
-        education.setEducationId(util.generateStringId(30));
-        condidat.getEducation().set(i, education);
-    }*/
+ 
 
 
         ModelMapper modelMapper = new ModelMapper();
 
         CondidatEntity condidatEntity = modelMapper.map(condidat, CondidatEntity.class);
 
-        condidatEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(condidat.getPassword()));
+        condidatEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(condidat.getEncryptedPassword()));
 
         condidatEntity.setUserId(util.generateStringId(32));
 

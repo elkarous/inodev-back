@@ -23,7 +23,16 @@ public class SkillsEntity implements Serializable {
     @ManyToOne (fetch= FetchType.LAZY)
     private OffreEntity offre;
 
-    public Integer getId() {
+    
+    public OffreEntity getOffre() {
+		return offre;
+	}
+
+	public void setOffre(OffreEntity offre) {
+		this.offre = offre;
+	}
+
+	public Integer getId() {
         return id;
     }
 

@@ -137,12 +137,12 @@ public class OffreController {
             address.setSkillsId(util.generateStringId(30));
             off.getSkills().set(i, address);
         }
-        for(int i=0; i < off.getSpecialite().size(); i++) {
+        for(int i=0; i < off.getSkills().size(); i++) {
 
-            SpecialiteEntity spec = off.getSpecialite().get(i);
+            SkillsEntity spec = off.getSkills().get(i);
             spec.setOffre(off);
-            spec.setSpecialiteId(util.generateStringId(30));
-            off.getSpecialite().set(i, spec);
+           
+            off.getSkills().set(i, spec);
         }
      /*   List<CondidatEntity> c = condidatRepository.findAllaCondidats();
         for (int i = 0; i < c.size(); i++) {
