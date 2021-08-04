@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 @Entity
@@ -13,7 +14,7 @@ public class Hobbies implements Serializable{
 	 */
 	private static final long serialVersionUID = -497975594521251861L;
 		@Id
-		@GeneratedValue
+		@GeneratedValue(strategy = GenerationType.AUTO)
 		private long id;
 	    private String nom ;
 	    private String description;
@@ -25,6 +26,17 @@ public class Hobbies implements Serializable{
 	    
 		public long getId() {
 			return id;
+		}
+		public Hobbies() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		public Hobbies(long id, String nom, String description, CondidatEntity condidat) {
+			super();
+			this.id = id;
+			this.nom = nom;
+			this.description = description;
+			this.condidat = condidat;
 		}
 		public CondidatEntity getCondidat() {
 			return condidat;

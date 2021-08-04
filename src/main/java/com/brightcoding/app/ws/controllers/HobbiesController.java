@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +33,7 @@ public class HobbiesController {
 	
 	// create new hobbie
 	@PostMapping
-	public HobbiesDto createHobbies(HobbiesDto hobbiesDto) {
+	public HobbiesDto createHobbies(  @RequestBody HobbiesDto hobbiesDto) {
 		return hobbiesService.createHobbies(hobbiesDto);
 		
 	}
@@ -39,7 +41,7 @@ public class HobbiesController {
 	
 	//get hobbies by id 
 	@GetMapping("/{id}")
-	public HobbiesDto getHobbiesById(long id) {
+	public HobbiesDto getHobbiesById( @PathVariable ("id") long id) {
 		return hobbiesService.getHobbies(id);
 	}
 	
@@ -51,7 +53,7 @@ public class HobbiesController {
 	
 	//update one hobbies
 	@PutMapping("/{id}")
-	public HobbiesDto updateHobbies(Long Id, HobbiesDto HobbiesDto) {
+	public HobbiesDto updateHobbies( @PathVariable ("id") long Id, @RequestBody HobbiesDto HobbiesDto) {
 		return hobbiesService.updateHobbies(Id, HobbiesDto);
 	}
 	

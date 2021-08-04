@@ -17,6 +17,17 @@ public class HobbiesDto {
 	public long getId() {
 		return id;
 	}
+	public HobbiesDto(long id, String nom, String description, CondidatEntity condidat) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.description = description;
+		this.condidat = condidat;
+	}
+	public HobbiesDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public CondidatEntity getCondidat() {
 		return condidat;
 	}

@@ -37,9 +37,11 @@ public class HobbiesServiceImpl  implements  HobbiesService{
 
 	@Override
 	public HobbiesDto createHobbies(HobbiesDto hobbiesDto) {
+		System.out.println(hobbiesDto.getDescription());
 		ModelMapper modelMapper = new ModelMapper();
 		
 		Hobbies hobbie = modelMapper.map(hobbiesDto, Hobbies.class);
+		System.out.println(hobbiesDto.getDescription());
 	  hobbiesRepository.save(hobbie);
 		
 		
@@ -48,7 +50,7 @@ public class HobbiesServiceImpl  implements  HobbiesService{
 	}
 
 	@Override
-	public HobbiesDto getHobbies(long HobbiesId) {
+	public HobbiesDto getHobbies(Long HobbiesId) {
 		
         Hobbies hobbie = hobbiesRepository.findById(HobbiesId).get();
 		ModelMapper modelMapper = new ModelMapper();

@@ -9,7 +9,7 @@ public interface HobbiesService {
 
     HobbiesDto createHobbies(HobbiesDto hobbiesDto);
 
-    HobbiesDto getHobbies(long HobbiesId);
+    HobbiesDto getHobbies(Long HobbiesId);
     HobbiesDto updateHobbies(Long Id, HobbiesDto HobbiesDto);
     void deleteHobbies(long HobbiesId);
 

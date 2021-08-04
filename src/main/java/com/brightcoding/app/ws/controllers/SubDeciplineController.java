@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,25 +32,25 @@ public class SubDeciplineController {
 	
 	// create new subdecipline
 	@PostMapping
-	public SubDeciplineDto createSubDecipline(SubDeciplineDto subDto) {
+	public SubDeciplineDto createSubDecipline( @RequestBody SubDeciplineDto subDto) {
 		return subDeciplineService.createSubDecipline(subDto);
 	}
 	
 	// get subdecipline by id 
 	@GetMapping("/{id}")
-	public SubDeciplineDto getSubDeciplineById(long id) {
+	public SubDeciplineDto getSubDeciplineById( @PathVariable("id") long id) {
 		return subDeciplineService.getSubDeciplineById(id);
 	}
 	
 	//delete subdecipline
 	@DeleteMapping("/{id}")
-	public void deletesubdecipline(long id) {
+	public void deletesubdecipline( @PathVariable("id") long id) {
 		subDeciplineService.deleteSubdecipline(id);
 	}
 	
 	//update one subDecipline
 	@PutMapping("/{id}")
-	public SubDeciplineDto updateHobbies(Long Id, SubDeciplineDto subDto) {
+	public SubDeciplineDto updateHobbies( @PathVariable("id") Long Id, @RequestBody SubDeciplineDto subDto) {
 		return subDeciplineService.updateSubdecipline(Id, subDto);
 	}
 	
