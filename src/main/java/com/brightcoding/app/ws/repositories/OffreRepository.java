@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface OffreRepository extends JpaRepository<OffreEntity, Integer> {
     OffreEntity findByOffreId(@Param(value = "id") String id);
-    @Query("SELECT t FROM OffreEntity t where t.id = :id")
+    /*@Query("SELECT t FROM OffreEntity t where t.id = :id")
     OffreEntity findByaId(@Param(value = "id") Integer id);
     @Query("SELECT t.id, t.nom, t.image, t.id, t.duree, t.dateFin, t.description, t.organisation," +
             " t.prix, t.processus, t.type, t.offreId, t.video FROM OffreEntity t where t.type = :type and t.dateFin >= current_date ")
@@ -64,6 +64,6 @@ public interface OffreRepository extends JpaRepository<OffreEntity, Integer> {
     @Query("SELECT t.id, t.nom, t.image, t.id, t.dateDebut, t.dateFin, t.description, t.organisation," +
             " t.prix, t.processus, t.duree, t.niveau, t.type, t.offreId, t.video FROM OffreEntity t " +
             "where t.duree = :duree and t.type = :type and t.dateFin >= current_date")
-    List findBynsnull(@Param(value = "duree")String duree, @Param(value = "type")String type);
+    List findBynsnull(@Param(value = "duree")String duree, @Param(value = "type")String type);*/
 
 }

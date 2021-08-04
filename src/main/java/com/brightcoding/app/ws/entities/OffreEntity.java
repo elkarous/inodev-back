@@ -41,7 +41,7 @@ public class OffreEntity {
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
     private List<SkillsEntity> skills;
    @ManyToOne
-   private Project project;
+     private Project project;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
     private List<Event> event;
 

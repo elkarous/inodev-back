@@ -21,7 +21,7 @@ public class CondidatEntity  implements Serializable {
     
     
     @Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
     @Column(nullable=true, length=50)
     private String firstName;

@@ -50,7 +50,7 @@ public class PasswordController {
     public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String userEmail, HttpServletRequest request) {
 
         // Lookup user in database by e-mail
-        Optional<CondidatEntity> optional = Optional.ofNullable(userService.findByEmail(userEmail));
+        Optional<CondidatEntity> optional = Optional.ofNullable(userService.findByEmail(userEmail)).get();
 
         if (!optional.isPresent()) {
             modelAndView.addObject("errorMessage", "We didn't find an account for that e-mail address.");
