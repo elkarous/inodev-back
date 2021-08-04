@@ -1,16 +1,23 @@
 package com.brightcoding.app.ws.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
-public class Project {
-	 @Id
+@Entity
+public class Project implements Serializable{
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 		@GeneratedValue
 		 private long id;
 		 private String description;
@@ -19,7 +26,7 @@ public class Project {
 		 @ManyToOne
 		 private SubDecipline subDecipline;
 		 
-		  @OneToMany(cascade = CascadeType.ALL,mappedBy="project" )
+		  @OneToMany(cascade = CascadeType.ALL,mappedBy="project",fetch=FetchType.LAZY )
 		     private List<OffreEntity> offers;
 
 		public long getId() {

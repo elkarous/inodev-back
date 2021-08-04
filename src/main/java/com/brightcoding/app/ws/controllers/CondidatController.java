@@ -5,6 +5,7 @@ import java.io.File;
 import java.nio.file.Files;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.requests.CondidatRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -56,20 +57,12 @@ public class CondidatController {
         return new ResponseEntity<List<CondidatResponse>>(condidatsResponse, HttpStatus.OK);
     }
 
-        @PostMapping(
-    )
+     @PostMapping("/add")
+    public void createCondidat(  @RequestBody CondidatDto condidatDto) {
+    	 condidatDto.setRole(Role.Admin);
+         condidatService.createCondidat(condidatDto);
 
-    public ResponseEntity<CondidatResponse> createCondidat(
-            @RequestBody CondidatRequest condidatRequest) throws Exception {
 
-        ModelMapper modelMapper = new ModelMapper();
-        CondidatDto condidatDto = modelMapper.map(condidatRequest, CondidatDto.class);
-            condidatDto.setAdmin(0);
-        CondidatDto createCondidat = condidatService.createCondidat(condidatDto);
-
-        CondidatResponse condidatResponse =  modelMapper.map(createCondidat, CondidatResponse.class);
-
-            return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.CREATED);
 
     }
     @PostMapping("/suprvisor"
@@ -81,7 +74,7 @@ public class CondidatController {
 
         ModelMapper modelMapper = new ModelMapper();
         CondidatDto condidatDto = modelMapper.map(condidatRequest, CondidatDto.class);
-        condidatDto.setAdmin(2);
+        condidatDto.setRole(Role.Superviser);
         CondidatDto createCondidat = condidatService.createCondidat(condidatDto);
 
         CondidatResponse condidatResponse =  modelMapper.map(createCondidat, CondidatResponse.class);
@@ -89,8 +82,10 @@ public class CondidatController {
         return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.CREATED);
 
     }
-    @PostMapping("/company"
-    )
+    
+    
+    
+    @PostMapping("/company" )
 
     public ResponseEntity<CondidatResponse> createsociete(
             @RequestBody @Valid CondidatRequest condidatRequest) throws Exception {
@@ -98,7 +93,7 @@ public class CondidatController {
 
         ModelMapper modelMapper = new ModelMapper();
         CondidatDto condidatDto = modelMapper.map(condidatRequest, CondidatDto.class);
-        condidatDto.setAdmin(3);
+        condidatDto.setRole(Role.Compnany);;
         CondidatDto createCondidat = condidatService.createCondidat(condidatDto);
 
         CondidatResponse condidatResponse =  modelMapper.map(createCondidat, CondidatResponse.class);

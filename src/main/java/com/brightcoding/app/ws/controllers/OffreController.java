@@ -50,7 +50,7 @@ public class OffreController {
         ServletContext context;
     @Autowired
     Utils util;
-    @GetMapping
+/*    @GetMapping
     public List getAllOffres() {
 
         List  offres = new ArrayList<>();
@@ -137,17 +137,17 @@ public class OffreController {
             address.setSkillsId(util.generateStringId(30));
             off.getSkills().set(i, address);
         }
-        for(int i=0; i < off.getSpecialite().size(); i++) {
+        for(int i=0; i < off.getSkills().size(); i++) {
 
-            SpecialiteEntity spec = off.getSpecialite().get(i);
+            SkillsEntity spec = off.getSkills().get(i);
             spec.setOffre(off);
-            spec.setSpecialiteId(util.generateStringId(30));
-            off.getSpecialite().set(i, spec);
+           
+            off.getSkills().set(i, spec);
         }
      /*   List<CondidatEntity> c = condidatRepository.findAllaCondidats();
         for (int i = 0; i < c.size(); i++) {
             mail.sendSimpleMessage(c.get(i).getEmail(), "Nous avons publie un offre consulte notre platform sur http://localhost:4200/offre/cat/" + off.getType(), "Nouveau offre");
-        }*/
+        }
         OffreEntity of = repository.save(off);
             return (of.getSupervisor());
 
@@ -247,5 +247,5 @@ public class OffreController {
         repository.save(article);
         return ("ok");
 
-    }
+    }*/
 }

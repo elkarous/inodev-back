@@ -14,15 +14,12 @@ import java.util.List;
 public interface SpecialiteRepository extends JpaRepository<SpecialiteEntity, String> {
 
     SpecialiteEntity findBySpecialiteId(String id);
-    @Query("SELECT t.nom, t.image, t.offre.id, t.specialiteId FROM SpecialiteEntity t where t.nom = :name")
+    @Query("SELECT t FROM SpecialiteEntity t where t.nom = :name")
     List findByName(@Param("name") String name);
-    @Query("SELECT distinct t.nom , t.image,t.offre.id, t.specialiteId FROM SpecialiteEntity t where t.image is not null")
-    List findAll();
-    @Query("SELECT t.nom, t.image, t.offre.id, t.specialiteId FROM SpecialiteEntity t")
+    
+    @Query("SELECT t FROM SpecialiteEntity t")
     List findbycat();
-    @Query("SELECT t.nom, t.image, t.offre.id, t.specialiteId FROM SpecialiteEntity t where t.offre.id = :id")
-    List findByoffreID(@Param("id") Integer id);
-
+   
     @Query("SELECT MAX (t.id) FROM OffreEntity t")
     Integer maxId();
 }

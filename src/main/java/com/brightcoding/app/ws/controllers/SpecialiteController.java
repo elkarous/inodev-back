@@ -1,6 +1,7 @@
 package com.brightcoding.app.ws.controllers;
 
 import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.Project;
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.OffreRepository;
@@ -46,8 +47,7 @@ public class SpecialiteController {
 
     @GetMapping
     public List getAllspef() {
-        System.out.println("Get all spe...");
-
+    
         List offres = repository.findAll();
 
         return offres;
@@ -56,18 +56,18 @@ public class SpecialiteController {
     public List getNom(@PathVariable(value = "name")String name)
     {
         List offre = new ArrayList<>();
-        repository.findByName(name).forEach(offre::add);
+        repository.findByName(name) .forEach(offre::add);
 
         return offre;
     }
-    @GetMapping("/o/{id}")
+  /*  @GetMapping("/o/{id}")
     public List getofrreID(@PathVariable(value = "id")Integer id)
     {
         List offre = new ArrayList<>();
         repository.findByoffreID(id).forEach(offre::add);
 
         return offre;
-    }
+    }*/
     @GetMapping ("/getAll")
     public ResponseEntity<List<String>> getAll()
     {
@@ -103,13 +103,13 @@ public class SpecialiteController {
     public String createspe (@RequestParam("file") MultipartFile file,
                                @RequestParam("spe") String specialite) throws JsonParseException, JsonMappingException, Exception
     {
-        System.out.println("Ok .............");
-        SpecialiteEntity off = new ObjectMapper().readValue(specialite, SpecialiteEntity.class);
+        
+        Project off = new ObjectMapper().readValue(specialite, Project.class);
         boolean isExit = new File(context.getRealPath("src/web/spe/")).exists();
         if (!isExit)
         {
             new File (context.getRealPath("src/web/spe/")).mkdir();
-            System.out.println("mk dir.............");
+           
         }
         String filename = file.getOriginalFilename();
         String newFileName = FilenameUtils.getBaseName(filename)+"."+FilenameUtils.getExtension(filename);
@@ -117,20 +117,17 @@ public class SpecialiteController {
         String distfile = "src/web/spe/"+ file.getOriginalFilename();
         try
         {
-            System.out.println("Image");
+           
             FileUtils.writeByteArrayToFile(serverFile,file.getBytes());
             Files.copy(file.getInputStream(),
                     Paths.get(distfile),
                     StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("............ok .............");
+         
 
         }catch(Exception e) {
             e.printStackTrace();
         }
-        off.setOffre(oRepository.findByOffreId(off.getSpecialiteId()));
-        off.setSpecialiteId(util.generateStringId(30));
-        off.setImage(newFileName);
-        SpecialiteEntity of = repository.save(off);
+       
         return ("okokok");
 
     }

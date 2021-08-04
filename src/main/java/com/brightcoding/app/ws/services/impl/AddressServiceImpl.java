@@ -35,7 +35,7 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public List<AddressDto> getAllAddresses(String email) {
 		
-		CondidatEntity currentUser = userRepository.findByEmail(email);
+		CondidatEntity currentUser = userRepository.findByEmail(email).get();
 		
 		List<AddressEntity> addresses = currentUser.getRole() == Role.Admin? (List<AddressEntity>) addressRepository.findAll() : addressRepository.findByUser(currentUser);
 		
@@ -49,7 +49,7 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public AddressDto createAddress(AddressDto address, String email) {
 		
-		CondidatEntity currentUser = userRepository.findByEmail(email);
+		CondidatEntity currentUser = userRepository.findByEmail(email).get();
 		
 		ModelMapper modelMapper = new ModelMapper();
 		ResourceDto resourceDto = modelMapper.map(currentUser, ResourceDto.class);

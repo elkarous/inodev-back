@@ -12,13 +12,13 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.brightcoding.app.ws.social.AppProperties;
+
 
 import javax.persistence.EntityManagerFactory;
 
 @SpringBootApplication
 @EntityScan(basePackages = {"com.brightcoding.app.ws.entities"})
-@EnableConfigurationProperties(AppProperties.class)
+
 public class Application extends SpringBootServletInitializer {
 
 

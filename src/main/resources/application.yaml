@@ -12,17 +12,17 @@ server:
 spring:
     datasource:
         password: ''
-        url: jdbc:mysql://localhost:3306/inodev
+        url: jdbc:mysql://localhost:3306/my_app_db
         username: root
     jackson:
         serialization:
             write_dates_as_timestamps: false
     jpa:
-        hibernate:
-            ddl-auto: update
         properties:
             hibernate:
-                format_sql: true
+                dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+                globally_quoted_identifiers: true
+
     mail:
         host: smtp.gmail.com
         password: yrcwhcqigacrldxp
