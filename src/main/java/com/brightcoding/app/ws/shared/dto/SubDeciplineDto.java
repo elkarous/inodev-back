@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.brightcoding.app.ws.entities.Project;
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
+import com.brightcoding.app.ws.entities.SubDecipline;
 
 public class SubDeciplineDto {
 
@@ -27,14 +28,19 @@ public class SubDeciplineDto {
 	public long getId() {
 		return id;
 	}
+	
+	
 	public SubDeciplineDto(long id, String nom, String image, SpecialiteEntity speciality, List<Project> project) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.image = image;
-		this.speciality = speciality;
-		this.project = project;
-	}
+	super();
+	this.id = id;
+	this.nom = nom;
+	this.image = image;
+	this.speciality = speciality;
+	this.project = project;
+
+}
+
+
 	public SubDeciplineDto() {
 	}
 	public SubDeciplineDto(long id, String nom, SpecialiteEntity speciality, List<Project> project) {
@@ -43,6 +49,8 @@ public class SubDeciplineDto {
 		this.nom = nom;
 		this.speciality = speciality;
 		this.project = project;
+		
+		
 	}
 	public void setId(long id) {
 		this.id = id;
@@ -72,8 +80,7 @@ public class SubDeciplineDto {
 		this.image = image;
 	}
    
-   
-  
+	
    
    
    

@@ -1,12 +1,15 @@
 package com.brightcoding.app.ws.repositories;
 
 import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.SubDecipline;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -65,5 +68,8 @@ public interface OffreRepository extends JpaRepository<OffreEntity, Integer> {
             " t.prix, t.processus, t.duree, t.niveau, t.type, t.offreId, t.video FROM OffreEntity t " +
             "where t.duree = :duree and t.type = :type and t.dateFin >= current_date")
     List findBynsnull(@Param(value = "duree")String duree, @Param(value = "type")String type);*/
+
+	
+ 	
 
 }

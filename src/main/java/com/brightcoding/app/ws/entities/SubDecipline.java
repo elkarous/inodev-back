@@ -35,6 +35,7 @@ public class SubDecipline implements Serializable {
 		public long getId() {
 			return id;
 		}
+		
 		public SubDecipline(long id, String nom, String image, SpecialiteEntity speciality, List<Project> project) {
 			super();
 			this.id = id;

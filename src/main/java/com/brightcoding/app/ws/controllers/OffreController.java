@@ -4,6 +4,7 @@ import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.OffreEntity;
 import com.brightcoding.app.ws.entities.SkillsEntity;
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
+import com.brightcoding.app.ws.entities.SubDecipline;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.OffreRepository;
 import com.brightcoding.app.ws.repositories.SpecialiteRepository;
@@ -24,6 +25,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import com.brightcoding.app.ws.services.SubDeciplineService;
+import com.brightcoding.app.ws.shared.dto.OffreDto;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,6 +44,8 @@ public class OffreController {
         @Autowired
         OffreRepository repository;
         @Autowired
+        SubDeciplineService subDcplineService;
+        @Autowired
         CondidatRepository condidatRepository;
     @Autowired
     SpecialiteRepository Srepository;
@@ -50,6 +55,7 @@ public class OffreController {
         ServletContext context;
     @Autowired
     Utils util;
+   
 /*    @GetMapping
     public List getAllOffres() {
 

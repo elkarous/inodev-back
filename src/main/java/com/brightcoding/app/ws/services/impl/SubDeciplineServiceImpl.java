@@ -10,13 +10,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brightcoding.app.ws.entities.SubDecipline;
+import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.Project;
 import com.brightcoding.app.ws.repositories.SubDeciplineRepository;
+import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.ProjectRepository;
 import com.brightcoding.app.ws.services.SubDeciplineService;
+import com.brightcoding.app.ws.shared.dto.OffreDto;
+import com.brightcoding.app.ws.shared.dto.ProjectDto;
 import com.brightcoding.app.ws.shared.dto.SubDeciplineDto;
 @Service
 public class SubDeciplineServiceImpl implements SubDeciplineService {
 	@Autowired
 	SubDeciplineRepository subDeciplineRepository;
+	@Autowired
+	OffreRepository OffreRepository;
+	@Autowired
+	ProjectRepository projectRepository;
 
 	@Override
 	public List<SubDeciplineDto> getAllSubdecipline() {
@@ -48,6 +58,7 @@ public class SubDeciplineServiceImpl implements SubDeciplineService {
 		SubDeciplineDto subDeciplineDto=modelMapper.map(subDecipline, SubDeciplineDto.class);
 		return subDeciplineDto;
 	}
+	
 
 	@Override
 	public SubDeciplineDto updateSubdecipline(Long Id, SubDeciplineDto subDeciplineDto) {
@@ -71,6 +82,20 @@ public class SubDeciplineServiceImpl implements SubDeciplineService {
 		subDeciplineRepository.delete(subDecipline);
 		
 	}
+	
+	@Override
+	public List<OffreEntity> findOffrebySub(String nom) {
+		ModelMapper modelMapper = new ModelMapper();
+		List<OffreEntity> listOffer=new ArrayList<>();
+		SubDecipline subDecipline = subDeciplineRepository.findByNom(nom);
+		for(Project project:subDecipline.getProject()) {
+			listOffer.addAll(project.getOffers());
+		}
+		
+		return listOffer ;
+		
+	}
 
+	
 	
 }

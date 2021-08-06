@@ -44,6 +44,7 @@ public class OffreEntity {
      private Project project;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
     private List<Event> event;
+   
 
     public Project getProject() {
 		return project;
@@ -216,4 +217,5 @@ public class OffreEntity {
 	public void setAcronym(String acronym) {
 		this.acronym = acronym;
 	}
+
 }

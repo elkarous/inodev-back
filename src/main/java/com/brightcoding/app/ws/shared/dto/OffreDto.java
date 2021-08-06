@@ -3,10 +3,12 @@ package com.brightcoding.app.ws.shared.dto;
 import java.util.Date;
 import java.util.List;
 
-
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
 import com.brightcoding.app.ws.entities.Event;
 import com.brightcoding.app.ws.entities.Project;
+import com.brightcoding.app.ws.entities.SubDecipline;
 
 
 
@@ -42,7 +44,8 @@ public class OffreDto {
 	   private Project project;
 	   
 	    private List<Event> event;
-
+	  
+			
 	    public Project getProject() {
 			return project;
 		}

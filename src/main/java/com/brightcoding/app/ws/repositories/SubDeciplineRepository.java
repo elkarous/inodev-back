@@ -8,5 +8,6 @@ import com.brightcoding.app.ws.entities.SubDecipline;
 
 @Repository
 public interface SubDeciplineRepository extends CrudRepository<SubDecipline, Long> {
-
+	
+public  SubDecipline findByNom(String nom);
 }
