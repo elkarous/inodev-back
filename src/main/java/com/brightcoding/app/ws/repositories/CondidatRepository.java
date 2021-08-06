@@ -22,7 +22,11 @@ public interface CondidatRepository extends PagingAndSortingRepository<CondidatE
     Boolean existsByEmail(String email);
     CondidatEntity findByUserId(String userId);
 
+
   
+
+    Optional<CondidatEntity> findById(Long id);
+
     Optional<CondidatEntity> findByEmail(String email);
 
     @Query(value="SELECT * FROM condidats c WHERE (c.first_name LIKE %:search% OR c.last_name LIKE %:search%) AND c.email_verification_status = :status", nativeQuery=true)

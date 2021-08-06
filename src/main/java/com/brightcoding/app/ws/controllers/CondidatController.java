@@ -40,7 +40,7 @@ public class CondidatController {
     @Autowired
     ServletContext context;
 
-    @GetMapping(produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(produces={ MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<CondidatResponse>> getAllCondidats(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20")  int limit , @RequestParam(value="search", defaultValue = "") String search, @RequestParam(value="status", defaultValue = "1") int status) {
 
         List<CondidatResponse> condidatsResponse = new ArrayList<>();
@@ -58,28 +58,28 @@ public class CondidatController {
     }
 
      @PostMapping("/add")
-    public void createCondidat(  @RequestBody CondidatDto condidatDto) {
+    public CondidatDto createCondidat(  @RequestBody CondidatDto condidatDto) {
     	 condidatDto.setRole(Role.Admin);
-         condidatService.createCondidat(condidatDto);
+         return condidatService.createCondidat(condidatDto);
 
 
 
     }
-    @PostMapping("/suprvisor"
-    )
+     
+  
+     
+     @GetMapping("/getAll")
+     public List<CondidatDto> getAll(){
+    	 return condidatService.getAll();
+     }
+     
+     
+    @PostMapping("/suprvisor")
 
-    public ResponseEntity<CondidatResponse> createsupervisor(
-            @RequestBody @Valid CondidatRequest condidatRequest) throws Exception {
+    public CondidatDto createSupervisor(  @RequestBody CondidatDto condidatDto) {
+   	 condidatDto.setRole(Role.Superviser);
+     return condidatService.createCondidat(condidatDto);
 
-
-        ModelMapper modelMapper = new ModelMapper();
-        CondidatDto condidatDto = modelMapper.map(condidatRequest, CondidatDto.class);
-        condidatDto.setRole(Role.Superviser);
-        CondidatDto createCondidat = condidatService.createCondidat(condidatDto);
-
-        CondidatResponse condidatResponse =  modelMapper.map(createCondidat, CondidatResponse.class);
-
-        return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.CREATED);
 
     }
     
@@ -87,21 +87,14 @@ public class CondidatController {
     
     @PostMapping("/company" )
 
-    public ResponseEntity<CondidatResponse> createsociete(
-            @RequestBody @Valid CondidatRequest condidatRequest) throws Exception {
-
-
-        ModelMapper modelMapper = new ModelMapper();
-        CondidatDto condidatDto = modelMapper.map(condidatRequest, CondidatDto.class);
-        condidatDto.setRole(Role.Compnany);;
-        CondidatDto createCondidat = condidatService.createCondidat(condidatDto);
-
-        CondidatResponse condidatResponse =  modelMapper.map(createCondidat, CondidatResponse.class);
-        condidatResponse.setAdmin(3);
-        return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.CREATED);
+    public  CondidatDto  createsociete(@RequestBody CondidatDto condidatDto) {
+    	 condidatDto.setRole(Role.Superviser);
+         return condidatService.createCondidat(condidatDto);
 
     }
-    @GetMapping(path="/{userId}", produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    
+    
+    @GetMapping(path="/{userId}", produces={ MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<CondidatResponse> getCondidat(@PathVariable String userId) {
 
         CondidatDto condidatDto = condidatService.getCondidatByUserId(userId);
@@ -114,8 +107,8 @@ public class CondidatController {
     }
     @PutMapping(
             path="/{id}",
-            consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE},
-            produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE}
+            consumes={ MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE},
+            produces={ MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE}
     )
     public ResponseEntity<CondidatResponse> updateCondidat(
             @PathVariable String id , @RequestPart(value = "condidat") String condidatRequest,

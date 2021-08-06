@@ -1,5 +1,7 @@
 package com.brightcoding.app.ws.services.impl;
 
+import com.brightcoding.app.ws.entities.Application;
+import com.brightcoding.app.ws.entities.AuthProvider;
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.services.CondidatService;
@@ -32,8 +34,14 @@ public class CondidatServiceImp implements CondidatService {
     @Autowired
     Utils util;
 
+    @Override
+    public String  getUserID(String email ) {
+    	  
+    	  
+    	return condidatRepository.findByEmail(email).get().getUserId();
 
-
+    	  
+      }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
@@ -118,12 +126,15 @@ public class CondidatServiceImp implements CondidatService {
        
 
 
-    
+
+    condidat.setApplication(Application.NewApplication);
+    condidat.setAuthProvider(AuthProvider.local);
         	 
             ModelMapper modelMapper = new ModelMapper();
 
             CondidatEntity condidatEntity = modelMapper.map(condidat, CondidatEntity.class);
             condidatRepository.save(condidatEntity);
+
 
             condidatEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(condidat.getEncryptedPassword()));
 
@@ -150,5 +161,17 @@ public class CondidatServiceImp implements CondidatService {
         condidatRepository.delete(userEntity);
 
     }
+	@Override
+	public List<CondidatDto> getAll() {
+		 ModelMapper modelMapper = new ModelMapper();
+		List<CondidatDto> list= new ArrayList<>();
+		for(CondidatEntity condidat:condidatRepository.findAll()) {
+			CondidatDto condidatDto = modelMapper.map(condidat, CondidatDto.class);
+			list.add(condidatDto);
+			
+		}
+
+		return list ;
+	}
 
 }

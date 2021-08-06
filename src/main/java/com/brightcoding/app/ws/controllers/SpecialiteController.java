@@ -103,8 +103,12 @@ public class SpecialiteController {
     public String createspe (@RequestParam("file") MultipartFile file,
                                @RequestParam("spe") String specialite) throws JsonParseException, JsonMappingException, Exception
     {
+
         
         Project off = new ObjectMapper().readValue(specialite, Project.class);
+
+       
+        
         boolean isExit = new File(context.getRealPath("src/web/spe/")).exists();
         if (!isExit)
         {
@@ -122,12 +126,20 @@ public class SpecialiteController {
             Files.copy(file.getInputStream(),
                     Paths.get(distfile),
                     StandardCopyOption.REPLACE_EXISTING);
+
          
+
+          
+
 
         }catch(Exception e) {
             e.printStackTrace();
         }
+
        
+
+        
+        
         return ("okokok");
 
     }
