@@ -2,17 +2,12 @@ package com.brightcoding.app.ws.shared.dto;
 
 import com.brightcoding.app.ws.entities.*;
 
-import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+
 
 public class CondidatDto  {
     
@@ -47,6 +42,7 @@ public class CondidatDto  {
 	private String resetToken;
 	
 	private String encryptedPassword;
+
     
     private String photo;
     
@@ -263,6 +259,8 @@ public class CondidatDto  {
         return "Condidat [firstName=" + firstName + ", photo=" + photo + ", phone=" + phone + ", lastName=" + lastName + ", date_birthday=" + date_birthday
                 + ", gender=" + gender + ", nationality=" + nationality + ", email=" + getEmail()+ ", userId=" + getUserId() + "]";
     }
+
+
 
 }
 

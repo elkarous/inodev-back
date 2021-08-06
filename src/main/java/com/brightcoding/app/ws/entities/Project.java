@@ -77,6 +77,11 @@ public class Project implements Serializable{
 			this.offers = offers;
 		}
 
+		public Project() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
 		public Project(long id, String description, String nom, String acronyme, SubDecipline subDecipline,
 				List<OffreEntity> offers) {
 			super();

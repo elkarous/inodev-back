@@ -7,6 +7,7 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.brightcoding.app.ws.repositories.ProjectRepository;
 
@@ -19,7 +20,7 @@ import com.brightcoding.app.ws.shared.Utils;
 
 
 import com.brightcoding.app.ws.shared.dto.ProjectDto;
-
+@Service
 public class ProjectServiceImp implements ProjectService  { 
 	@Autowired
 	OffreRepository offreRepository;
@@ -54,16 +55,16 @@ public class ProjectServiceImp implements ProjectService  {
 
 	        ModelMapper modelMapper = new ModelMapper();
 	        
-	        project.setProjectId(util.generateStringId(30));
+
 	
 
 	        Project Project = modelMapper.map(project, Project.class);
 
-	       Project newProject = projectRepository.save(Project);
+	         projectRepository.save(Project);
 
-	        ProjectDto ProjectDto = modelMapper.map(newProject, ProjectDto.class);
+	      
 
-	        return ProjectDto;
+	        return project;
 	
 		
 	}
@@ -107,28 +108,7 @@ public class ProjectServiceImp implements ProjectService  {
 	}
 
 
-	@Override
-	public List<ProjectDto> getAllProject(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-
-	
-
-
-	@Override
-	public ProjectDto getProject(String projectId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public ProjectDto createProject(ProjectDto project, String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

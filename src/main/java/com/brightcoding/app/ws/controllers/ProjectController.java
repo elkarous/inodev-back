@@ -23,17 +23,21 @@ public class ProjectController {
 	    ProjectService projectService;
 	    @Autowired
 	    ProjectRepository repository;
+	    
+	    
+	    
+	    
 	    @GetMapping
 		public List<ProjectDto> getAll(){
 			return projectService.getAllProject();
 		}
 	    @PostMapping
-		public ProjectDto createProject(@RequestBody ProjectDto projectDto) {
+		public ProjectDto createProject(@RequestBody  ProjectDto projectDto) {
 			return projectService.createProject(projectDto);
 			
 		}
 	    @GetMapping("/{id}")
-		public ProjectDto getProjectById(@PathVariable("Id") long id) {
+		public ProjectDto getProjectById(@PathVariable("id") long id) {
 			return projectService.getProject(id);
 		}
 	    @DeleteMapping("/{id}")

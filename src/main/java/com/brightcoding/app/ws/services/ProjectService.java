@@ -5,20 +5,16 @@ import com.brightcoding.app.ws.shared.dto.ProjectDto;
 
 
 
-public interface ProjectService {   List<ProjectDto> getAllProject(String email);
-
-ProjectDto createProject(ProjectDto project, String email);
-
-ProjectDto getProject(String projectId);
-ProjectDto updateproject(Long Id, ProjectDto ProjectDto);
-void deleteProject(Long projectId);
+public interface ProjectService {   
 
 List<ProjectDto> getAllProject();
 
-
+ProjectDto createProject(ProjectDto project);
 
 ProjectDto getProject(Long projectId);
 
-ProjectDto createProject(ProjectDto project);
+ProjectDto updateproject(Long Id, ProjectDto projectDto);
+
+void deleteProject(Long ProjectId);
 
 }
