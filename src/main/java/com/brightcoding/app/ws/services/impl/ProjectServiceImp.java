@@ -14,7 +14,7 @@ import com.brightcoding.app.ws.repositories.ProjectRepository;
 import com.brightcoding.app.ws.entities.Project;
 
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.services.ProjectService;
 import com.brightcoding.app.ws.shared.Utils;
 
@@ -23,7 +23,7 @@ import com.brightcoding.app.ws.shared.dto.ProjectDto;
 @Service
 public class ProjectServiceImp implements ProjectService  { 
 	@Autowired
-	OffreRepository offreRepository;
+	OfferRepository offerRepository;
 	
 	@Autowired
 	ProjectRepository projectRepository;
@@ -54,12 +54,7 @@ public class ProjectServiceImp implements ProjectService  {
 		 
 
 	        ModelMapper modelMapper = new ModelMapper();
-	        
-
-	
-
 	        Project Project = modelMapper.map(project, Project.class);
-
 	         projectRepository.save(Project);
 
 	      
@@ -72,9 +67,9 @@ public class ProjectServiceImp implements ProjectService  {
 	@Override
 	public ProjectDto getProject(Long projectId) {
 
-        Project hobbie = projectRepository.findById(projectId).get();
+        Project project = projectRepository.findById(projectId).get();
 		ModelMapper modelMapper = new ModelMapper();
-	    ProjectDto projectDto =modelMapper.map(hobbie, ProjectDto.class);
+	    ProjectDto projectDto =modelMapper.map(project, ProjectDto.class);
 	    
 		return projectDto;
 		

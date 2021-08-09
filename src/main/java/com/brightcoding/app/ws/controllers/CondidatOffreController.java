@@ -3,7 +3,7 @@ package com.brightcoding.app.ws.controllers;
 import com.brightcoding.app.ws.entities.*;
 import com.brightcoding.app.ws.repositories.CondidatOffreRepository;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.repositories.SpecialiteRepository;
 import com.brightcoding.app.ws.services.SendMailService;
 import com.brightcoding.app.ws.shared.Utils;
@@ -36,7 +36,7 @@ public class CondidatOffreController {
     @Autowired
     SendMailService mail;
     @Autowired
-    OffreRepository of;
+    OfferRepository of;
     @Autowired
     ServletContext context;
     @Autowired

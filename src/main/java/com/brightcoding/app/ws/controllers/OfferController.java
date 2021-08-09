@@ -1,16 +1,19 @@
 package com.brightcoding.app.ws.controllers;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.SkillsEntity;
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
 import com.brightcoding.app.ws.entities.SubDecipline;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.repositories.SpecialiteRepository;
+import com.brightcoding.app.ws.services.HobbiesService;
+import com.brightcoding.app.ws.services.OfferService;
 import com.brightcoding.app.ws.services.SendMailService;
 import com.brightcoding.app.ws.shared.Utils;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
+import com.brightcoding.app.ws.shared.dto.HobbiesDto;
 import com.brightcoding.app.ws.shared.dto.SkillsDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -26,7 +29,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.brightcoding.app.ws.services.SubDeciplineService;
-import com.brightcoding.app.ws.shared.dto.OffreDto;
+import com.brightcoding.app.ws.shared.dto.OfferDto;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,8 +42,56 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 @RestController
-@RequestMapping("/offre")
-public class OffreController {
+@RequestMapping("/offer")
+public class OfferController {
+	@Autowired
+	OfferService offerService;
+	
+	
+	
+	//get all Offer 
+		@GetMapping
+		public List<OfferDto> getAll(){
+			return offerService.getAllOffre();
+		}
+		
+		// create new offer
+		@PostMapping
+		public OfferDto createOffre(  @RequestBody OfferDto offerDto) {
+			return offerService.createOffre(offerDto);
+			
+		}
+		//get Offer by id 
+		@GetMapping("/{offerId}")
+		public OfferDto getOffreById( @PathVariable ("offerId") int offerId) {
+			return offerService.getOffre(offerId);
+		}
+		//delete Offer by id 
+		@DeleteMapping("/{id}")
+		public void deleteOffre(@PathVariable("id")int id) {
+			 offerService.deleteOffre(id);;
+		}
+		//update one Offer
+		@PutMapping("/{id}")
+		public OfferDto updateOffre( @PathVariable ("id") int Id, @RequestBody OfferDto OfferDto) {
+			return offerService.updateOffre(Id, OfferDto);
+		}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
         @Autowired
         OffreRepository repository;
         @Autowired

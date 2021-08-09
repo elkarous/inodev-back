@@ -14,7 +14,7 @@ public class CondidatOffreEntity {
     CondidatEntity condidat;
 
     @ManyToOne
-    OffreEntity offre;
+    OfferEntity offer;
 
     LocalDateTime registeredAt;
 
@@ -62,12 +62,12 @@ public class CondidatOffreEntity {
         this.condidat = condidat;
     }
 
-    public OffreEntity getOffre() {
-        return offre;
+    public OfferEntity getoffer() {
+        return offer;
     }
 
-    public void setOffre(OffreEntity offre) {
-        this.offre = offre;
+    public void setoffer(OfferEntity offer) {
+        this.offer = offer;
     }
 
     public LocalDateTime getRegisteredAt() {

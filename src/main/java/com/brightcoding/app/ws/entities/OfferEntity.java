@@ -9,10 +9,10 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "offre")
+@Table(name = "offer")
 @JsonInclude(value= JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class OffreEntity {
+public class OfferEntity {
     private static final long serialVersionUID = -5763827745308343856L;
 
     @GeneratedValue
@@ -21,7 +21,7 @@ public class OffreEntity {
     private String image;
     private String acronym;
     private String type;
-    private String offreId;
+    private String offerId;
     private String nom;
     private String organisation;
 
@@ -36,17 +36,44 @@ public class OffreEntity {
     private Long prix;
     private Long supervisor;
     private String processus;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     List<CondidatOffreEntity> condidatoffre;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     private List<SkillsEntity> skills;
    @ManyToOne
      private Project project;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="offre" )
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     private List<Event> event;
    
 
-    public Project getProject() {
+    public OfferEntity(Integer id, String image, String acronym, String type, String offerId, String nom,
+			String organisation, Date dateDebut, Date dateFin, String description, String video, String duree,
+			String niveau, Long prix, Long supervisor, String processus, List<CondidatOffreEntity> condidatoffre,
+			List<SkillsEntity> skills, Project project, List<Event> event) {
+		super();
+		this.id = id;
+		this.image = image;
+		this.acronym = acronym;
+		this.type = type;
+		this.offerId = offerId;
+		this.nom = nom;
+		this.organisation = organisation;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.description = description;
+		this.video = video;
+		this.duree = duree;
+		this.niveau = niveau;
+		this.prix = prix;
+		this.supervisor = supervisor;
+		this.processus = processus;
+		this.condidatoffre = condidatoffre;
+		this.skills = skills;
+		this.project = project;
+		this.event = event;
+	}
+
+	public Project getProject() {
 		return project;
 	}
 
@@ -94,12 +121,12 @@ public class OffreEntity {
         this.type = type;
     }
 
-    public String getOffreId() {
-        return offreId;
+    public String getofferId() {
+        return offerId;
     }
 
-    public void setOffreId(String offreId) {
-        this.offreId = offreId;
+    public void setofferId(String offerId) {
+        this.offerId = offerId;
     }
 
     public String getNom() {
@@ -202,11 +229,11 @@ public class OffreEntity {
 
     @Override
     public String toString() {
-        return "Offre [id=" + id + ", image=" + image + ", type=" + type + ", offreId=" + offreId + ", nom=" + nom
+        return "offer [id=" + id + ", image=" + image + ", type=" + type + ", offerId=" + offerId + ", nom=" + nom
                 + ", organisation=" + organisation + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", description=" + description + ", video=" + video
                 + ", prix=" + prix + ", processus=" + processus +" , duree=" + duree + ", niveau=" + niveau + "]";
     }
-    public OffreEntity () {
+    public OfferEntity () {
         super();
     }
 

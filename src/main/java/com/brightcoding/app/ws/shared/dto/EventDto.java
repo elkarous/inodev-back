@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Resource;
 
 
@@ -23,20 +23,20 @@ public class EventDto {
 
 	    Resource resource;
 	  
-	    OffreEntity offre;
+	    OfferEntity offer;
 	 
 	    public Long getResourceId() {
 	        return resource.getId();
 	    }
-	    public Integer getOffreId() {
-	        return offre.getId();
+	    public Integer getOfferId() {
+	        return offer.getId();
 	    }
-	    public OffreEntity getOffre() {
-	        return offre;
+	    public OfferEntity getOffer() {
+	        return offer;
 	    }
 
-	    public void setOffre(OffreEntity offre) {
-	        this.offre = offre;
+	    public void setOffer(OfferEntity offer) {
+	        this.offer = offer;
 	    }
 
 	    public Long getId() {
