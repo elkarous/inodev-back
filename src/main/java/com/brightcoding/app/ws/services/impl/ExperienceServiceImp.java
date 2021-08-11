@@ -37,7 +37,7 @@ public class ExperienceServiceImp implements ExperienceService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
-        List<ExperienceEntity> experience = currentCondidat.getRole() == Role.Admin? (List<ExperienceEntity>) experienceRepository.findAll() : experienceRepository.findByCondidat(currentCondidat);
+        List<ExperienceEntity> experience = currentCondidat.getExperience();
 
         Type listType = new TypeToken<List<ExperienceEntity>>() {}.getType();
         List<ExperienceDto> experienceDto = new ModelMapper().map(experience, listType);

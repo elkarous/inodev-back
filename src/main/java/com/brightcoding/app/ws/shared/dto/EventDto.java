@@ -8,11 +8,10 @@ import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Resource;
 
 
+
 public class EventDto {
 	
-	public class Event {
 
-	    
 	    Long id;
 
 	    String text;
@@ -21,13 +20,15 @@ public class EventDto {
 
 	    LocalDateTime end;
 
+	  
 	    Resource resource;
 	  
 	    OfferEntity offer;
-	 
+	
 	    public Long getResourceId() {
 	        return resource.getId();
 	    }
+
 	    public Integer getOfferId() {
 	        return offer.getId();
 	    }
@@ -80,5 +81,4 @@ public class EventDto {
 	    }
 
 
-	}
 }

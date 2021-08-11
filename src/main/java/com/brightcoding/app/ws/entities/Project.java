@@ -23,10 +23,9 @@ public class Project implements Serializable{
 		 private String description;
 		 private String nom ;
 		 private String acronyme;
-		 @ManyToOne
-		 private SubDecipline subDecipline;
+	
 		 
-		  @OneToMany(cascade = CascadeType.ALL,mappedBy="project",fetch=FetchType.LAZY )
+		  @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY )
 		     private List<OfferEntity> offers;
 
 		public long getId() {
@@ -61,13 +60,7 @@ public class Project implements Serializable{
 			this.acronyme = acronyme;
 		}
 
-		public SubDecipline getSubDecipline() {
-			return subDecipline;
-		}
-
-		public void setSubDecipline(SubDecipline subDecipline) {
-			this.subDecipline = subDecipline;
-		}
+	
 
 		public List<OfferEntity> getOffers() {
 			return offers;
@@ -89,7 +82,7 @@ public class Project implements Serializable{
 			this.description = description;
 			this.nom = nom;
 			this.acronyme = acronyme;
-			this.subDecipline = subDecipline;
+			
 			this.offers = offers;
 		}
 

@@ -18,19 +18,11 @@ public class SkillsEntity implements Serializable {
     private String niveau;
     private String nom;
     private Boolean certifier;
-    @ManyToOne
-    private CondidatEntity condidat;
-    @ManyToOne (fetch= FetchType.LAZY)
-    private OfferEntity offer;
+  
+
 
     
-    public OfferEntity getOffer() {
-		return offer;
-	}
-
-	public void setOffer(OfferEntity offer) {
-		this.offer = offer;
-	}
+    
 
 	public Integer getId() {
         return id;
@@ -72,11 +64,5 @@ public class SkillsEntity implements Serializable {
         this.certifier = certifier;
     }
 
-    public CondidatEntity getCondidat() {
-        return condidat;
-    }
-
-    public void setCondidat(CondidatEntity condidat) {
-        this.condidat = condidat;
-    }
+   
 }

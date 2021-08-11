@@ -52,8 +52,10 @@ public class NoteServiceImpl implements NoteService{
 	@Override
 	public CondidatOffreEntity noteFinal(long id,int offerid) {
 		CondidatOffreEntity condidatOffreEntity=new CondidatOffreEntity ();
-		condidatOffreEntity.setCondidat(condidatRepository.findById(id).get());
-		condidatOffreEntity.setoffer(offreRepository.findById(offerid).get());
+
+		condidatOffreEntity.setCondidatEntity(condidatRepository.findById(id).get());
+		condidatOffreEntity.setOffer(offreRepository.findById(offerid).get());
+
 		condidatOffreEntity.setNote(calculNote(id)*3);
 				
 		condidatOffreRepository.save(condidatOffreEntity);

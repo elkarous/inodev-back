@@ -55,21 +55,31 @@ public class CondidatEntity  implements Serializable {
     private String photo;
     @Column(nullable=true)
     private   Application application;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    @OneToMany(cascade = CascadeType.ALL )
     private List<EducationEntity> education;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    @OneToMany(cascade = CascadeType.ALL )
     private List<ExperienceEntity> experience;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    @OneToMany(cascade = CascadeType.ALL )
     private List<SkillsEntity> skills;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
-    List<CondidatOffreEntity> condidatoffre;
+    @OneToOne(cascade = CascadeType.ALL )
+    CondidatOffreEntity condidatoffre;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    public CondidatOffreEntity getCondidatoffre() {
+		return condidatoffre;
+	}
+
+
+	public void setCondidatoffre(CondidatOffreEntity condidatoffre) {
+		this.condidatoffre = condidatoffre;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL)
     private List<QuestionEntity> question;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    @OneToMany(cascade = CascadeType.ALL )
     private List<DocumentEntity> document;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    @OneToMany(cascade = CascadeType.ALL )
     private List<Hobbies> hobbies ;
+    
     
     
 //getter and setters and constructors
@@ -148,13 +158,7 @@ public class CondidatEntity  implements Serializable {
 		this.encryptedPassword = encryptedPassword;
 	}
 
-	public List<CondidatOffreEntity> getCondidatoffre() {
-		return condidatoffre;
-	}
-
-	public void setCondidatoffre(List<CondidatOffreEntity> condidatoffre) {
-		this.condidatoffre = condidatoffre;
-	}
+	
 
 	public void setExperience(List<ExperienceEntity> experience) {
         this.experience = experience;

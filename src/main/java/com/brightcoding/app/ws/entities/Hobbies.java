@@ -19,8 +19,7 @@ public class Hobbies implements Serializable{
 	    private String nom ;
 	    private String description;
 	    
-	    @ManyToOne
-	    private CondidatEntity condidat;
+	  
 	    
 	    //getters and Setters 
 	    
@@ -36,14 +35,10 @@ public class Hobbies implements Serializable{
 			this.id = id;
 			this.nom = nom;
 			this.description = description;
-			this.condidat = condidat;
+			
 		}
-		public CondidatEntity getCondidat() {
-			return condidat;
-		}
-		public void setCondidat(CondidatEntity condidat) {
-			this.condidat = condidat;
-		}
+	
+		
 		public void setId(long id) {
 			this.id = id;
 		}

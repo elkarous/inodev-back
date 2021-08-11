@@ -16,8 +16,7 @@ public class QuestionEntity implements Serializable{
     private String premier;
     private String deuxieme;
     private String troiseme;
-    @ManyToOne
-    private CondidatEntity condidat;
+
 
     public Integer getId() {
         return id;
@@ -59,11 +58,5 @@ public class QuestionEntity implements Serializable{
         this.troiseme = troiseme;
     }
 
-    public CondidatEntity getCondidat() {
-        return condidat;
-    }
-
-    public void setCondidat(CondidatEntity condidat) {
-        this.condidat = condidat;
-    }
+   
 }

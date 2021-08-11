@@ -9,69 +9,63 @@ import java.util.List;
 
 
 
+
 public class CondidatDto  {
     
 
 
-   
 	private long id;
-   
     private String firstName;
-   
     private String phone;
-  
     private String lastName;
-  
     private String gender;
-   
     private Date date_birthday;
-  
     private String nationality;
-
     private AuthProvider authProvider;
+   
 	
-
 	private String userId;
     
     private String familyPhone ;
 	
 	private String email;
-	
+
 	private Role role;
 	
 	private String resetToken;
 	
 	private String encryptedPassword;
-
     
     private String photo;
     
     private   Application application;
    
-    private List<EducationDto> education;
-  
-    private List<ExperienceDto> experience;
-   
-    private List<SkillsDto> skills;
+    private List<EducationEntity> education;
 
-    List<CondidatOffreDto> condidatoffre;
+    private List<ExperienceEntity> experience;
+ 
+    private List<SkillsEntity> skills;
+
+    List<CondidatOffreEntity> condidatoffre;
 
 
-    private List<QuestionDto> question;
-    
-    private List<DocumentDto> document;
+    private List<QuestionEntity> question;
+
+    private List<DocumentEntity> document;
   
     private List<Hobbies> hobbies ;
     
-
-
-
+    
+    
+//getter and setters and constructors
+    
+    
     public long getId() {
 		return id;
 	}
     
 
-    public List<ExperienceDto> getExperience() {
+    public List<ExperienceEntity> getExperience() {
         return experience;
     }
 
@@ -139,23 +133,23 @@ public class CondidatDto  {
 		this.encryptedPassword = encryptedPassword;
 	}
 
-	public List<CondidatOffreDto> getCondidatoffre() {
+	public List<CondidatOffreEntity> getCondidatoffre() {
 		return condidatoffre;
 	}
 
-	public void setCondidatoffre(List<CondidatOffreDto> condidatoffre) {
+	public void setCondidatoffre(List<CondidatOffreEntity> condidatoffre) {
 		this.condidatoffre = condidatoffre;
 	}
 
-	public void setExperience(List<ExperienceDto> experience) {
+	public void setExperience(List<ExperienceEntity> experience) {
         this.experience = experience;
     }
 
-    public List<SkillsDto> getSkills() {
+    public List<SkillsEntity> getSkills() {
         return skills;
     }
 
-    public void setSkills(List<SkillsDto> skills) {
+    public void setSkills(List<SkillsEntity> skills) {
         this.skills = skills;
     }
 
@@ -168,19 +162,19 @@ public class CondidatDto  {
     }
 
 
-    public List<QuestionDto> getQuestion() {
+    public List<QuestionEntity> getQuestion() {
         return question;
     }
 
-    public void setQuestion(List<QuestionDto> question) {
+    public void setQuestion(List<QuestionEntity> question) {
         this.question = question;
     }
 
-    public List<DocumentDto> getDocument() {
+    public List<DocumentEntity> getDocument() {
         return document;
     }
 
-    public void setDocument(List<DocumentDto> document) {
+    public void setDocument(List<DocumentEntity> document) {
         this.document = document;
     }
 
@@ -200,11 +194,11 @@ public class CondidatDto  {
         this.phone = phone;
     }
 
-    public List<EducationDto> getEducation() {
+    public List<EducationEntity> getEducation() {
         return education;
     }
 
-    public void setEducation(List<EducationDto> education) {
+    public void setEducation(List<EducationEntity> education) {
         this.education = education;
     }
 
@@ -240,14 +234,15 @@ public class CondidatDto  {
 
 	
     
-	public AuthProvider getAuthProvider() {
-		return authProvider;
-	}
+	 public AuthProvider getAuthProvider() {
+			return authProvider;
+		}
 
 
-	public void setAuthProvider(AuthProvider authProvider) {
-		this.authProvider = authProvider;
-	}
+		public void setAuthProvider(AuthProvider authProvider) {
+			this.authProvider = authProvider;
+		}
+
 
     
     public CondidatDto() {
@@ -255,11 +250,11 @@ public class CondidatDto  {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
     public String toString() {
         return "Condidat [firstName=" + firstName + ", photo=" + photo + ", phone=" + phone + ", lastName=" + lastName + ", date_birthday=" + date_birthday
                 + ", gender=" + gender + ", nationality=" + nationality + ", email=" + getEmail()+ ", userId=" + getUserId() + "]";
     }
-
 
 
 }

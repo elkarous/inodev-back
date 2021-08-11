@@ -14,10 +14,10 @@ public class DocumentEntity implements Serializable{
     private Integer id;
     private String  documentId;
     private String nom;
-    @ManyToOne
-    private CondidatEntity condidat;
+ 
 
-    public Integer getId() {
+
+	public Integer getId() {
         return id;
     }
 
@@ -41,11 +41,5 @@ public class DocumentEntity implements Serializable{
         this.nom = nom;
     }
 
-    public CondidatEntity getCondidat() {
-        return condidat;
-    }
-
-    public void setCondidat(CondidatEntity condidat) {
-        this.condidat = condidat;
-    }
+   
 }

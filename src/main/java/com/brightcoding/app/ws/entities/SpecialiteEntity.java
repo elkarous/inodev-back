@@ -13,7 +13,7 @@ public class SpecialiteEntity {
     private String  specialiteId;
     private String nom;
     private String image;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="speciality" )
+    @OneToMany(cascade = CascadeType.ALL )
     private List<SubDecipline> subDecipline;
 
     public List<SubDecipline> getSubDecipline() {

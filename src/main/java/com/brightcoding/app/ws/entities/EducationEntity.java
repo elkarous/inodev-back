@@ -37,8 +37,7 @@ public class EducationEntity implements Serializable {
 	public void setAnnees(List<AnneeEducationEntity> annees) {
 		this.annees = annees;
 	}
-	@ManyToOne
-    private CondidatEntity condidat;
+
     @Column(length=30, nullable=false)
     private String educationId;
 
@@ -51,13 +50,6 @@ public class EducationEntity implements Serializable {
         this.educationId = educationId;
     }
 
-    public CondidatEntity getCondidat() {
-        return condidat;
-    }
-
-    public void setCondidat(CondidatEntity condidat) {
-        this.condidat = condidat;
-    }
 
 
 
