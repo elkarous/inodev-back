@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -13,7 +14,7 @@ public class EducationEntity implements Serializable {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private long id;
     private String nomFaculte;
     private String pays;
 
@@ -24,8 +25,19 @@ public class EducationEntity implements Serializable {
     private String nomDiplome;
     private String specialite;
     private String niveau;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    List<AnneeEducationEntity> annees;
+    
+    
+    public List<AnneeEducationEntity> getAnnees() {
+		return annees;
+	}
 
-    @ManyToOne
+	public void setAnnees(List<AnneeEducationEntity> annees) {
+		this.annees = annees;
+	}
+	@ManyToOne
     private CondidatEntity condidat;
     @Column(length=30, nullable=false)
     private String educationId;
@@ -49,18 +61,18 @@ public class EducationEntity implements Serializable {
 
 
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
     public String getNomFaculte() {
         return nomFaculte;
     }
-
+   
     public void setNomFaculte(String nomFaculte) {
         this.nomFaculte = nomFaculte;
     }
@@ -112,6 +124,7 @@ public class EducationEntity implements Serializable {
     public void setNiveau(String niveau) {
         this.niveau = niveau;
     }
-
+    
+    
 
 }

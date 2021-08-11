@@ -5,6 +5,7 @@ import java.io.File;
 import java.nio.file.Files;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.CondidatOffreEntity;
 import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.requests.CondidatRequest;
@@ -22,7 +23,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.brightcoding.app.ws.responses.CondidatResponse;
 import com.brightcoding.app.ws.services.CondidatService;
+import com.brightcoding.app.ws.services.NoteService;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
+import com.brightcoding.app.ws.shared.dto.CondidatOffreDto;
+
 import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -39,7 +43,8 @@ public class CondidatController {
     CondidatRepository repository;
     @Autowired
     ServletContext context;
-
+    @Autowired
+    NoteService noteService;
     @GetMapping(produces={ MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<CondidatResponse>> getAllCondidats(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20")  int limit , @RequestParam(value="search", defaultValue = "") String search, @RequestParam(value="status", defaultValue = "1") int status) {
 
@@ -90,6 +95,14 @@ public class CondidatController {
     public  CondidatDto  createsociete(@RequestBody CondidatDto condidatDto) {
     	 condidatDto.setRole(Role.Superviser);
          return condidatService.createCondidat(condidatDto);
+
+    }
+    
+    @PutMapping("/put" )
+
+    public CondidatEntity  modifiercondidat(@RequestBody CondidatEntity condidatDto) {
+    	 
+         return repository.save( condidatDto);
 
     }
     
@@ -160,4 +173,50 @@ public class CondidatController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    
+    
+    @GetMapping("/note/{id}/{offerId}")
+    public CondidatOffreEntity getNoteCondidat(@PathVariable("id") long id,@PathVariable("offerId") int offerId) {
+    	
+    	return noteService.noteFinal(id, offerId) ;
+    	
+    }
+    
+    @PutMapping("/note/{id}/{noteInterview}")
+    public CondidatOffreEntity notefinal(@PathVariable("id") long id,@PathVariable("noteInterview") float noteInterview) {
+    	
+    	return noteService.noteTerminale(id, noteInterview) ;
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

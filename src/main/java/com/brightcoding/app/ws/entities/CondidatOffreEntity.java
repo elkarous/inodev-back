@@ -20,7 +20,7 @@ public class CondidatOffreEntity {
 
   private Status status;
     
-    private int note;
+    private float note;
 
     public Status getStatus() {
 		return status;
@@ -30,12 +30,12 @@ public class CondidatOffreEntity {
 		this.status = status;
 	}
 
-	public int getNote() {
+	public float getNote() {
 		return note;
 	}
 
-	public void setNote(int note) {
-		this.note = note;
+	public float setNote(float note) {
+		return this.note = note;
 	}
 
 	public Long getId() {
