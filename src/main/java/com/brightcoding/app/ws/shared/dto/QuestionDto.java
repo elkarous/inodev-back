@@ -9,7 +9,7 @@ public class QuestionDto {
     private String premier;
     private String deuxieme;
     private String troiseme;
-    private CondidatDto condidat;
+   
 
     public Integer getId() {
         return id;
@@ -51,11 +51,10 @@ public class QuestionDto {
         this.troiseme = troiseme;
     }
 
-    public CondidatDto getCondidat() {
-        return condidat;
-    }
+	public void setCondidat(CondidatDto condidatDto) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public void setCondidat(CondidatDto condidat) {
-        this.condidat = condidat;
-    }
+    
 }

@@ -36,8 +36,7 @@ public class QuestionServiceImp implements QuestionService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
-        List<QuestionEntity> educations = currentCondidat.getRole() == Role.Admin? (List<QuestionEntity>) educationRepository.findAll() : educationRepository.findByCondidat(currentCondidat);
-
+        List<QuestionEntity> educations = currentCondidat.getQuestion();
         Type listType = new TypeToken<List<QuestionEntity>>() {}.getType();
         List<QuestionDto> educationsDto = new ModelMapper().map(educations, listType);
 

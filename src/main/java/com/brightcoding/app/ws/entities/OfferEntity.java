@@ -36,50 +36,17 @@ public class OfferEntity {
     private Long prix;
     private Long supervisor;
     private String processus;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
-    List<CondidatOffreEntity> condidatoffre;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
+    @OneToOne(cascade = CascadeType.ALL )
+    CondidatOffreEntity condidatoffre;
+    @OneToMany(cascade = CascadeType.ALL )
     private List<SkillsEntity> skills;
-   @ManyToOne
-     private Project project;
+  
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     private List<Event> event;
    
 
-    public OfferEntity(Integer id, String image, String acronym, String type, String offerId, String nom,
-			String organisation, Date dateDebut, Date dateFin, String description, String video, String duree,
-			String niveau, Long prix, Long supervisor, String processus, List<CondidatOffreEntity> condidatoffre,
-			List<SkillsEntity> skills, Project project, List<Event> event) {
-		super();
-		this.id = id;
-		this.image = image;
-		this.acronym = acronym;
-		this.type = type;
-		this.offerId = offerId;
-		this.nom = nom;
-		this.organisation = organisation;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.description = description;
-		this.video = video;
-		this.duree = duree;
-		this.niveau = niveau;
-		this.prix = prix;
-		this.supervisor = supervisor;
-		this.processus = processus;
-		this.condidatoffre = condidatoffre;
-		this.skills = skills;
-		this.project = project;
-		this.event = event;
-	}
 
-	public Project getProject() {
-		return project;
-	}
 
-	public void setProject(Project project) {
-		this.project = project;
-	}
 
 	public Long getSupervisor() {
         return supervisor;
@@ -193,15 +160,43 @@ public class OfferEntity {
         this.processus = processus;
     }
 
-    public List<CondidatOffreEntity> getCondidatoffre() {
-        return condidatoffre;
-    }
 
-    public void setCondidatoffre(List<CondidatOffreEntity> condidatoffre) {
-        this.condidatoffre = condidatoffre;
-    }
 
-    public List<SkillsEntity> getSkills() {
+    public OfferEntity(Integer id, String image, String acronym, String type, String offerId, String nom,
+			String organisation, Date dateDebut, Date dateFin, String description, String video, String duree,
+			String niveau, Long prix, Long supervisor, String processus, CondidatOffreEntity condidatoffre,
+			List<SkillsEntity> skills, List<Event> event) {
+		super();
+		this.id = id;
+		this.image = image;
+		this.acronym = acronym;
+		this.type = type;
+		this.offerId = offerId;
+		this.nom = nom;
+		this.organisation = organisation;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.description = description;
+		this.video = video;
+		this.duree = duree;
+		this.niveau = niveau;
+		this.prix = prix;
+		this.supervisor = supervisor;
+		this.processus = processus;
+		this.condidatoffre = condidatoffre;
+		this.skills = skills;
+		this.event = event;
+	}
+
+	public CondidatOffreEntity getCondidatoffre() {
+		return condidatoffre;
+	}
+
+	public void setCondidatoffre(CondidatOffreEntity condidatoffre) {
+		this.condidatoffre = condidatoffre;
+	}
+
+	public List<SkillsEntity> getSkills() {
         return skills;
     }
 

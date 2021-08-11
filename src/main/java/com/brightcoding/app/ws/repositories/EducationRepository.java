@@ -10,8 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface EducationRepository extends CrudRepository<EducationEntity, Long> {
-    List<EducationEntity> findByCondidat(CondidatEntity currentCondidat);
-
+    
     EducationEntity findByEducationId(String educationId);
     public EducationEntity save(EducationEntity edducation);
 }

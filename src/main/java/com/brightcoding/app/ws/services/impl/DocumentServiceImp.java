@@ -36,7 +36,7 @@ public class DocumentServiceImp implements DocumentService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
-        List<DocumentEntity> documents = currentCondidat.getRole()== Role.Admin?  (List<DocumentEntity>) documentRepository.findAll() : documentRepository.findByCondidat(currentCondidat);
+        List<DocumentEntity> documents = currentCondidat.getDocument();
 
         Type listType = new TypeToken<List<DocumentEntity>>() {}.getType();
         List<DocumentDto> documentsDto = new ModelMapper().map(documents, listType);

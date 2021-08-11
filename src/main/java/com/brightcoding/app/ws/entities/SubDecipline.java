@@ -22,9 +22,8 @@ public class SubDecipline implements Serializable {
 		 private long id;
 		 private String nom ;
 		 private String image;
-	    @ManyToOne
-	    private SpecialiteEntity speciality;
-	    @OneToMany(cascade = CascadeType.ALL,mappedBy="subDecipline" )
+	   
+	    @OneToMany(cascade = CascadeType.ALL )
 	     private List<Project> project;
 	    
 	    //getter and setters 
@@ -41,7 +40,7 @@ public class SubDecipline implements Serializable {
 			this.id = id;
 			this.nom = nom;
 			this.image = image;
-			this.speciality = speciality;
+			
 			this.project = project;
 		}
 		public SubDecipline() {
@@ -50,7 +49,7 @@ public class SubDecipline implements Serializable {
 			super();
 			this.id = id;
 			this.nom = nom;
-			this.speciality = speciality;
+		
 			this.project = project;
 		}
 		public void setId(long id) {
@@ -62,12 +61,7 @@ public class SubDecipline implements Serializable {
 		public void setNom(String nom) {
 			this.nom = nom;
 		}
-		public SpecialiteEntity getSpeciality() {
-			return speciality;
-		}
-		public void setSpeciality(SpecialiteEntity speciality) {
-			this.speciality = speciality;
-		}
+	
 		public List<Project> getProject() {
 			return project;
 		}

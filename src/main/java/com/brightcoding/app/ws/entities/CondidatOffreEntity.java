@@ -10,13 +10,29 @@ public class CondidatOffreEntity {
     @GeneratedValue
     Long id;
     String condidatoffreId;
-    @ManyToOne
-    CondidatEntity condidat;
-
-    @ManyToOne
+   
+    @OneToOne
+    CondidatEntity condidatEntity;
+    @OneToOne
     OfferEntity offer;
 
-    LocalDateTime registeredAt;
+    public OfferEntity getOffer() {
+		return offer;
+	}
+
+	public void setOffer(OfferEntity offer) {
+		this.offer = offer;
+	}
+
+	public CondidatEntity getCondidatEntity() {
+		return condidatEntity;
+	}
+
+	public void setCondidatEntity(CondidatEntity condidatEntity) {
+		this.condidatEntity = condidatEntity;
+	}
+
+	LocalDateTime registeredAt;
 
   private Status status;
     
@@ -54,22 +70,9 @@ public class CondidatOffreEntity {
         this.condidatoffreId = condidatoffreId;
     }
 
-    public CondidatEntity getCondidat() {
-        return condidat;
-    }
+ 
 
-    public void setCondidat(CondidatEntity condidat) {
-        this.condidat = condidat;
-    }
-
-    public OfferEntity getoffer() {
-        return offer;
-    }
-
-    public void setoffer(OfferEntity offer) {
-        this.offer = offer;
-    }
-
+   
     public LocalDateTime getRegisteredAt() {
         return registeredAt;
     }

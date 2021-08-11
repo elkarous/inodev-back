@@ -38,7 +38,7 @@ public class EducationServiceImp implements EducationService {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
 
-        List<EducationEntity> educations = currentCondidat.getRole() == Role.Admin? (List<EducationEntity>) educationRepository.findAll() : educationRepository.findByCondidat(currentCondidat);
+        List<EducationEntity> educations = currentCondidat.getEducation();
 
         Type listType = new TypeToken<List<EducationEntity>>() {}.getType();
         List<EducationDto> educationsDto = new ModelMapper().map(educations, listType);
