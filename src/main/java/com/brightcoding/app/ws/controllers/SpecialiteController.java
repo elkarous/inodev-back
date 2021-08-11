@@ -1,10 +1,10 @@
 package com.brightcoding.app.ws.controllers;
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Project;
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.repositories.SpecialiteRepository;
 import com.brightcoding.app.ws.responses.CondidatResponse;
 import com.brightcoding.app.ws.shared.Utils;
@@ -39,7 +39,7 @@ public class SpecialiteController {
     @Autowired
     CondidatRepository condidatRepository;
     @Autowired
-    OffreRepository oRepository;
+    OfferRepository oRepository;
     @Autowired
     ServletContext context;
     @Autowired

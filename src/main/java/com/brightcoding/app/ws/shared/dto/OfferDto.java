@@ -12,7 +12,7 @@ import com.brightcoding.app.ws.entities.SubDecipline;
 
 
 
-public class OffreDto {
+public class OfferDto {
 	
 	
 	   
@@ -22,7 +22,7 @@ public class OffreDto {
 	    private String image;
 	  
 	    private String type;
-	    private String offreId;
+	    private String offerId;
 	    private String nom;
 	    private String organisation;
 
@@ -94,12 +94,12 @@ public class OffreDto {
 	        this.type = type;
 	    }
 
-	    public String getOffreId() {
-	        return offreId;
+	    public String getofferId() {
+	        return offerId;
 	    }
 
-	    public void setOffreId(String offreId) {
-	        this.offreId = offreId;
+	    public void setofferId(String offerId) {
+	        this.offerId = offerId;
 	    }
 
 	    public String getNom() {
@@ -202,13 +202,39 @@ public class OffreDto {
 
 	    @Override
 	    public String toString() {
-	        return "Offre [id=" + id + ", image=" + image + ", type=" + type + ", offreId=" + offreId + ", nom=" + nom
+	        return "Offer [id=" + id + ", image=" + image + ", type=" + type + ", offerId=" + offerId + ", nom=" + nom
 	                + ", organisation=" + organisation + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", description=" + description + ", video=" + video
 	                + ", prix=" + prix + ", processus=" + processus +" , duree=" + duree + ", niveau=" + niveau + "]";
 	    }
-	    public OffreDto () {
+	    public OfferDto () {
 	        super();
 	    }
+
+		public OfferDto(Integer id, String image, String type, String offerId, String nom, String organisation,
+				Date dateDebut, Date dateFin, String description, String video, String duree, String niveau, Long prix,
+				Long supervisor, String processus, List<CondidatOffreDto> condidatoffre, List<SkillsDto> skills,
+				Project project, List<Event> event) {
+			super();
+			this.id = id;
+			this.image = image;
+			this.type = type;
+			this.offerId = offerId;
+			this.nom = nom;
+			this.organisation = organisation;
+			this.dateDebut = dateDebut;
+			this.dateFin = dateFin;
+			this.description = description;
+			this.video = video;
+			this.duree = duree;
+			this.niveau = niveau;
+			this.prix = prix;
+			this.supervisor = supervisor;
+			this.processus = processus;
+			this.condidatoffre = condidatoffre;
+			this.skills = skills;
+			this.project = project;
+			this.event = event;
+		}
 
 	}
 

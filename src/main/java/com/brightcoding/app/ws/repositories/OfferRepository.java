@@ -1,6 +1,6 @@
 package com.brightcoding.app.ws.repositories;
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.SubDecipline;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +13,10 @@ import java.util.Optional;
 
 
 @Repository
-public interface OffreRepository extends JpaRepository<OffreEntity, Integer> {
+public interface OfferRepository extends JpaRepository<OfferEntity, Integer> {
+
+	Optional<OfferEntity> findById(String offerId);
+	/*
     OffreEntity findByOffreId(@Param(value = "id") String id);
     /*@Query("SELECT t FROM OffreEntity t where t.id = :id")
     OffreEntity findByaId(@Param(value = "id") Integer id);

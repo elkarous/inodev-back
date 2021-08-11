@@ -2,7 +2,7 @@ package com.brightcoding.app.ws.repositories;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.CondidatOffreEntity;
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

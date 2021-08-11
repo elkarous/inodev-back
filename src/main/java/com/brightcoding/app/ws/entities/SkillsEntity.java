@@ -21,15 +21,15 @@ public class SkillsEntity implements Serializable {
     @ManyToOne
     private CondidatEntity condidat;
     @ManyToOne (fetch= FetchType.LAZY)
-    private OffreEntity offre;
+    private OfferEntity offer;
 
     
-    public OffreEntity getOffre() {
-		return offre;
+    public OfferEntity getOffer() {
+		return offer;
 	}
 
-	public void setOffre(OffreEntity offre) {
-		this.offre = offre;
+	public void setOffer(OfferEntity offer) {
+		this.offer = offer;
 	}
 
 	public Integer getId() {

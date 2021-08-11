@@ -1,10 +1,10 @@
 package com.brightcoding.app.ws.controllers;
 
 import com.brightcoding.app.ws.entities.Event;
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Resource;
 import com.brightcoding.app.ws.repositories.EventRepository;
-import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.repositories.ResourceRepository;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -25,7 +25,7 @@ public class MainController {
     @Autowired
     ResourceRepository rr;
     @Autowired
-    OffreRepository repository;
+    OfferRepository repository;
 
     @RequestMapping("/api")
     @ResponseBody

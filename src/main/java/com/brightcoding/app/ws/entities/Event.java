@@ -28,22 +28,22 @@ public class Event {
     @JsonIgnore
     Resource resource;
     @ManyToOne
-    @JsonProperty("offre")
-    OffreEntity offre;
+    @JsonProperty("offer")
+    OfferEntity offer;
     @JsonProperty("resource")
     public Long getResourceId() {
         return resource.getId();
     }
-    @JsonProperty("offre")
-    public Integer getOffreId() {
-        return offre.getId();
+    @JsonProperty("offer")
+    public Integer getOfferId() {
+        return offer.getId();
     }
-    public OffreEntity getOffre() {
-        return offre;
+    public OfferEntity getOffer() {
+        return offer;
     }
 
-    public void setOffre(OffreEntity offre) {
-        this.offre = offre;
+    public void setOffer(OfferEntity offer) {
+        this.offer = offer;
     }
 
     public Long getId() {

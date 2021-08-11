@@ -1,3 +1,4 @@
+
 logging:
     level:
         org:
@@ -18,7 +19,8 @@ spring:
         serialization:
             write_dates_as_timestamps: false
     jpa:
-        hibernate:            ddl-auto: update
+        hibernate:
+            ddl-auto: update
         properties:
             hibernate:
               format_sql: true

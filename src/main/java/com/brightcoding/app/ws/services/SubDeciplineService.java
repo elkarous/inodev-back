@@ -2,10 +2,10 @@ package com.brightcoding.app.ws.services;
 
 import java.util.List;
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Project;
 import com.brightcoding.app.ws.entities.SubDecipline;
-import com.brightcoding.app.ws.shared.dto.OffreDto;
+import com.brightcoding.app.ws.shared.dto.OfferDto;
 import com.brightcoding.app.ws.shared.dto.ProjectDto;
 import com.brightcoding.app.ws.shared.dto.SubDeciplineDto;
 
@@ -24,7 +24,7 @@ public interface SubDeciplineService {
 
 	
 
-	List<OffreEntity> findOffrebySub(String nom);
+	List<OfferEntity> findOffrebySub(String nom);
 
 
 

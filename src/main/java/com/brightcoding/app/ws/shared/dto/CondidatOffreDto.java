@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Status;
 
 public class CondidatOffreDto {
@@ -13,7 +13,7 @@ public class CondidatOffreDto {
     Long id;
     String condidatoffreId;
     CondidatEntity condidat;
-    OffreEntity offre;
+    OfferEntity offer;
     LocalDateTime registeredAt;
 
   private Status status;
@@ -60,12 +60,12 @@ public class CondidatOffreDto {
         this.condidat = condidat;
     }
 
-    public OffreEntity getOffre() {
-        return offre;
+    public OfferEntity getoffer() {
+        return offer;
     }
 
-    public void setOffre(OffreEntity offre) {
-        this.offre = offre;
+    public void setoffer(OfferEntity offer) {
+        this.offer = offer;
     }
 
     public LocalDateTime getRegisteredAt() {

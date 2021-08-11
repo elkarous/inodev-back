@@ -3,7 +3,7 @@ package com.brightcoding.app.ws.shared.dto;
 import java.util.List;
 
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.SubDecipline;
 
 public class ProjectDto {
@@ -16,7 +16,7 @@ public class ProjectDto {
 		 private SubDecipline subDecipline;
 		 
 	
-		     private List<OffreDto> offers;
+		     private List<OfferDto> offers;
 
 		public ProjectDto() {
 				super();
@@ -69,7 +69,7 @@ public class ProjectDto {
 		}
 
 		public ProjectDto(long id, String description, String nom, String acronyme, SubDecipline subDecipline,
-				List<OffreDto> offers) {
+				List<OfferDto> offers) {
 			super();
 			this.id = id;
 			this.description = description;
@@ -79,11 +79,11 @@ public class ProjectDto {
 			this.offers = offers;
 		}
 
-		public List<OffreDto> getOffers() {
+		public List<OfferDto> getOffers() {
 			return offers;
 		}
 
-		public void setOffers(List<OffreDto> offers) {
+		public void setOffers(List<OfferDto> offers) {
 			this.offers = offers;
 		}
 
