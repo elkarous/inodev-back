@@ -32,7 +32,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		http
 				.cors().and()
 				.csrf().disable()
-
+				.authorizeRequests()
+				.antMatchers("/specialite").permitAll()
+				.and()
 				.addFilter(getAuthenticationFilter())
 				.addFilter(new AuthorizationFilter(authenticationManager()))
 				.sessionManagement()

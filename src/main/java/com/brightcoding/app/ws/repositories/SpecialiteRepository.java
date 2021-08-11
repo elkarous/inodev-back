@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SpecialiteRepository extends JpaRepository<SpecialiteEntity, String> {
+public interface SpecialiteRepository extends JpaRepository<SpecialiteEntity, Integer> {
 
     SpecialiteEntity findBySpecialiteId(String id);
     @Query("SELECT t FROM SpecialiteEntity t where t.nom = :name")

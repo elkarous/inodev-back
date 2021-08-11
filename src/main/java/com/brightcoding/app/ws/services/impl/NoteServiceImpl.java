@@ -9,7 +9,7 @@ import com.brightcoding.app.ws.entities.EducationEntity;
 import com.brightcoding.app.ws.repositories.CondidatOffreRepository;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.EducationRepository;
-import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.services.NoteService;
 @Service
 public class NoteServiceImpl implements NoteService{
@@ -21,7 +21,7 @@ public class NoteServiceImpl implements NoteService{
 	@Autowired
 	CondidatRepository condidatRepository;
 	@Autowired
-	OffreRepository offreRepository;
+	OfferRepository offreRepository;
 	
 	@Override
 	public float calculNote(long id) {
@@ -53,7 +53,7 @@ public class NoteServiceImpl implements NoteService{
 	public CondidatOffreEntity noteFinal(long id,int offerid) {
 		CondidatOffreEntity condidatOffreEntity=new CondidatOffreEntity ();
 		condidatOffreEntity.setCondidat(condidatRepository.findById(id).get());
-		condidatOffreEntity.setOffre(offreRepository.findById(offerid).get());
+		condidatOffreEntity.setoffer(offreRepository.findById(offerid).get());
 		condidatOffreEntity.setNote(calculNote(id)*3);
 				
 		condidatOffreRepository.save(condidatOffreEntity);
