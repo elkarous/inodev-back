@@ -1,10 +1,10 @@
 package com.brightcoding.app.ws.controllers;
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Project;
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.repositories.SpecialiteRepository;
 import com.brightcoding.app.ws.responses.CondidatResponse;
 import com.brightcoding.app.ws.shared.Utils;
@@ -39,7 +39,7 @@ public class SpecialiteController {
     @Autowired
     CondidatRepository condidatRepository;
     @Autowired
-    OffreRepository oRepository;
+    OfferRepository oRepository;
     @Autowired
     ServletContext context;
     @Autowired
@@ -100,25 +100,20 @@ public class SpecialiteController {
         return new ResponseEntity<List<String>>(listof, HttpStatus.OK);
     }
     @PostMapping
-    public String createspe (@RequestParam("file") MultipartFile file,
+    public String createspe (@RequestParam("image") MultipartFile file,
                                @RequestParam("spe") String specialite) throws JsonParseException, JsonMappingException, Exception
     {
-
+      
         
-        Project off = new ObjectMapper().readValue(specialite, Project.class);
+        SpecialiteEntity specialiteEntity = new ObjectMapper().readValue(specialite, SpecialiteEntity.class);
 
-       
-        
-        boolean isExit = new File(context.getRealPath("src/web/spe/")).exists();
-        if (!isExit)
-        {
-            new File (context.getRealPath("src/web/spe/")).mkdir();
-           
-        }
         String filename = file.getOriginalFilename();
+       
         String newFileName = FilenameUtils.getBaseName(filename)+"."+FilenameUtils.getExtension(filename);
-        File serverFile = new File (context.getRealPath("src/web/spe/"+File.separator+newFileName));
-        String distfile = "src/web/spe/"+ file.getOriginalFilename();
+       
+        File serverFile = new File (context.getRealPath("/src/web/spe/"+File.separator+newFileName));
+        System.out.println("erreur ok ");
+        String distfile = "D:/inodev/inodev-back/src/web/spe/"+ file.getOriginalFilename();
         try
         {
            
@@ -137,10 +132,11 @@ public class SpecialiteController {
         }
 
        
-
+        specialiteEntity.setImage(newFileName);
+        repository.save(specialiteEntity);
         
         
-        return ("okokok");
+        return ("ajout d'unespecialité avec succssée");
 
     }
 
@@ -152,9 +148,9 @@ public class SpecialiteController {
     }
 
     @GetMapping(path="/Imgarticles/{id}")
-    public byte[] getPhoto(@PathVariable("id") String id) throws Exception{
-        SpecialiteEntity offre = repository.findBySpecialiteId(id);
-        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Desktop/Platform Stage_Code Source/inodev-back-main/src/web/spe/"+offre.getImage()));
+    public byte[] getPhoto(@PathVariable("id") int id) throws Exception{
+        SpecialiteEntity offre = repository.findById(id).get();
+        return Files.readAllBytes(Paths.get("D:/inodev/inodev-back/src/web/spe/"+offre.getImage()));
     }
     @DeleteMapping("/{id}")
     public String delete(@PathVariable(value = "id") String Id)

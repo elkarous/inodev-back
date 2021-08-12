@@ -3,22 +3,43 @@ package com.brightcoding.app.ws.shared.dto;
 import java.time.LocalDateTime;
 
 
+
 import com.brightcoding.app.ws.entities.CondidatEntity;
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Status;
 
 public class CondidatOffreDto {
 
 	
-    Long id;
+	Long id;
     String condidatoffreId;
-    CondidatEntity condidat;
-    OffreEntity offre;
-    LocalDateTime registeredAt;
+   
+   
+    CondidatEntity condidatEntity;
+   
+    OfferEntity offer;
+
+    public OfferEntity getOffer() {
+		return offer;
+	}
+
+	public void setOffer(OfferEntity offer) {
+		this.offer = offer;
+	}
+
+	public CondidatEntity getCondidatEntity() {
+		return condidatEntity;
+	}
+
+	public void setCondidatEntity(CondidatEntity condidatEntity) {
+		this.condidatEntity = condidatEntity;
+	}
+
+	LocalDateTime registeredAt;
 
   private Status status;
     
-    private int note;
+    private float note;
 
     public Status getStatus() {
 		return status;
@@ -28,12 +49,12 @@ public class CondidatOffreDto {
 		this.status = status;
 	}
 
-	public int getNote() {
+	public float getNote() {
 		return note;
 	}
 
-	public void setNote(int note) {
-		this.note = note;
+	public float setNote(float note) {
+		return this.note = note;
 	}
 
 	public Long getId() {
@@ -52,22 +73,9 @@ public class CondidatOffreDto {
         this.condidatoffreId = condidatoffreId;
     }
 
-    public CondidatEntity getCondidat() {
-        return condidat;
-    }
+ 
 
-    public void setCondidat(CondidatEntity condidat) {
-        this.condidat = condidat;
-    }
-
-    public OffreEntity getOffre() {
-        return offre;
-    }
-
-    public void setOffre(OffreEntity offre) {
-        this.offre = offre;
-    }
-
+   
     public LocalDateTime getRegisteredAt() {
         return registeredAt;
     }
@@ -76,5 +84,6 @@ public class CondidatOffreDto {
         this.registeredAt = registeredAt;
     }
     }
+
 
   

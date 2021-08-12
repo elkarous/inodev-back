@@ -35,20 +35,10 @@ public class SkillsServiceImp implements SkillsService {
     public List<SkillsDto> getAllSkills(String email) {
 
         CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
-        List<SkillsEntity> educations;
-if( currentCondidat.getRole() == Role.Admin) {
-    educations = educationRepository.findByCondidat(currentCondidat);
-}
-else if (currentCondidat.getRole() == Role.Student){
-    educations =  (List<SkillsEntity>) educationRepository.findAll();
-}
-else if (currentCondidat.getRole() == Role.Superviser){
-    educations =  (List<SkillsEntity>) educationRepository.findAll();
-}
-else {
-return null; }
+        List<SkillsEntity> skills= currentCondidat.getSkills() ;
+
         Type listType = new TypeToken<List<SkillsEntity>>() {}.getType();
-        List<SkillsDto> educationsDto = new ModelMapper().map(educations, listType);
+        List<SkillsDto> educationsDto = new ModelMapper().map(skills, listType);
 
         return educationsDto;
     }

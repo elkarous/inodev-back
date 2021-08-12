@@ -2,60 +2,73 @@ package com.brightcoding.app.ws.shared.dto;
 
 
 
+import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 
 public class SkillsDto {
-    private Integer id;
-    private String skillsId;
-    private String niveau;
-    private String nom;
-    private Boolean certifier;
-    private CondidatDto condidat;
 
-    public Integer getId() {
-        return id;
-    }
+	    private Integer id;
+	    private String skillsId;
+	    private String niveau;
+	    private String nom;
+	    private Boolean certifier;
+	    private CondidatDto condidat;
+	    private OfferEntity offer;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	    
+	    public OfferEntity getOffer() {
+			return offer;
+		}
 
-    public String getSkillsId() {
-        return skillsId;
-    }
+		public void setOffer(OfferEntity offer) {
+			this.offer = offer;
+		}
 
-    public void setSkillsId(String skillsId) {
-        this.skillsId = skillsId;
-    }
+		public Integer getId() {
+	        return id;
+	    }
 
-    public String getNiveau() {
-        return niveau;
-    }
+	    public void setId(Integer id) {
+	        this.id = id;
+	    }
 
-    public void setNiveau(String niveau) {
-        this.niveau = niveau;
-    }
+	    public String getSkillsId() {
+	        return skillsId;
+	    }
 
-    public String getNom() {
-        return nom;
-    }
+	    public void setSkillsId(String skillsId) {
+	        this.skillsId = skillsId;
+	    }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	    public String getNiveau() {
+	        return niveau;
+	    }
 
-    public Boolean getCertifier() {
-        return certifier;
-    }
+	    public void setNiveau(String niveau) {
+	        this.niveau = niveau;
+	    }
 
-    public void setCertifier(Boolean certifier) {
-        this.certifier = certifier;
-    }
+	    public String getNom() {
+	        return nom;
+	    }
 
-    public CondidatDto getCondidat() {
-        return condidat;
-    }
+	    public void setNom(String nom) {
+	        this.nom = nom;
+	    }
 
-    public void setCondidat(CondidatDto condidat) {
-        this.condidat = condidat;
-    }
-}
+	    public Boolean getCertifier() {
+	        return certifier;
+	    }
+
+	    public void setCertifier(Boolean certifier) {
+	        this.certifier = certifier;
+	    }
+
+	    public CondidatDto getCondidat() {
+	        return condidat;
+	    }
+
+	    public void setCondidat(CondidatDto condidatDto) {
+	        this.condidat = condidatDto;
+	    }
+	}

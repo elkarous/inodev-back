@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.services.SubDeciplineService;
 import com.brightcoding.app.ws.shared.dto.HobbiesDto;
 import com.brightcoding.app.ws.shared.dto.SubDeciplineDto;
@@ -55,7 +55,7 @@ public class SubDeciplineController {
 		return subDeciplineService.updateSubdecipline(Id, subDto);
 	}
 	@GetMapping("/{subDecpline}")
-	public List<OffreEntity> findOffrebySub( @PathVariable("subDecpline") String nom) {
+	public List<OfferEntity> findOffrebySub( @PathVariable("subDecpline") String nom) {
 		return subDeciplineService.findOffrebySub(nom);
 	}
 	

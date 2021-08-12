@@ -19,7 +19,11 @@ public class Hobbies implements Serializable{
 	    private String nom ;
 	    private String description;
 	    
+
 	   
+
+	  
+
 	    
 	    //getters and Setters 
 	    
@@ -30,7 +34,19 @@ public class Hobbies implements Serializable{
 			super();
 			// TODO Auto-generated constructor stub
 		}
+
 	
+
+		public Hobbies(long id, String nom, String description, CondidatEntity condidat) {
+			super();
+			this.id = id;
+			this.nom = nom;
+			this.description = description;
+			
+		}
+	
+		
+
 		public void setId(long id) {
 			this.id = id;
 		}

@@ -24,9 +24,7 @@ public class ExperienceEntity implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date dateFin;
     private String type;
-    @ManyToOne
-    private CondidatEntity condidat;
-
+  
     public Integer getId() {
         return id;
     }
@@ -91,11 +89,5 @@ public class ExperienceEntity implements Serializable{
         this.type = type;
     }
 
-    public CondidatEntity getCondidat() {
-        return condidat;
-    }
-
-    public void setCondidat(CondidatEntity condidat) {
-        this.condidat = condidat;
-    }
+   
 }

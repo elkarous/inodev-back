@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brightcoding.app.ws.entities.SubDecipline;
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.Project;
 import com.brightcoding.app.ws.repositories.SubDeciplineRepository;
-import com.brightcoding.app.ws.repositories.OffreRepository;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.repositories.ProjectRepository;
 import com.brightcoding.app.ws.services.SubDeciplineService;
-import com.brightcoding.app.ws.shared.dto.OffreDto;
+import com.brightcoding.app.ws.shared.dto.OfferDto;
 import com.brightcoding.app.ws.shared.dto.ProjectDto;
 import com.brightcoding.app.ws.shared.dto.SubDeciplineDto;
 @Service
@@ -24,7 +24,7 @@ public class SubDeciplineServiceImpl implements SubDeciplineService {
 	@Autowired
 	SubDeciplineRepository subDeciplineRepository;
 	@Autowired
-	OffreRepository OffreRepository;
+	OfferRepository OfferRepository;
 	@Autowired
 	ProjectRepository projectRepository;
 
@@ -84,9 +84,9 @@ public class SubDeciplineServiceImpl implements SubDeciplineService {
 	}
 	
 	@Override
-	public List<OffreEntity> findOffrebySub(String nom) {
+	public List<OfferEntity> findOffrebySub(String nom) {
 		ModelMapper modelMapper = new ModelMapper();
-		List<OffreEntity> listOffer=new ArrayList<>();
+		List<OfferEntity> listOffer=new ArrayList<>();
 		SubDecipline subDecipline = subDeciplineRepository.findByNom(nom);
 		for(Project project:subDecipline.getProject()) {
 			listOffer.addAll(project.getOffers());

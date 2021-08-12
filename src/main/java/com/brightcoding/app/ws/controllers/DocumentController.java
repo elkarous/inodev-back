@@ -1,6 +1,6 @@
 package com.brightcoding.app.ws.controllers;
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.repositories.DocumentRepository;
 import com.brightcoding.app.ws.requests.DocumentRequest;
 import com.brightcoding.app.ws.responses.DocumentResponse;

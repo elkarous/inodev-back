@@ -1,6 +1,6 @@
 package com.brightcoding.app.ws.repositories;
 
-import com.brightcoding.app.ws.entities.OffreEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
 import com.brightcoding.app.ws.responses.SpecialiteResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SpecialiteRepository extends JpaRepository<SpecialiteEntity, String> {
+public interface SpecialiteRepository extends JpaRepository<SpecialiteEntity, Integer> {
 
     SpecialiteEntity findBySpecialiteId(String id);
     @Query("SELECT t FROM SpecialiteEntity t where t.nom = :name")
@@ -20,6 +20,6 @@ public interface SpecialiteRepository extends JpaRepository<SpecialiteEntity, St
     @Query("SELECT t FROM SpecialiteEntity t")
     List findbycat();
    
-    @Query("SELECT MAX (t.id) FROM OffreEntity t")
+    @Query("SELECT MAX (t.id) FROM OfferEntity t")
     Integer maxId();
 }

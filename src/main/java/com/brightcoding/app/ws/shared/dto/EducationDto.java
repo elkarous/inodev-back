@@ -1,14 +1,43 @@
 package com.brightcoding.app.ws.shared.dto;
 
-import javax.persistence.*;
-import java.io.Serializable;
+
+
+import com.brightcoding.app.ws.entities.AnneeEducationEntity;
+
+
 import java.util.Date;
+import java.util.List;
 
 public class EducationDto
 {
 
 
-    private Integer id;
+
+   
+    private long id;
+    private String nomFaculte;
+    private String pays;
+    private Date dateDebut;
+    private Date dateFin;
+    private String nomDiplome;
+    private String specialite;
+    private String niveau;
+   
+    List<AnneeEducationEntity> annees;
+    
+    
+    public List<AnneeEducationEntity> getAnnees() {
+		return annees;
+	}
+
+	public void setAnnees(List<AnneeEducationEntity> annees) {
+		this.annees = annees;
+	}
+
+
+    private String educationId;
+	private Object condidat;
+
 
     public String getEducationId() {
         return educationId;
@@ -18,27 +47,21 @@ public class EducationDto
         this.educationId = educationId;
     }
 
-    private String educationId;
-    private String nomFaculte;
-    private String pays;
-    private Date dateDebut;
-    private Date dateFin;
-    private String nomDiplome;
-    private String specialite;
-    private String niveau;
-    private CondidatDto condidat;
-    public Integer getId() {
+
+
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
     public String getNomFaculte() {
         return nomFaculte;
     }
-
+   
     public void setNomFaculte(String nomFaculte) {
         this.nomFaculte = nomFaculte;
     }
@@ -91,11 +114,10 @@ public class EducationDto
         this.niveau = niveau;
     }
 
-    public CondidatDto getCondidat() {
-        return condidat;
-    }
-
-    public void setCondidat(CondidatDto condidat) {
-        this.condidat = condidat;
-    }
+	public void setCondidat(CondidatDto condidatDto) {
+		this.condidat = condidat;
+		
+	}
+    
+    
 }
