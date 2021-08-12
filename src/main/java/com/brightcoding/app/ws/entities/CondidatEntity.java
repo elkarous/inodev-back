@@ -68,7 +68,7 @@ public class CondidatEntity  implements Serializable {
     private List<QuestionEntity> question;
     @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
     private List<DocumentEntity> document;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="condidat" )
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Hobbies> hobbies ;
     
     

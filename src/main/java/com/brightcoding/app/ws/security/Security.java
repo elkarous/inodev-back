@@ -1,8 +1,12 @@
 package com.brightcoding.app.ws.security;
 
 
+
+
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -12,33 +16,43 @@ import com.brightcoding.app.ws.services.CondidatService;
 
 
 
+@Configuration
 @EnableWebSecurity
-public class WebSecurity extends WebSecurityConfigurerAdapter {
+public class Security extends WebSecurityConfigurerAdapter  {
 
 	private final CondidatService userDetailsService;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	public WebSecurity(CondidatService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+	public Security(CondidatService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.userDetailsService = userDetailsService;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
 	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/condidat/add");
+	}
+	  
+	
+	   
+	  
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
-
-
-
-		http
+	
+           http
 				.cors().and()
 				.csrf().disable()
-
+				.authorizeRequests()
+				
+				.antMatchers("/condidat/img/**").permitAll()
+				.anyRequest().authenticated()
+				.and()
 				.addFilter(getAuthenticationFilter())
 				.addFilter(new AuthorizationFilter(authenticationManager()))
 				.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+			    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
-
+	
 
 
 	protected AuthenticationFilter getAuthenticationFilter() throws Exception {

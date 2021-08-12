@@ -1,13 +1,13 @@
 package com.brightcoding.app.ws.controllers;
 import javax.servlet.ServletContext;
-import javax.validation.Valid;
+
 import java.io.File;
 import java.nio.file.Files;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.requests.CondidatRequest;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
@@ -105,17 +105,16 @@ public class CondidatController {
 
         return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.OK);
     }
+
     @PutMapping(
-            path="/{id}",
-            consumes={ MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE},
-            produces={ MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE}
+            path="/{id}"
     )
     public ResponseEntity<CondidatResponse> updateCondidat(
             @PathVariable String id , @RequestPart(value = "condidat") String condidatRequest,
             @RequestPart(value = "photo", required = false) MultipartFile file) throws JsonProcessingException {
 
         CondidatEntity off = new ObjectMapper().readValue(condidatRequest, CondidatEntity.class);
-
+        off.setPhoto(file.getOriginalFilename());
         CondidatDto updateCondidat = condidatService.updateCondidat(id, off);
         boolean isExit = new File(context.getRealPath("src/web/Images/")).exists();
         if (!isExit)
@@ -127,7 +126,7 @@ public class CondidatController {
         String filename = file.getOriginalFilename();
         String newFileName = FilenameUtils.getBaseName(filename)+"."+FilenameUtils.getExtension(filename);
         File serverFile = new File (context.getRealPath("src/web/Images/"+File.separator+newFileName+off.getUserId()));
-        String distfile = "src/web/Images/"+ file.getOriginalFilename();
+        String distfile = "C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/Images"+ file.getOriginalFilename();
             updateCondidat.setPhoto(file.getOriginalFilename()  );
 
             try
@@ -150,7 +149,7 @@ public class CondidatController {
     @GetMapping(path="/img/{id}")
     public byte[] getPhoto(@PathVariable String id) throws Exception{
         CondidatDto condidatDto = condidatService.getCondidatByUserId(id);
-        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Desktop/Platform Stage_Code Source/inodev-back-main/src/web/Images/"+condidatDto.getPhoto()));
+        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/Images/"+condidatDto.getPhoto()));
 
     }
     @DeleteMapping(path="/{id}")

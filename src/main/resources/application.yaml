@@ -18,11 +18,11 @@ spring:
         serialization:
             write_dates_as_timestamps: false
     jpa:
+        hibernate:
+            ddl-auto: update
         properties:
             hibernate:
-                dialect: org.hibernate.dialect.MySQL57InnoDBDialect
-                globally_quoted_identifiers: true
-
+                format_sql: true
     mail:
         host: smtp.gmail.com
         password: yrcwhcqigacrldxp
@@ -82,13 +82,3 @@ app:
       - http://localhost:4200/oauth2/redirect
       - myandroidapp://oauth2/redirect
       - myiosapp://oauth2/redirect
-
-
-
-
-
-
-
-
-
-
