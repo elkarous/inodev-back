@@ -15,6 +15,7 @@ public class CondidatOffreEntity {
     CondidatEntity condidatEntity;
     @OneToOne
     OfferEntity offer;
+  //getter and setters
 
     public OfferEntity getOffer() {
 		return offer;

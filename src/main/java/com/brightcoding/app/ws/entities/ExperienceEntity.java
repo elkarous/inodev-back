@@ -24,6 +24,7 @@ public class ExperienceEntity implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date dateFin;
     private String type;
+  //getter and setters
   
     public Integer getId() {
         return id;

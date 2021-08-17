@@ -47,30 +47,33 @@ public class OfferController {
 	@Autowired
 	OfferService offerService;
 	
-	
+	//http://localhost:8081/offer
 	
 	//get all Offer 
 		@GetMapping
 		public List<OfferDto> getAll(){
 			return offerService.getAllOffre();
 		}
-		
+		//http://localhost:8081/offer
 		// create new offer
 		@PostMapping
 		public OfferDto createOffre(  @RequestBody OfferDto offerDto) {
 			return offerService.createOffre(offerDto);
 			
 		}
+		//http://localhost:8081/offer/{offerId}
 		//get Offer by id 
 		@GetMapping("/{offerId}")
 		public OfferDto getOffreById( @PathVariable ("offerId") int offerId) {
 			return offerService.getOffre(offerId);
 		}
+		//http://localhost:8081/offer/{id}
 		//delete Offer by id 
 		@DeleteMapping("/{id}")
 		public void deleteOffre(@PathVariable("id")int id) {
 			 offerService.deleteOffre(id);;
 		}
+		//http://localhost:8081/offer/{id}
 		//update one Offer
 		@PutMapping("/{id}")
 		public OfferDto updateOffre( @PathVariable ("id") int Id, @RequestBody OfferDto OfferDto) {

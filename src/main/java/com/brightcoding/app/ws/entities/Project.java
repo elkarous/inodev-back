@@ -28,6 +28,7 @@ public class Project implements Serializable{
 		  @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY )
 		     private List<OfferEntity> offers;
 
+		//getter and setters
 		public long getId() {
 			return id;
 		}

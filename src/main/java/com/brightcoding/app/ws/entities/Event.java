@@ -30,11 +30,13 @@ public class Event {
     @ManyToOne
     @JsonProperty("offer")
     OfferEntity offer;
+  //getter and setters
     @JsonProperty("resource")
     public Long getResourceId() {
         return resource.getId();
     }
     @JsonProperty("offer")
+    
     public Integer getOfferId() {
         return offer.getId();
     }

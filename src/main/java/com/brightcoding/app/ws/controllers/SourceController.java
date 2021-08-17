@@ -25,7 +25,7 @@ public class SourceController {
 
     @Autowired
     OriginService educationService;
-
+  //http://localhost:8081/source
     @GetMapping
     public ResponseEntity<List<OriginResponse>> getSource(Principal principal) {
 
@@ -37,7 +37,7 @@ public class SourceController {
         return new ResponseEntity<List<OriginResponse>>(OriginResponse, HttpStatus.OK);
 
     }
-
+  //http://localhost:8081/source
     @PostMapping(
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
             produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
@@ -53,7 +53,7 @@ public class SourceController {
 
         return new ResponseEntity<OriginResponse>(newEducation, HttpStatus.CREATED);
     }
-
+  //http://localhost:8081/source/{id}
     @GetMapping("/{id}")
     public  ResponseEntity<OriginResponse> getOneSource(@PathVariable(name="id") String educationId) {
 
@@ -66,7 +66,7 @@ public class SourceController {
         return new ResponseEntity<OriginResponse>(OriginResponse, HttpStatus.OK);
     }
 
-
+  //http://localhost:8081/source/{id}
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSource(@PathVariable(name="id") String educationId) {
@@ -75,6 +75,7 @@ public class SourceController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+  //http://localhost:8081/source/{id}
     @PutMapping(
             path="/{id}",
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},

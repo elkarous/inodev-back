@@ -20,7 +20,7 @@ public class SkillsEntity implements Serializable {
     private Boolean certifier;
   
 
-
+  //getter and setters
     
     
 

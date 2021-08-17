@@ -28,7 +28,7 @@ public class EducationEntity implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL)
     List<AnneeEducationEntity> annees;
-    
+  //getter and setters
     
     public List<AnneeEducationEntity> getAnnees() {
 		return annees;

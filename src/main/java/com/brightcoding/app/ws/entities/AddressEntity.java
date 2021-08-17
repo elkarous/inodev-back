@@ -39,6 +39,8 @@ public class AddressEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="users_id")
 	private CondidatEntity user;
+	
+	// getter and setter 
 
 	public long getId() {
 		return id;

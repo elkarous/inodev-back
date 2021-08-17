@@ -22,7 +22,7 @@ public class ExperienceController {
 
     @Autowired
     ExperienceService educationService;
-
+  //http://localhost:8081/experience
     @GetMapping
     public ResponseEntity<List<ExperienceResponse>> getExperience(Principal principal) {
 
@@ -34,6 +34,8 @@ public class ExperienceController {
         return new ResponseEntity<List<ExperienceResponse>>(educationResponse, HttpStatus.OK);
 
     }
+    //http://localhost:8081/experience/get/{principal}
+
     @GetMapping("/get/{principal}")
     public ResponseEntity<List<ExperienceResponse>> getExperienc(@PathVariable String principal) {
 
@@ -45,6 +47,7 @@ public class ExperienceController {
         return new ResponseEntity<List<ExperienceResponse>>(educationResponse, HttpStatus.OK);
 
     }
+    //http://localhost:8081/experience
 
     @PostMapping(
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
@@ -61,6 +64,7 @@ public class ExperienceController {
 
         return new ResponseEntity<ExperienceResponse>(newEducation, HttpStatus.CREATED);
     }
+    //http://localhost:8081/experience/{id}
 
     @GetMapping("/{id}")
     public  ResponseEntity<ExperienceResponse> getOneExperience(@PathVariable(name="id") String educationId) {
@@ -74,7 +78,7 @@ public class ExperienceController {
         return new ResponseEntity<ExperienceResponse>(educationResponse, HttpStatus.OK);
     }
 
-
+    //http://localhost:8081/experience/{id}
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteExperience(@PathVariable(name="id") String educationId) {
@@ -83,6 +87,7 @@ public class ExperienceController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    //http://localhost:8081/experience/{id}
     @PutMapping(
             path="/{id}",
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},

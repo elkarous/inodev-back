@@ -46,7 +46,7 @@ public class OfferEntity {
    
 
 
-
+  //getter and setters
 
 	public Long getSupervisor() {
         return supervisor;

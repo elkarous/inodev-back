@@ -21,6 +21,7 @@ public class AnneeEducationEntity implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	// getter and setter 
 	public long getId() {
 		return id;
 	}
