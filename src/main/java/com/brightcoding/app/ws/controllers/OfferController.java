@@ -1,44 +1,17 @@
 package com.brightcoding.app.ws.controllers;
 
-import com.brightcoding.app.ws.entities.CondidatEntity;
-import com.brightcoding.app.ws.entities.OfferEntity;
-import com.brightcoding.app.ws.entities.SkillsEntity;
-import com.brightcoding.app.ws.entities.SpecialiteEntity;
-import com.brightcoding.app.ws.entities.SubDecipline;
-import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.repositories.OfferRepository;
-import com.brightcoding.app.ws.repositories.SpecialiteRepository;
-import com.brightcoding.app.ws.services.HobbiesService;
+
+
+
 import com.brightcoding.app.ws.services.OfferService;
-import com.brightcoding.app.ws.services.SendMailService;
-import com.brightcoding.app.ws.shared.Utils;
-import com.brightcoding.app.ws.shared.dto.CondidatDto;
-import com.brightcoding.app.ws.shared.dto.HobbiesDto;
-import com.brightcoding.app.ws.shared.dto.SkillsDto;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import com.brightcoding.app.ws.services.SubDeciplineService;
+
 import com.brightcoding.app.ws.shared.dto.OfferDto;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.servlet.ServletContext;
-import java.io.File;
-import java.io.FileInputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+
 import java.util.*;
 
 @RestController

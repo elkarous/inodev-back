@@ -54,15 +54,14 @@ public class EducationController {
     }
 
     @PostMapping(
-            consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
-            produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
+           "/{id}"
     )
-    public ResponseEntity<EducationResponse> StoreEducation(@RequestBody EducationRequest educationRequest, Principal principale) {
+    public ResponseEntity<EducationResponse> StoreEducation(@RequestBody EducationRequest educationRequest, @PathVariable("id") String principale) {
 
         ModelMapper modelMapper = new ModelMapper();
 
         EducationDto educationDto = modelMapper.map(educationRequest, EducationDto.class);
-        EducationDto createEducation = educationService.createEducation(educationDto, principale.getName());
+        EducationDto createEducation = educationService.createEducation(educationDto,principale );
 
         EducationResponse newEducation = modelMapper.map(createEducation, EducationResponse.class);
 

@@ -12,7 +12,11 @@ import java.util.List;
 @Data
 public class EducationEntity implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue
     private long id;
     private String nomFaculte;

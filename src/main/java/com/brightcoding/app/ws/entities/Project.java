@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,7 +23,8 @@ public class Project implements Serializable{
 		 private String description;
 		 private String nom ;
 		 private String acronyme;
-	
+		 private String partener;
+		 private String orginistaion;
 		 
 		  @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY )
 		     private List<OfferEntity> offers;
@@ -84,6 +85,22 @@ public class Project implements Serializable{
 			this.acronyme = acronyme;
 			
 			this.offers = offers;
+		}
+
+		public String getPartener() {
+			return partener;
+		}
+
+		public void setPartener(String partener) {
+			this.partener = partener;
+		}
+
+		public String getOrginistaion() {
+			return orginistaion;
+		}
+
+		public void setOrginistaion(String orginistaion) {
+			this.orginistaion = orginistaion;
 		}
 
 		

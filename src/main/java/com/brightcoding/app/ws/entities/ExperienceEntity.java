@@ -4,15 +4,19 @@ import javax.persistence.*;
 import java.util.Date;
 import lombok.Data;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
-import java.util.Date;
+
 
 @Entity
 @Data
 public class ExperienceEntity implements Serializable{
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue
     private Integer id;
     private String experienceId;

@@ -25,7 +25,7 @@ import com.brightcoding.app.ws.responses.CondidatResponse;
 import com.brightcoding.app.ws.services.CondidatService;
 import com.brightcoding.app.ws.services.NoteService;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
-import com.brightcoding.app.ws.shared.dto.CondidatOffreDto;
+
 
 import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Paths;
@@ -189,7 +189,14 @@ public class CondidatController {
     }
     
     
-    
+    @PutMapping(
+            path="/update/{id}"
+    )
+    public void update(@PathVariable("id") String userId , @RequestBody CondidatEntity condidatDto) {
+    	
+    	condidatService.updateCondidat(userId, condidatDto);
+    	
+    }
     
     
     

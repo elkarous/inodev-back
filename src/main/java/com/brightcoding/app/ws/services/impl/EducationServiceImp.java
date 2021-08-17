@@ -50,17 +50,18 @@ public class EducationServiceImp implements EducationService {
     @Override
     public EducationDto createEducation(EducationDto education, String email) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
+        CondidatEntity currentCondidat = condidatRepository.findByUserId(email);
 
         ModelMapper modelMapper = new ModelMapper();
-        CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);
+       
         education.setEducationId(util.generateStringId(30));
-        education.setCondidat(condidatDto);
+        
 
         EducationEntity educationEntity = modelMapper.map(education, EducationEntity.class);
 
         EducationEntity newEducation = educationRepository.save(educationEntity);
-
+        currentCondidat.getEducation().add(newEducation);
+        condidatRepository.save(currentCondidat);
         EducationDto educationDto = modelMapper.map(newEducation, EducationDto.class);
 
         return educationDto;
