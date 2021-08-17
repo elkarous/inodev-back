@@ -135,15 +135,15 @@ public class DocumentController {
     @GetMapping(path="/doc/{id}")
     public byte[] getPhoto(@PathVariable String id) throws Exception{
         DocumentDto doc = educationService.getDocument(id);
-        return Files.readAllBytes(Paths.get("C:/Users/jarra/Downloads/inodevConception/spring-boot-v1/src/web/doc/"+doc.getNom()));
+        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/doc/"+doc.getNom()));
 
     }
   //http://localhost:8081/document/download/{id}
 
     @GetMapping(path="/download/{id}")
     public void download(@PathVariable String id, HttpServletResponse response) throws Exception {
-       String folderPath = "C:/Users/jarra/Downloads/inodevConception/spring-boot-v1/src/web/doc/";
-        Path path = Paths.get("C:/Users/jarra/Downloads/inodevConception/spring-boot-v1/src/web/doc/" + id);
+       String folderPath = "C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/doc/";
+        Path path = Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/doc/" + id);
         if (id.indexOf(".doc") > -1) response.setContentType("application/msword");
         if (id.indexOf(".docx") > -1) response.setContentType("application/msword");
         if (id.indexOf(".xls") > -1) response.setContentType("application/vnd.ms-excel");

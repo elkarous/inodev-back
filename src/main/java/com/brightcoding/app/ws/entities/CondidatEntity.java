@@ -70,7 +70,10 @@ public class CondidatEntity  implements Serializable {
     private List<QuestionEntity> question;
     @OneToMany(cascade = CascadeType.ALL )
     private List<DocumentEntity> document;
+
+
     @OneToMany(cascade = CascadeType.ALL )
+
     private List<Hobbies> hobbies ;
     
     
