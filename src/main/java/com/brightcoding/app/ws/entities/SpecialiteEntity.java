@@ -15,6 +15,7 @@ public class SpecialiteEntity {
     private String image;
     @OneToMany(cascade = CascadeType.ALL )
     private List<SubDecipline> subDecipline;
+  //getter and setters
 
     public List<SubDecipline> getSubDecipline() {
 		return subDecipline;

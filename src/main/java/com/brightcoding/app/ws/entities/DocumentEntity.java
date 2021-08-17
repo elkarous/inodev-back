@@ -19,7 +19,7 @@ public class DocumentEntity implements Serializable{
     private String  documentId;
     private String nom;
  
-
+  //getter and setters
 
 	public Integer getId() {
         return id;

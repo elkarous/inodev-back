@@ -44,7 +44,7 @@ public class SpecialiteController {
     ServletContext context;
     @Autowired
     Utils util;
-
+  //http://localhost:8081/specialite
     @GetMapping
     public List getAllspef() {
     
@@ -52,6 +52,7 @@ public class SpecialiteController {
 
         return offres;
     }
+    //http://localhost:8081/specialite/a/{name}
     @GetMapping("/a/{name}")
     public List getNom(@PathVariable(value = "name")String name)
     {
@@ -68,6 +69,7 @@ public class SpecialiteController {
 
         return offre;
     }*/
+  //http://localhost:8081/specialite/getAll
     @GetMapping ("/getAll")
     public ResponseEntity<List<String>> getAll()
     {
@@ -99,6 +101,7 @@ public class SpecialiteController {
         }
         return new ResponseEntity<List<String>>(listof, HttpStatus.OK);
     }
+  //http://localhost:8081/specialite/
     @PostMapping
     public String createspe (@RequestParam("image") MultipartFile file,
                                @RequestParam("spe") String specialite) throws JsonParseException, JsonMappingException, Exception
@@ -139,19 +142,20 @@ public class SpecialiteController {
         return ("ajout d'unespecialité avec succssée");
 
     }
-
+  //http://localhost:8081/specialite/{id}
     @GetMapping("/{id}")
     public ResponseEntity<SpecialiteEntity> getOffreById(@PathVariable(value = "id") String Id)
     {
         SpecialiteEntity offre = repository.findBySpecialiteId(Id);
         return ResponseEntity.ok().body(offre);
     }
-
+  //http://localhost:8081/specialite/Imgarticles/{id}
     @GetMapping(path="/Imgarticles/{id}")
     public byte[] getPhoto(@PathVariable("id") int id) throws Exception{
         SpecialiteEntity offre = repository.findById(id).get();
         return Files.readAllBytes(Paths.get("D:/inodev/inodev-back/src/web/spe/"+offre.getImage()));
     }
+  //http://localhost:8081/specialite/{id}
     @DeleteMapping("/{id}")
     public String delete(@PathVariable(value = "id") String Id)
     {
@@ -159,6 +163,7 @@ public class SpecialiteController {
         repository.delete(off);
         return ("ok");
     }
+  //http://localhost:8081/specialite/edit/{id}
     @PutMapping("edit/{id}")
     public String update(@PathVariable("id") String id, @RequestBody SpecialiteEntity specialite) {
         System.out.println("Update Article with ID = " + id + "...");

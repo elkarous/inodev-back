@@ -50,7 +50,7 @@ public class OfferEntity implements Serializable {
    
 
 
-
+  //getter and setters
 
 	public Long getSupervisor() {
         return supervisor;

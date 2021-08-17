@@ -24,13 +24,12 @@ public class HobbiesController {
 	@Autowired
 	HobbiesService hobbiesService;
 	
-	
-	//get all hobbies 
+    //http://localhost:8081/hobbies
 	@GetMapping
 	public List<HobbiesDto> getAll(){
 		return hobbiesService.getAllHobbies();
 	}
-	
+	   //http://localhost:8081/hobbies
 	// create new hobbie
 	@PostMapping
 	public HobbiesDto createHobbies(  @RequestBody HobbiesDto hobbiesDto) {
@@ -38,19 +37,19 @@ public class HobbiesController {
 		
 	}
 	
-	
+	   //http://localhost:8081/hobbies/{id}
 	//get hobbies by id 
 	@GetMapping("/{id}")
 	public HobbiesDto getHobbiesById( @PathVariable ("id") long id) {
 		return hobbiesService.getHobbies(id);
 	}
-	
+	//http://localhost:8081/hobbies/{id}
 	//delete hobbies by id 
 	@DeleteMapping("/{id}")
 	public void deleteHobbies(long id) {
 		 hobbiesService.deleteHobbies(id);
 	}
-	
+	//http://localhost:8081/hobbies/{id}
 	//update one hobbies
 	@PutMapping("/{id}")
 	public HobbiesDto updateHobbies( @PathVariable ("id") long Id, @RequestBody HobbiesDto HobbiesDto) {

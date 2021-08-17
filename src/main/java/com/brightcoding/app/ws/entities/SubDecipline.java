@@ -25,7 +25,7 @@ public class SubDecipline implements Serializable {
 	    @OneToMany(cascade = CascadeType.ALL )
 	     private List<Project> project;
 	    
-	    //getter and setters 
+	    //getter and setters and constructor
 	    
 	    
 	    

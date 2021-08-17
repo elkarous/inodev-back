@@ -1,14 +1,11 @@
 package com.brightcoding.app.ws.controllers;
 import javax.servlet.ServletContext;
-
 import java.io.File;
 import java.nio.file.Files;
-
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.CondidatOffreEntity;
 import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
@@ -32,8 +29,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
-
-
+//http://localhost:8081/condidat
 @RestController
 @RequestMapping("/condidat")
 public class CondidatController {
@@ -45,6 +41,7 @@ public class CondidatController {
     ServletContext context;
     @Autowired
     NoteService noteService;
+  //http://localhost:8081/condidat
     @GetMapping(produces={ MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<CondidatResponse>> getAllCondidats(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20")  int limit , @RequestParam(value="search", defaultValue = "") String search, @RequestParam(value="status", defaultValue = "1") int status) {
 
@@ -61,6 +58,7 @@ public class CondidatController {
         }
         return new ResponseEntity<List<CondidatResponse>>(condidatsResponse, HttpStatus.OK);
     }
+  //http://localhost:8081/condidat/add
 
      @PostMapping("/add")
     public CondidatDto createCondidat(  @RequestBody CondidatDto condidatDto) {
@@ -71,13 +69,13 @@ public class CondidatController {
 
     }
      
-  
+   //http://localhost:8081/condidat/getAll
      
      @GetMapping("/getAll")
      public List<CondidatDto> getAll(){
     	 return condidatService.getAll();
      }
-     
+   //http://localhost:8081/condidat/suprvisor
      
     @PostMapping("/suprvisor")
 
@@ -88,7 +86,7 @@ public class CondidatController {
 
     }
     
-    
+    //http://localhost:8081/condidat/company
     
     @PostMapping("/company" )
 
@@ -97,7 +95,7 @@ public class CondidatController {
          return condidatService.createCondidat(condidatDto);
 
     }
-    
+    //http://localhost:8081/condidat/put
     @PutMapping("/put" )
 
     public CondidatEntity  modifiercondidat(@RequestBody CondidatEntity condidatDto) {
@@ -105,7 +103,7 @@ public class CondidatController {
          return repository.save( condidatDto);
 
     }
-    
+    //http://localhost:8081/condidat/userId
     
     @GetMapping(path="/{userId}", produces={ MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<CondidatResponse> getCondidat(@PathVariable String userId) {
@@ -118,6 +116,10 @@ public class CondidatController {
 
         return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.OK);
     }
+
+    //http://localhost:8081/condidat/{id}
+
+
 
     @PutMapping(
             path="/{id}"
@@ -159,12 +161,14 @@ public class CondidatController {
 
         return new ResponseEntity<CondidatResponse>(condidatResponse, HttpStatus.ACCEPTED);
     }
+    //http://localhost:8081/condidat//img/{id}
     @GetMapping(path="/img/{id}")
     public byte[] getPhoto(@PathVariable String id) throws Exception{
         CondidatDto condidatDto = condidatService.getCondidatByUserId(id);
         return Files.readAllBytes(Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/Images/"+condidatDto.getPhoto()));
 
     }
+    //http://localhost:8081/condidat/{id}
     @DeleteMapping(path="/{id}")
     public ResponseEntity<Object> deleteUser(@PathVariable String id) {
 
@@ -172,7 +176,7 @@ public class CondidatController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
+    //http://localhost:8081/condidat/note/{id}/{offerId}
     
     @GetMapping("/note/{id}/{offerId}")
     public CondidatOffreEntity getNoteCondidat(@PathVariable("id") long id,@PathVariable("offerId") int offerId) {
@@ -180,7 +184,7 @@ public class CondidatController {
     	return noteService.noteFinal(id, offerId) ;
     	
     }
-    
+    //http://localhost:8081/condidat/note/{id}/{noteInterview}
     @PutMapping("/note/{id}/{noteInterview}")
     public CondidatOffreEntity notefinal(@PathVariable("id") long id,@PathVariable("noteInterview") float noteInterview) {
     	

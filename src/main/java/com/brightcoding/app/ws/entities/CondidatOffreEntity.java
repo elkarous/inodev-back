@@ -16,6 +16,7 @@ public class CondidatOffreEntity {
     CondidatEntity condidatEntity;
     @OneToOne
     OfferEntity offer;
+
     
     @OneToMany
     List<DocumentEntity> documents;
@@ -28,6 +29,9 @@ public class CondidatOffreEntity {
 	public void setDocuments(List<DocumentEntity> documents) {
 		this.documents = documents;
 	}
+
+  //getter and setters
+
 
 	public OfferEntity getOffer() {
 		return offer;

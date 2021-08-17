@@ -16,7 +16,9 @@ public class QuestionEntity implements Serializable{
     private String premier;
     private String deuxieme;
     private String troiseme;
-
+    
+    
+  //getter and setters
 
     public Integer getId() {
         return id;

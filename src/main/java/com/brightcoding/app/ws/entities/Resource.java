@@ -12,6 +12,7 @@ public class Resource {
     Long Id;
 
     String name;
+  //getter and setters
 
     public Long getId() {
         return Id;

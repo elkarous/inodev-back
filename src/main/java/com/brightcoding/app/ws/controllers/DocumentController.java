@@ -47,6 +47,7 @@ public class DocumentController {
     DocumentService educationService;
     @Autowired
     DocumentRepository repository;
+  //http://localhost:8081/document
     @GetMapping
     public ResponseEntity<List<DocumentResponse>> getDocument(Principal principal) {
 
@@ -57,8 +58,9 @@ public class DocumentController {
 
         return new ResponseEntity<List<DocumentResponse>>(educationResponse, HttpStatus.OK);
 
-
     }
+  //http://localhost:8081/document/get/{principal}
+
     @GetMapping("/get/{principal}")
     public ResponseEntity<List<DocumentResponse>> getDocumentuser(@PathVariable String principal) {
 
@@ -71,6 +73,7 @@ public class DocumentController {
 
 
     }
+  //http://localhost:8081/document
 
     @PostMapping(
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
@@ -113,6 +116,8 @@ public class DocumentController {
         newEducation.setNom(file.getOriginalFilename());
         return new ResponseEntity<DocumentResponse>(newEducation, HttpStatus.CREATED);
     }
+  //http://localhost:8081/document/{id}
+
 
     @GetMapping("/{id}")
     public  ResponseEntity<DocumentResponse> getOneDocument(@PathVariable(name="id") String educationId) {
@@ -125,12 +130,16 @@ public class DocumentController {
 
         return new ResponseEntity<DocumentResponse>(educationResponse, HttpStatus.OK);
     }
+  //http://localhost:8081/document/doc/{id}
+
     @GetMapping(path="/doc/{id}")
     public byte[] getPhoto(@PathVariable String id) throws Exception{
         DocumentDto doc = educationService.getDocument(id);
         return Files.readAllBytes(Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/doc/"+doc.getNom()));
 
     }
+  //http://localhost:8081/document/download/{id}
+
     @GetMapping(path="/download/{id}")
     public void download(@PathVariable String id, HttpServletResponse response) throws Exception {
        String folderPath = "C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/doc/";
@@ -160,6 +169,7 @@ public class DocumentController {
         }
     }
 
+  //http://localhost:8081/document/{id}
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDocument(@PathVariable(name="id") String educationId) {
@@ -168,6 +178,8 @@ public class DocumentController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+  //http://localhost:8081/document/{id}
+
     @PutMapping(
             path="/{id}",
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
