@@ -1,5 +1,6 @@
 package com.brightcoding.app.ws.controllers;
 
+import com.brightcoding.app.ws.entities.OriginEntity;
 import com.brightcoding.app.ws.requests.OriginRequest;
 import com.brightcoding.app.ws.responses.OriginResponse;
 import com.brightcoding.app.ws.services.OriginService;
@@ -29,7 +30,7 @@ public class SourceController {
     @GetMapping
     public ResponseEntity<List<OriginResponse>> getSource(Principal principal) {
 
-        List<OriginDto> education = educationService.getAllSource(principal.getName());
+        List<OriginEntity> education = educationService.getAllSource(principal.getName());
 
         Type listType = new TypeToken<List<OriginResponse>>() {}.getType();
         List<OriginResponse> OriginResponse = new ModelMapper().map(education, listType);

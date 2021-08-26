@@ -43,6 +43,17 @@ public class CondidatEntity  implements Serializable {
 	private String userId;
     @Column(nullable=true, length=50)
     private String familyPhone ;
+    @Column(nullable=true, length=50)
+    private String phoneEtronger ;
+	public String getPhoneEtronger() {
+		return phoneEtronger;
+	}
+
+
+	public void setPhoneEtronger(String phoneEtronger) {
+		this.phoneEtronger = phoneEtronger;
+	}
+
 	@Column(nullable=false, length=120, unique=true)
 	private String email;
 	@Column(nullable=true)
@@ -70,9 +81,19 @@ public class CondidatEntity  implements Serializable {
     private List<QuestionEntity> question;
     @OneToMany(cascade = CascadeType.ALL )
     private List<DocumentEntity> document;
-
-
     @OneToMany(cascade = CascadeType.ALL )
+    private List<OriginEntity> origins;
+
+    public List<OriginEntity> getOrigins() {
+		return origins;
+	}
+
+
+	public void setOrigins(List<OriginEntity> origins) {
+		this.origins = origins;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL )
 
     private List<Hobbies> hobbies ;
     

@@ -1,12 +1,13 @@
 package com.brightcoding.app.ws.services;
 
+import com.brightcoding.app.ws.entities.OriginEntity;
 import com.brightcoding.app.ws.shared.dto.EventDto;
 import com.brightcoding.app.ws.shared.dto.OriginDto;
 
 import java.util.List;
 
 public interface OriginService {
-    List<OriginDto> getAllSource(String email);
+    List<OriginEntity> getAllSource(String email);
 
     EventDto createSource(EventDto source, String email);
 

@@ -22,7 +22,8 @@ public class CondidatResponse {
     private String nationality;
 
     private AuthProvider authProvider;
-
+    private String phoneEtronger;
+    private List<OriginEntity> origins;
 
     private String userId;
 
@@ -241,6 +242,26 @@ public class CondidatResponse {
     public void setAuthProvider(AuthProvider authProvider) {
         this.authProvider = authProvider;
     }
+
+
+	public String getPhoneEtronger() {
+		return phoneEtronger;
+	}
+
+
+	public void setPhoneEtronger(String phoneEtronger) {
+		this.phoneEtronger = phoneEtronger;
+	}
+
+
+	public List<OriginEntity> getOrigins() {
+		return origins;
+	}
+
+
+	public void setOrigins(List<OriginEntity> origins) {
+		this.origins = origins;
+	}
 
 
 }

@@ -15,8 +15,7 @@ public class OriginEntity implements Serializable{
     private String sourceId;
     private String position;
     private String describ;
-    @ManyToOne
-    private CondidatEntity condidat;
+   
 
     public Integer getId() {
         return id;
@@ -50,11 +49,5 @@ public class OriginEntity implements Serializable{
         this.describ = describ;
     }
 
-    public CondidatEntity getCondidat() {
-        return condidat;
-    }
-
-    public void setCondidat(CondidatEntity condidat) {
-        this.condidat = condidat;
-    }
+   
 }

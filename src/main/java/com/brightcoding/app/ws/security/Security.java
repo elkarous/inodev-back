@@ -3,6 +3,7 @@ package com.brightcoding.app.ws.security;
 
 
 
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,7 +31,7 @@ public class Security extends WebSecurityConfigurerAdapter  {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/condidat/add");
+		web.ignoring().antMatchers("/condidat/add", "/","/login");
 	}
 	  
 	
@@ -45,7 +46,11 @@ public class Security extends WebSecurityConfigurerAdapter  {
 				.authorizeRequests()
 				
 				.antMatchers("/condidat/img/**").permitAll()
+				.antMatchers("/document/doc/**").permitAll()
+				.antMatchers("/document/download/**").permitAll()
 				.anyRequest().authenticated()
+				
+
 				.and()
 				.addFilter(getAuthenticationFilter())
 				.addFilter(new AuthorizationFilter(authenticationManager()))

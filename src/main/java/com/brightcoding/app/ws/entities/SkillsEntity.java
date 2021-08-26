@@ -18,7 +18,8 @@ public class SkillsEntity implements Serializable {
     private String niveau;
     private String nom;
     private Boolean certifier;
-  
+    @OneToOne
+  private DocumentEntity document;
 
   //getter and setters
     
@@ -63,6 +64,14 @@ public class SkillsEntity implements Serializable {
     public void setCertifier(Boolean certifier) {
         this.certifier = certifier;
     }
+
+	public DocumentEntity getDocument() {
+		return document;
+	}
+
+	public void setDocument(DocumentEntity document) {
+		this.document = document;
+	}
 
    
 }
