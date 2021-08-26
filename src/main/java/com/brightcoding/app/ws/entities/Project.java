@@ -1,6 +1,7 @@
 package com.brightcoding.app.ws.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Project implements Serializable{
@@ -23,9 +26,28 @@ public class Project implements Serializable{
 		 private String description;
 		 private String nom ;
 		 private String acronyme;
+		 private String partenar;
+		 @Temporal(TemporalType.DATE)
+		    private Date endDate;
 	
 		 
-		  @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY )
+		  public String getPartenar() {
+			return partenar;
+		}
+
+		public void setPartenar(String partenar) {
+			this.partenar = partenar;
+		}
+
+		public Date getEndDate() {
+			return endDate;
+		}
+
+		public void setEndDate(Date endDate) {
+			this.endDate = endDate;
+		}
+
+		@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY )
 		     private List<OfferEntity> offers;
 
 		public long getId() {

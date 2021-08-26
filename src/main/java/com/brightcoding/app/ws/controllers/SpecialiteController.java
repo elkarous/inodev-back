@@ -141,9 +141,9 @@ public class SpecialiteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SpecialiteEntity> getOffreById(@PathVariable(value = "id") String Id)
+    public ResponseEntity<SpecialiteEntity> getOffreById(@PathVariable(value = "id") int Id)
     {
-        SpecialiteEntity offre = repository.findBySpecialiteId(Id);
+        SpecialiteEntity offre = repository.findById(Id).get();
         return ResponseEntity.ok().body(offre);
     }
 

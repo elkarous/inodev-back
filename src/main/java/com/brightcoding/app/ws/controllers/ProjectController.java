@@ -45,8 +45,8 @@ public class ProjectController {
 			 projectService.deleteProject(id);
 		}
 	    @PutMapping("/{id}")
-		public ProjectDto updateProject( @PathVariable ("Id" ) Long Id, @RequestBody ProjectDto ProjectDto) {
-			return projectService.updateproject(Id, ProjectDto);
+		public ProjectDto updateProject( @PathVariable ("id" ) Long id, @RequestBody ProjectDto ProjectDto) {
+			return projectService.updateproject(id, ProjectDto);
 		}
 	    
 }

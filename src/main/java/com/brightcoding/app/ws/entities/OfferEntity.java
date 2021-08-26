@@ -24,11 +24,16 @@ public class OfferEntity {
     private String offerId;
     private String nom;
     private String organisation;
+    private String adress;
 
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
     @Temporal(TemporalType.DATE)
     private Date dateFin;
+   
+
+	@Temporal(TemporalType.DATE)
+    private Date startdateoffer;
     private String description;
     private String video;
     private String duree;
@@ -103,6 +108,13 @@ public class OfferEntity {
     public void setNom(String nom) {
         this.nom = nom;
     }
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
 
     public String getOrganisation() {
         return organisation;
@@ -127,6 +139,14 @@ public class OfferEntity {
     public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
     }
+    
+    public Date getStartdateoffer() {
+		return startdateoffer;
+	}
+
+	public void setStartdateoffer(Date startdateoffer) {
+		this.startdateoffer = startdateoffer;
+	}
 
     public String getDescription() {
         return description;
