@@ -26,7 +26,7 @@ public class SkillsController {
     SkillsService educationService;
     @Autowired
     SkillsRepository re ;
-
+    //http://localhost:8081/skills
     @GetMapping
     public ResponseEntity<List<SkillsResponse>> getSkills(Principal principal) {
 
@@ -38,6 +38,7 @@ public class SkillsController {
         return new ResponseEntity<List<SkillsResponse>>(SkillsResponse, HttpStatus.OK);
 
     }
+    //http://localhost:8081/skills/get/{principal}
     @GetMapping("/get/{principal}")
     public ResponseEntity<List<SkillsResponse>> getSkils(@PathVariable String principal) {
 
@@ -49,7 +50,7 @@ public class SkillsController {
         return new ResponseEntity<List<SkillsResponse>>(SkillsResponse, HttpStatus.OK);
 
     }
-
+    //http://localhost:8081/skills
     @PostMapping(
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
             produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
@@ -65,7 +66,7 @@ public class SkillsController {
 
         return new ResponseEntity<SkillsResponse>(newEducation, HttpStatus.CREATED);
     }
-
+    //http://localhost:8081/skills/{id}
     @GetMapping("/{id}")
     public  ResponseEntity<SkillsResponse> getOneSkills(@PathVariable(name="id") String educationId) {
 
@@ -77,6 +78,7 @@ public class SkillsController {
 
         return new ResponseEntity<SkillsResponse>(SkillsResponse, HttpStatus.OK);
     }
+    //http://localhost:8081/skills/offre
     @GetMapping("/offre")
     public   Iterable<SkillsEntity> getOoffre() {
 
@@ -87,7 +89,7 @@ public class SkillsController {
     }
 
 
-
+    //http://localhost:8081/skills/{id}
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSkills(@PathVariable(name="id") String educationId) {
 
@@ -95,6 +97,7 @@ public class SkillsController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    //http://localhost:8081/skills/{id}
     @PutMapping(
             path="/{id}",
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},

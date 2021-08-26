@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +14,10 @@ import java.util.List;
 @Table(name = "offer")
 @JsonInclude(value= JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class OfferEntity {
-    private static final long serialVersionUID = -5763827745308343856L;
+public class OfferEntity implements Serializable {
+	
+  
+	private static final long serialVersionUID = -5763827745308343856L;
 
     @GeneratedValue
     @Id
@@ -23,8 +27,12 @@ public class OfferEntity {
     private String type;
     private String offerId;
     private String nom;
+
     private String organisation;
     private String adress;
+
+   
+
 
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
@@ -51,7 +59,7 @@ public class OfferEntity {
    
 
 
-
+  //getter and setters
 
 	public Long getSupervisor() {
         return supervisor;
@@ -116,14 +124,7 @@ public class OfferEntity {
         this.adress = adress;
     }
 
-    public String getOrganisation() {
-        return organisation;
-    }
-
-    public void setOrganisation(String organisation) {
-        this.organisation = organisation;
-    }
-
+   
     public Date getDateDebut() {
         return dateDebut;
     }
@@ -183,7 +184,7 @@ public class OfferEntity {
 
 
     public OfferEntity(Integer id, String image, String acronym, String type, String offerId, String nom,
-			String organisation, Date dateDebut, Date dateFin, String description, String video, String duree,
+			 Date dateDebut, Date dateFin, String description, String video, String duree,
 			String niveau, Long prix, Long supervisor, String processus, CondidatOffreEntity condidatoffre,
 			List<SkillsEntity> skills, List<Event> event) {
 		super();
@@ -193,7 +194,7 @@ public class OfferEntity {
 		this.type = type;
 		this.offerId = offerId;
 		this.nom = nom;
-		this.organisation = organisation;
+		
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.description = description;
@@ -242,12 +243,7 @@ public class OfferEntity {
         this.niveau = niveau;
     }
 
-    @Override
-    public String toString() {
-        return "offer [id=" + id + ", image=" + image + ", type=" + type + ", offerId=" + offerId + ", nom=" + nom
-                + ", organisation=" + organisation + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", description=" + description + ", video=" + video
-                + ", prix=" + prix + ", processus=" + processus +" , duree=" + duree + ", niveau=" + niveau + "]";
-    }
+ 
     public OfferEntity () {
         super();
     }

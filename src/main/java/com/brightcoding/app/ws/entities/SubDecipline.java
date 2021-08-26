@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 @Entity
 public class SubDecipline implements Serializable {
@@ -26,7 +25,7 @@ public class SubDecipline implements Serializable {
 	    @OneToMany(cascade = CascadeType.ALL )
 	     private List<Project> project;
 	    
-	    //getter and setters 
+	    //getter and setters and constructor
 	    
 	    
 	    

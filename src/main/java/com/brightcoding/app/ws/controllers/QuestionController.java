@@ -24,7 +24,7 @@ public class QuestionController {
 
     @Autowired
     QuestionService educationService;
-
+  //http://localhost:8081/question
     @GetMapping
     public ResponseEntity<List<QuestionResponse>> getQuestion(Principal principal) {
 
@@ -36,7 +36,7 @@ public class QuestionController {
         return new ResponseEntity<List<QuestionResponse>>(educationResponse, HttpStatus.OK);
 
     }
-
+    //http://localhost:8081/question
     @PostMapping(
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
             produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
@@ -52,7 +52,7 @@ public class QuestionController {
 
         return new ResponseEntity<QuestionResponse>(newEducation, HttpStatus.CREATED);
     }
-
+    //http://localhost:8081/question/{id}
     @GetMapping("/{id}")
     public  ResponseEntity<QuestionResponse> getOneQuestion(@PathVariable(name="id") String educationId) {
 
@@ -65,7 +65,7 @@ public class QuestionController {
         return new ResponseEntity<QuestionResponse>(educationResponse, HttpStatus.OK);
     }
 
-
+    //http://localhost:8081/question/{id}
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteQuestion(@PathVariable(name="id") String educationId) {
@@ -74,6 +74,7 @@ public class QuestionController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    //http://localhost:8081/question/{id}
     @PutMapping(
             path="/{id}",
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},

@@ -64,27 +64,31 @@ public class CondidatEntity  implements Serializable {
     @OneToOne(cascade = CascadeType.ALL )
     CondidatOffreEntity condidatoffre;
 
-    public CondidatOffreEntity getCondidatoffre() {
-		return condidatoffre;
-	}
-
-
-	public void setCondidatoffre(CondidatOffreEntity condidatoffre) {
-		this.condidatoffre = condidatoffre;
-	}
+  
 
 	@OneToMany(cascade = CascadeType.ALL)
     private List<QuestionEntity> question;
     @OneToMany(cascade = CascadeType.ALL )
     private List<DocumentEntity> document;
+
+
     @OneToMany(cascade = CascadeType.ALL )
+
     private List<Hobbies> hobbies ;
     
     
     
 //getter and setters and constructors
     
-    
+    public CondidatOffreEntity getCondidatoffre() {
+  		return condidatoffre;
+  	}
+
+
+  	public void setCondidatoffre(CondidatOffreEntity condidatoffre) {
+  		this.condidatoffre = condidatoffre;
+  	}
+  	
     public long getId() {
 		return id;
 	}

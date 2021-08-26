@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,10 +26,14 @@ public class Project implements Serializable{
 		 private String description;
 		 private String nom ;
 		 private String acronyme;
+
 		 private String partenar;
 		 @Temporal(TemporalType.DATE)
 		    private Date endDate;
-	
+
+		 private String partener;
+		 private String orginistaion;
+
 		 
 		  public String getPartenar() {
 			return partenar;
@@ -50,6 +54,7 @@ public class Project implements Serializable{
 		@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY )
 		     private List<OfferEntity> offers;
 
+		//getter and setters
 		public long getId() {
 			return id;
 		}
@@ -106,6 +111,22 @@ public class Project implements Serializable{
 			this.acronyme = acronyme;
 			
 			this.offers = offers;
+		}
+
+		public String getPartener() {
+			return partener;
+		}
+
+		public void setPartener(String partener) {
+			this.partener = partener;
+		}
+
+		public String getOrginistaion() {
+			return orginistaion;
+		}
+
+		public void setOrginistaion(String orginistaion) {
+			this.orginistaion = orginistaion;
 		}
 
 		

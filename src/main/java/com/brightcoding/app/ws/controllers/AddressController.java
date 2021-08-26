@@ -30,6 +30,7 @@ public class AddressController {
 	
 	@Autowired
 	AddressService addressService;
+	//http://localhost:8081/addresses
 	
 	@GetMapping
 	public ResponseEntity<List<AddressResponse>>getAddresses(Principal principal) {
@@ -43,6 +44,7 @@ public class AddressController {
 		
 	}
 	
+	//http://localhost:8081/addresses
 	@PostMapping(
 			consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}, 
 		    produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
@@ -58,7 +60,7 @@ public class AddressController {
 		
 		return new ResponseEntity<AddressResponse>(newAddress, HttpStatus.CREATED);
 	}
-	
+	//http://localhost:8081/addresses/{id}
 	@GetMapping("/{id}")
 	public  ResponseEntity<AddressResponse> getOneAddresse(@PathVariable(name="id") String addressId) {
 		
@@ -70,12 +72,12 @@ public class AddressController {
 		
 		return new ResponseEntity<AddressResponse>(addressResponse, HttpStatus.OK);
 	}
-	
+	//http://localhost:8081/addresses/{id}
 	@PutMapping("/{id}")
 	public ResponseEntity<String> updateAddresse(@PathVariable(name="id") String addressId) {
 		return new ResponseEntity<>("update addresses", HttpStatus.ACCEPTED);
 	}
-	
+	//http://localhost:8081/addresses/{id}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteAddresse(@PathVariable(name="id") String addressId) {
 		

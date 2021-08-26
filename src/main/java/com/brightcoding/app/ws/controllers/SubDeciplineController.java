@@ -39,6 +39,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SubDeciplineController {
 	@Autowired
 	SubDeciplineService subDeciplineService;
+
 	
 	@Autowired
 	SubDeciplineRepository subdeciplineRepo;
@@ -47,15 +48,19 @@ public class SubDeciplineController {
 	
 	
 	
+
+	  //http://localhost:8081/subDecipline
+
 	//get all subDecipline
 	@GetMapping
 	public List<SubDeciplineDto> getAll(){
 		return subDeciplineService.getAllSubdecipline();
 		
 	}
-	
+	//http://localhost:8081/subDecipline
 	// create new subdecipline
 	@PostMapping
+
 	public String createSubDecipline(@RequestParam("image") MultipartFile file,
             @RequestParam("subdecipline") String subdecipline) throws JsonParseException, JsonMappingException, Exception {
 		
@@ -101,24 +106,35 @@ public class SubDeciplineController {
 	    }
 		
 	
+
+	public SubDeciplineDto createSubDecipline( @RequestBody SubDeciplineDto subDto) {
+		return subDeciplineService.createSubDecipline(subDto);
+	}
+	//http://localhost:8081/subDecipline/{id}
+
 	// get subdecipline by id 
 	@GetMapping("/{id}")
 	public SubDeciplineDto getSubDeciplineById( @PathVariable("id") long id) {
 		return subDeciplineService.getSubDeciplineById(id);
 	}
-	
+	//http://localhost:8081/subDecipline/{id}
 	//delete subdecipline
 	@DeleteMapping("/{id}")
 	public void deletesubdecipline( @PathVariable("id") long id) {
 		subDeciplineService.deleteSubdecipline(id);
 	}
-	
+	//http://localhost:8081/subDecipline/{id}
 	//update one subDecipline
 	@PutMapping("/{id}")
 	public SubDeciplineDto updateHobbies( @PathVariable("id") Long Id, @RequestBody SubDeciplineDto subDto) {
 		return subDeciplineService.updateSubdecipline(Id, subDto);
 	}
+
 	@GetMapping("/sub/{subDecpline}")
+
+	//http://localhost:8081/subDecipline/{subDecpline}
+	@GetMapping("/{subDecpline}")
+
 	public List<OfferEntity> findOffrebySub( @PathVariable("subDecpline") String nom) {
 		return subDeciplineService.findOffrebySub(nom);
 	}

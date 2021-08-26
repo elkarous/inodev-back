@@ -29,7 +29,7 @@ public class EducationController {
 
     @Autowired
     EducationService educationService;
-
+    //http://localhost:8081/users/education
     @GetMapping
     public ResponseEntity<List<EducationResponse>> getEducation(@AuthenticationPrincipal Principal principal) {
 
@@ -41,6 +41,8 @@ public class EducationController {
         return new ResponseEntity<List<EducationResponse>>(educationResponse, HttpStatus.OK);
 
     }
+    //http://localhost:8081/users/education/get/{principal}
+
     @GetMapping("/get/{principal}")
     public ResponseEntity<List<EducationResponse>> getEducatin(@PathVariable String principal) {
 
@@ -52,22 +54,23 @@ public class EducationController {
         return new ResponseEntity<List<EducationResponse>>(educationResponse, HttpStatus.OK);
 
     }
+    //http://localhost:8081/users/education
 
     @PostMapping(
-            consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
-            produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
+           "/{id}"
     )
-    public ResponseEntity<EducationResponse> StoreEducation(@RequestBody EducationRequest educationRequest, Principal principale) {
+    public ResponseEntity<EducationResponse> StoreEducation(@RequestBody EducationRequest educationRequest, @PathVariable("id") String principale) {
 
         ModelMapper modelMapper = new ModelMapper();
 
         EducationDto educationDto = modelMapper.map(educationRequest, EducationDto.class);
-        EducationDto createEducation = educationService.createEducation(educationDto, principale.getName());
+        EducationDto createEducation = educationService.createEducation(educationDto,principale );
 
         EducationResponse newEducation = modelMapper.map(createEducation, EducationResponse.class);
 
         return new ResponseEntity<EducationResponse>(newEducation, HttpStatus.CREATED);
     }
+    //http://localhost:8081/users/education/{id}
 
     @GetMapping("/{id}")
     public  ResponseEntity<EducationResponse> getOneEducation(@PathVariable(name="id") String educationId) {
@@ -81,6 +84,7 @@ public class EducationController {
         return new ResponseEntity<EducationResponse>(educationResponse, HttpStatus.OK);
     }
 
+    //http://localhost:8081/users/education/{id}
 
 
     @DeleteMapping("/{id}")
@@ -90,6 +94,8 @@ public class EducationController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    //http://localhost:8081/users/education/{id}
+
     @PutMapping(
             path="/{id}",
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},

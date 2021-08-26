@@ -25,25 +25,28 @@ public class ProjectController {
 	    ProjectRepository repository;
 	    
 	    
-	    
-	    
+	  //http://localhost:8081/Project
 	    @GetMapping
 		public List<ProjectDto> getAll(){
 			return projectService.getAllProject();
 		}
+	    //http://localhost:8081/Project
 	    @PostMapping
 		public ProjectDto createProject(@RequestBody  ProjectDto projectDto) {
 			return projectService.createProject(projectDto);
 			
 		}
+	    //http://localhost:8081/Project/{id}
 	    @GetMapping("/{id}")
 		public ProjectDto getProjectById(@PathVariable("id") long id) {
 			return projectService.getProject(id);
 		}
+	  //http://localhost:8081/Project/{id}
 	    @DeleteMapping("/{id}")
 		public void deleteProject(@PathVariable("id")long id) {
 			 projectService.deleteProject(id);
 		}
+	  //http://localhost:8081/Project/{id}
 	    @PutMapping("/{id}")
 		public ProjectDto updateProject( @PathVariable ("id" ) Long id, @RequestBody ProjectDto ProjectDto) {
 			return projectService.updateproject(id, ProjectDto);

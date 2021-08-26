@@ -2,6 +2,7 @@ package com.brightcoding.app.ws.entities;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 @Entity
 @Table(name = "condidatOffre")
 public class CondidatOffreEntity {
@@ -16,7 +17,23 @@ public class CondidatOffreEntity {
     @OneToOne
     OfferEntity offer;
 
-    public OfferEntity getOffer() {
+    
+    @OneToMany
+    List<DocumentEntity> documents;
+    
+    
+    public List<DocumentEntity> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(List<DocumentEntity> documents) {
+		this.documents = documents;
+	}
+
+  //getter and setters
+
+
+	public OfferEntity getOffer() {
 		return offer;
 	}
 

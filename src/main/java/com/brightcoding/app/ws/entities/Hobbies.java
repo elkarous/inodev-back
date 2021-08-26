@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 @Entity
 public class Hobbies implements Serializable{
 	    /**
@@ -19,7 +19,11 @@ public class Hobbies implements Serializable{
 	    private String nom ;
 	    private String description;
 	    
+
+	   
+
 	  
+
 	    
 	    //getters and Setters 
 	    
@@ -30,6 +34,9 @@ public class Hobbies implements Serializable{
 			super();
 			// TODO Auto-generated constructor stub
 		}
+
+	
+
 		public Hobbies(long id, String nom, String description, CondidatEntity condidat) {
 			super();
 			this.id = id;
@@ -39,6 +46,7 @@ public class Hobbies implements Serializable{
 		}
 	
 		
+
 		public void setId(long id) {
 			this.id = id;
 		}

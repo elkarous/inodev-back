@@ -1,63 +1,155 @@
 package com.brightcoding.app.ws.responses;
 
 import com.brightcoding.app.ws.entities.*;
+import com.brightcoding.app.ws.shared.dto.*;
 
 import java.util.Date;
 import java.util.List;
 
-public class CondidatResponse extends UserResponse{
+public class CondidatResponse {
+    private long id;
+
     private String firstName;
 
-
     private String phone;
+
     private String lastName;
-    private String photo;
+
     private String gender;
+
     private Date date_birthday;
+
     private String nationality;
-    EducationResponse education;
-    SkillsResponse skills;
-    ExperienceResponse experience;
-    DocumentResponse document;
 
-    public String getFirstName() {
-        return firstName;
+    private AuthProvider authProvider;
+
+
+    private String userId;
+
+    private String familyPhone ;
+
+    private String email;
+
+    private Role role;
+
+    private String resetToken;
+
+    private String encryptedPassword;
+
+
+    private String photo;
+
+    private   Application application;
+
+    private List<EducationDto> education;
+
+    private List<ExperienceDto> experience;
+
+    private List<SkillsDto> skills;
+
+    List<CondidatOffreDto> condidatoffre;
+
+
+    private List<QuestionDto> question;
+
+    private List<DocumentDto> document;
+
+    private List<Hobbies> hobbies ;
+
+
+
+
+    public long getId() {
+        return id;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+
+    public List<ExperienceDto> getExperience() {
+        return experience;
     }
 
-    public String getPhone() {
-        return phone;
+    public List<Hobbies> getHobbies() {
+        return hobbies;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setHobbies(List<Hobbies> hobbies) {
+        this.hobbies = hobbies;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getFamilyPhone() {
+        return familyPhone;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFamilyPhone(String familyPhone) {
+        this.familyPhone = familyPhone;
     }
 
-    public String getGender() {
-        return gender;
+    public Application getApplication() {
+        return application;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setApplication(Application application) {
+        this.application = application;
     }
 
-    public Date getDate_birthday() {
-        return date_birthday;
+    public String getResetToken() {
+        return resetToken;
     }
 
-    public void setDate_birthday(Date date_birthday) {
-        this.date_birthday = date_birthday;
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getEncryptedPassword() {
+        return encryptedPassword;
+    }
+
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
+    }
+
+    public List<CondidatOffreDto> getCondidatoffre() {
+        return condidatoffre;
+    }
+
+    public void setCondidatoffre(List<CondidatOffreDto> condidatoffre) {
+        this.condidatoffre = condidatoffre;
+    }
+
+    public void setExperience(List<ExperienceDto> experience) {
+        this.experience = experience;
+    }
+
+    public List<SkillsDto> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<SkillsDto> skills) {
+        this.skills = skills;
     }
 
     public String getPhoto() {
@@ -68,43 +160,87 @@ public class CondidatResponse extends UserResponse{
         this.photo = photo;
     }
 
+
+    public List<QuestionDto> getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(List<QuestionDto> question) {
+        this.question = question;
+    }
+
+    public List<DocumentDto> getDocument() {
+        return document;
+    }
+
+    public void setDocument(List<DocumentDto> document) {
+        this.document = document;
+    }
+
+
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public List<EducationDto> getEducation() {
+        return education;
+    }
+
+    public void setEducation(List<EducationDto> education) {
+        this.education = education;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    public Date getDate_birthday() {
+        return date_birthday;
+    }
+    public void setDate_birthday(Date date_birthday) {
+        this.date_birthday = date_birthday;
+    }
     public String getNationality() {
         return nationality;
     }
-
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 
-    public EducationResponse getEducation() {
-        return education;
+
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setEducation(EducationResponse education) {
-        this.education = education;
+
+
+    public AuthProvider getAuthProvider() {
+        return authProvider;
     }
 
-    public SkillsResponse getSkills() {
-        return skills;
+
+    public void setAuthProvider(AuthProvider authProvider) {
+        this.authProvider = authProvider;
     }
 
-    public void setSkills(SkillsResponse skills) {
-        this.skills = skills;
-    }
 
-    public ExperienceResponse getExperience() {
-        return experience;
-    }
-
-    public void setExperience(ExperienceResponse experience) {
-        this.experience = experience;
-    }
-
-    public DocumentResponse getDocument() {
-        return document;
-    }
-
-    public void setDocument(DocumentResponse document) {
-        this.document = document;
-    }
 }
