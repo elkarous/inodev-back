@@ -1,7 +1,10 @@
 package com.brightcoding.app.ws.shared.dto;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.SubDecipline;
@@ -12,8 +15,29 @@ public class ProjectDto {
 		 private String description;
 		 private String nom ;
 		 private String acronyme;
+		 private String partenar;
+		 private Date endDate;
 		
-		 private SubDecipline subDecipline;
+		 public String getPartenar() {
+			return partenar;
+		}
+
+
+		public void setPartenar(String partenar) {
+			this.partenar = partenar;
+		}
+
+
+		public Date getEndDate() {
+			return endDate;
+		}
+
+
+		public void setEndDate(Date endDate) {
+			this.endDate = endDate;
+		}
+
+		private SubDecipline subDecipline;
 		 
 	
 		     private List<OfferDto> offers;
