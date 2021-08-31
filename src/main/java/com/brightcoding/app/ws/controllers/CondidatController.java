@@ -27,6 +27,7 @@ import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 //http://localhost:8081/condidat
@@ -41,6 +42,11 @@ public class CondidatController {
     ServletContext context;
     @Autowired
     NoteService noteService;
+    
+    @GetMapping
+    public Principal getUser(Principal user) {
+        return user;
+    }
   //http://localhost:8081/condidat
     @GetMapping(produces={ MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<CondidatResponse>> getAllCondidats(@RequestParam(value="page", defaultValue = "1") int page, @RequestParam(value="limit", defaultValue = "20")  int limit , @RequestParam(value="search", defaultValue = "") String search, @RequestParam(value="status", defaultValue = "1") int status) {

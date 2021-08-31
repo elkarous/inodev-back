@@ -22,8 +22,8 @@ public class CondidatDto  {
     private Date date_birthday;
     private String nationality;
     private AuthProvider authProvider;
-   
-	
+   private String phoneEtronger;
+   private List<OriginEntity> origins;
 	private String userId;
     
     private String familyPhone ;
@@ -255,6 +255,26 @@ public class CondidatDto  {
         return "Condidat [firstName=" + firstName + ", photo=" + photo + ", phone=" + phone + ", lastName=" + lastName + ", date_birthday=" + date_birthday
                 + ", gender=" + gender + ", nationality=" + nationality + ", email=" + getEmail()+ ", userId=" + getUserId() + "]";
     }
+
+
+	public String getPhoneEtronger() {
+		return phoneEtronger;
+	}
+
+
+	public void setPhoneEtronger(String phoneEtronger) {
+		this.phoneEtronger = phoneEtronger;
+	}
+
+
+	public List<OriginEntity> getOrigins() {
+		return origins;
+	}
+
+
+	public void setOrigins(List<OriginEntity> origins) {
+		this.origins = origins;
+	}
 
 
 }

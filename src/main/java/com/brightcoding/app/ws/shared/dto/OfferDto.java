@@ -20,7 +20,8 @@ public class OfferDto {
 	    
 	    private Integer id;
 	    private String image;
-	  
+	    private String acronym;
+	    private String adress;
 	    private String type;
 	    private String offerId;
 	    private String nom;
@@ -28,8 +29,16 @@ public class OfferDto {
 
 	  
 	    private Date dateDebut;
+	    private Date startdateoffer;
+	    public Date getStartdateoffer() {
+			return startdateoffer;
+		}
 
-	    private Date dateFin;
+		public void setStartdateoffer(Date startdateoffer) {
+			this.startdateoffer = startdateoffer;
+		}
+
+		private Date dateFin;
 	    private String description;
 	    private String video;
 	    private String duree;
@@ -94,13 +103,7 @@ public class OfferDto {
 	        this.type = type;
 	    }
 
-	    public String getofferId() {
-	        return offerId;
-	    }
-
-	    public void setofferId(String offerId) {
-	        this.offerId = offerId;
-	    }
+	    
 
 	    public String getNom() {
 	        return nom;
@@ -109,8 +112,34 @@ public class OfferDto {
 	    public void setNom(String nom) {
 	        this.nom = nom;
 	    }
+	    
+	    
 
-	    public String getOrganisation() {
+	    public String getAcronym() {
+			return acronym;
+		}
+
+		public void setAcronym(String acronym) {
+			this.acronym = acronym;
+		}
+
+		public String getAdress() {
+			return adress;
+		}
+
+		public void setAdress(String adress) {
+			this.adress = adress;
+		}
+
+		public String getOfferId() {
+			return offerId;
+		}
+
+		public void setOfferId(String offerId) {
+			this.offerId = offerId;
+		}
+
+		public String getOrganisation() {
 	        return organisation;
 	    }
 

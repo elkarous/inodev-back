@@ -22,7 +22,11 @@ public class OfferController {
 	@Autowired
 	OfferService offerService;
 	@Autowired
+
 	OfferRepository offerRepository;
+
+
+
 	
 	//http://localhost:8081/offer
 	
@@ -40,9 +44,9 @@ public class OfferController {
 		}
 		//http://localhost:8081/offer/{offerId}
 		//get Offer by id 
-		@GetMapping("/{offerId}")
-		public OfferDto getOffreById( @PathVariable ("offerId") int offerId) {
-			return offerService.getOffre(offerId);
+		@GetMapping("/{id}")
+		public OfferDto getOffreById( @PathVariable ("id") int id) {
+			return offerService.getOffre(id);
 		}
 		//http://localhost:8081/offer/{id}
 		//delete Offer by id 
@@ -57,12 +61,23 @@ public class OfferController {
 			return offerService.updateOffre(Id, OfferDto);
 		}
 		
+
 	// find offer by specialite 
 		//http://localhost:8081/offer/{specialite}
 		@GetMapping("/getbyspe/{specialite}")
 		public List<OfferEntity> findOffrebySpe( @PathVariable("specialite") String nom) {
 			return offerService.findOffrebySpe(nom);
 		}
+
+		//get image de l'offer 
+		
+		 @GetMapping(path="/Imgarticles/{id}")
+		    public byte[] getPhoto(@PathVariable("id") int id) throws Exception{
+		        OfferEntity offer= offerRepo.findById(id).get();
+		        return Files.readAllBytes(Paths.get("D:/inodev/inodev-back/src/web/spe/"+offer.getImage()));
+		    }
+		
+
 	
 	
 	

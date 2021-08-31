@@ -5,7 +5,7 @@ public class OriginDto {
     private String sourceId;
     private String position;
     private String describ;
-    private CondidatDto condidat;
+  
 
     public Integer getId() {
         return id;
@@ -39,11 +39,5 @@ public class OriginDto {
         this.describ = describ;
     }
 
-    public CondidatDto getCondidat() {
-        return condidat;
-    }
-
-    public void setCondidat(CondidatDto condidat) {
-        this.condidat = condidat;
-    }
+ 
 }

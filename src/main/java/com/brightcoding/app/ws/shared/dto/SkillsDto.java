@@ -3,6 +3,7 @@ package com.brightcoding.app.ws.shared.dto;
 
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.DocumentEntity;
 import com.brightcoding.app.ws.entities.OfferEntity;
 
 public class SkillsDto {
@@ -14,7 +15,7 @@ public class SkillsDto {
 	    private Boolean certifier;
 	    private CondidatDto condidat;
 	    private OfferEntity offer;
-
+	    private DocumentEntity document;
 	    
 	    public OfferEntity getOffer() {
 			return offer;
@@ -71,4 +72,12 @@ public class SkillsDto {
 	    public void setCondidat(CondidatDto condidatDto) {
 	        this.condidat = condidatDto;
 	    }
+
+		public DocumentEntity getDocument() {
+			return document;
+		}
+
+		public void setDocument(DocumentEntity document) {
+			this.document = document;
+		}
 	}
