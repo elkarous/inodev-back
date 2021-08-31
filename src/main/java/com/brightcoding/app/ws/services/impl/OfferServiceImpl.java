@@ -8,13 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.brightcoding.app.ws.entities.OfferEntity;
+import com.brightcoding.app.ws.entities.Project;
+import com.brightcoding.app.ws.entities.SpecialiteEntity;
+import com.brightcoding.app.ws.entities.SubDecipline;
 import com.brightcoding.app.ws.repositories.OfferRepository;
+import com.brightcoding.app.ws.repositories.SpecialiteRepository;
+import com.brightcoding.app.ws.repositories.SubDeciplineRepository;
 import com.brightcoding.app.ws.services.OfferService;
+import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import com.brightcoding.app.ws.shared.dto.OfferDto;
 @Service
 public class OfferServiceImpl implements  OfferService{
 	@Autowired
 	OfferRepository offerRepository;
+	@Autowired
+	SpecialiteRepository specialiteRepository;
+	
+	
+	@Autowired
+	SubDeciplineRepository subDeciplineRepository;
 	@Override
 	public List<OfferDto> getAllOffre() {
 		ModelMapper modelMapper = new ModelMapper();
@@ -76,4 +88,49 @@ public class OfferServiceImpl implements  OfferService{
 
 		
 	}
+	// find offer by specialite
+	@Override
+	public List<OfferEntity> findOffrebySpe(String nom) {
+		
+		List<OfferEntity> listOffer=new ArrayList<>();
+		SpecialiteEntity specialite = specialiteRepository.findByNom(nom); 
+		for( SubDecipline subDecipline:specialite.getSubDecipline()) {
+			for(Project project:subDecipline.getProject()) {
+			listOffer.addAll(project.getOffers());
+			
+		}
+		}
+		
+		return listOffer;
+		
+	}
+	// find offer by niveau
+	@Override
+	public List<OfferEntity> getOffreByNiveau(String niveau) {
+		
+		List<OfferEntity> offer = offerRepository.findByNiveau(niveau);
+		
+	    
+		return offer;	
+		
+	}
+	// find offer by duree 
+	@Override
+public List<OfferEntity> getOffreByDuree(String duree) {
+		
+		List<OfferEntity> offer = offerRepository.findByDuree(duree);
+		
+		return offer;	
+		
+	}
+	
+	
+
+
+	@Override
+	public List<OfferEntity> findBysearch(String nom, String duree, String niveau) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

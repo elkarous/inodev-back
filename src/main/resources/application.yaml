@@ -12,8 +12,8 @@ server:
     port: 8081
 spring:
     datasource:
-        password: ''
-        url: jdbc:mysql://localhost:3306/my_app_db
+        password: '0000'
+        url: jdbc:mysql://localhost:3306/inodev?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
         username: root
     jackson:
         serialization:

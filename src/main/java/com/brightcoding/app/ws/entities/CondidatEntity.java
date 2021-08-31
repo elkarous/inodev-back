@@ -55,24 +55,24 @@ public class CondidatEntity  implements Serializable {
     private String photo;
     @Column(nullable=true)
     private   Application application;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
     private List<EducationEntity> education;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExperienceEntity> experience;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
     private List<SkillsEntity> skills;
-    @OneToOne(cascade = CascadeType.ALL )
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
     CondidatOffreEntity condidatoffre;
 
   
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> question;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
     private List<DocumentEntity> document;
 
 
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
 
     private List<Hobbies> hobbies ;
     

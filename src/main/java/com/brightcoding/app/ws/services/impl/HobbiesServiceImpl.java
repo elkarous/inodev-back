@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.EducationEntity;
 import com.brightcoding.app.ws.entities.Hobbies;
 import com.brightcoding.app.ws.entities.SkillsEntity;
+import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.HobbiesRepository;
 import com.brightcoding.app.ws.services.HobbiesService;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
@@ -21,6 +24,10 @@ import com.brightcoding.app.ws.shared.dto.SkillsDto;
 public class HobbiesServiceImpl  implements  HobbiesService{
 	@Autowired
 	HobbiesRepository hobbiesRepository;
+
+    @Autowired
+    CondidatRepository condidatRepository;
+
 
 	@Override
 	public List<HobbiesDto> getAllHobbies() {
@@ -79,6 +86,14 @@ public class HobbiesServiceImpl  implements  HobbiesService{
 	}
 
 	@Override
+	public void deleteHobbies(Long id,Long idCondidat) {
+		Hobbies hobbie=hobbiesRepository.findById(id).get();
+    	CondidatEntity condidat=condidatRepository.findById(idCondidat).get();
+    	condidat.getEducation().remove(hobbie);
+    	condidatRepository.save(condidat);
+		
+	}
+	/*
 	public void deleteHobbies(long HobbiesId) {
 	
 		Hobbies hobbie= hobbiesRepository.findById(HobbiesId).get();
@@ -87,7 +102,7 @@ public class HobbiesServiceImpl  implements  HobbiesService{
 
         hobbiesRepository.delete(hobbie);
 
-		
+		*/
 	}
 
-}
+

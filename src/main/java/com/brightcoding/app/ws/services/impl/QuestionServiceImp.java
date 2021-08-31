@@ -1,6 +1,7 @@
 package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.ExperienceEntity;
 import com.brightcoding.app.ws.entities.QuestionEntity;
 import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
@@ -77,6 +78,13 @@ public class QuestionServiceImp implements QuestionService {
     }
 
     @Override
+    public void deleteQuestion(int id,Long idCondidat) {
+    	QuestionEntity question=educationRepository.findById(id).get();
+    	CondidatEntity condidat=condidatRepository.findById(idCondidat).get();
+    	condidat.getEducation().remove(question);
+    	condidatRepository.save(condidat);
+    }
+    /*
     public void deleteQuestion(String educationId) {
 
         QuestionEntity education = educationRepository.findByQuestionId(educationId);
@@ -84,8 +92,9 @@ public class QuestionServiceImp implements QuestionService {
         if(education == null) throw new RuntimeException("education not found");
 
         educationRepository.delete(education);
+        */
 
-    }
+    
     @Override
     public QuestionDto updateQuestion(String id, QuestionDto educationDto) {
 
