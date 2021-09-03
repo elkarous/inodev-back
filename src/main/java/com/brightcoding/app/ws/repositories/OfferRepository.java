@@ -16,6 +16,7 @@ import java.util.Optional;
 public interface OfferRepository extends JpaRepository<OfferEntity, Integer> {
 
 	Optional<OfferEntity> findById(String offerId);
+	Optional<OfferEntity> findByAcronym(String offerId);
 	/*
     OffreEntity findByOffreId(@Param(value = "id") String id);
     /*@Query("SELECT t FROM OffreEntity t where t.id = :id")

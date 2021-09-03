@@ -47,7 +47,7 @@ public class OfferDto {
 	    private Long supervisor;
 	    private String processus;
 	  
-	    List<CondidatOffreDto> condidatoffre;
+	   private  List<CondidatOffreDto> candidtes;
 	    private List<SkillsDto> skills;
 	
 	   private Project project;
@@ -195,15 +195,17 @@ public class OfferDto {
 	        this.processus = processus;
 	    }
 
-	    public List<CondidatOffreDto> getCondidatoffre() {
-	        return condidatoffre;
-	    }
+	  
 
-	    public void setCondidatoffre(List<CondidatOffreDto> condidatoffre) {
-	        this.condidatoffre = condidatoffre;
-	    }
+	    public List<CondidatOffreDto> getCandidtes() {
+			return candidtes;
+		}
 
-	    public List<SkillsDto> getSkills() {
+		public void setCandidtes(List<CondidatOffreDto> candidtes) {
+			this.candidtes = candidtes;
+		}
+
+		public List<SkillsDto> getSkills() {
 	        return skills;
 	    }
 
@@ -239,18 +241,21 @@ public class OfferDto {
 	        super();
 	    }
 
-		public OfferDto(Integer id, String image, String type, String offerId, String nom, String organisation,
-				Date dateDebut, Date dateFin, String description, String video, String duree, String niveau, Long prix,
-				Long supervisor, String processus, List<CondidatOffreDto> condidatoffre, List<SkillsDto> skills,
-				Project project, List<Event> event) {
+		public OfferDto(Integer id, String image, String acronym, String adress, String type, String offerId,
+				String nom, String organisation, Date dateDebut, Date startdateoffer, Date dateFin, String description,
+				String video, String duree, String niveau, Long prix, Long supervisor, String processus,
+				List<CondidatOffreDto> candidtes, List<SkillsDto> skills, Project project, List<Event> event) {
 			super();
 			this.id = id;
 			this.image = image;
+			this.acronym = acronym;
+			this.adress = adress;
 			this.type = type;
 			this.offerId = offerId;
 			this.nom = nom;
 			this.organisation = organisation;
 			this.dateDebut = dateDebut;
+			this.startdateoffer = startdateoffer;
 			this.dateFin = dateFin;
 			this.description = description;
 			this.video = video;
@@ -259,11 +264,15 @@ public class OfferDto {
 			this.prix = prix;
 			this.supervisor = supervisor;
 			this.processus = processus;
-			this.condidatoffre = condidatoffre;
+			this.candidtes = candidtes;
 			this.skills = skills;
 			this.project = project;
 			this.event = event;
 		}
+
+	
+
+		
 
 	}
 

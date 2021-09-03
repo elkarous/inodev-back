@@ -20,7 +20,7 @@ public class CondidatResponse {
     private Date date_birthday;
 
     private String nationality;
-
+    private boolean recommended;
     private AuthProvider authProvider;
     private String phoneEtronger;
     private List<OriginEntity> origins;
@@ -261,6 +261,16 @@ public class CondidatResponse {
 
 	public void setOrigins(List<OriginEntity> origins) {
 		this.origins = origins;
+	}
+
+
+	public boolean isRecommended() {
+		return recommended;
+	}
+
+
+	public void setRecommended(boolean recommended) {
+		this.recommended = recommended;
 	}
 
 

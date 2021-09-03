@@ -48,6 +48,7 @@ public class Security extends WebSecurityConfigurerAdapter  {
 				.antMatchers("/condidat/img/**").permitAll()
 				.antMatchers("/document/doc/**").permitAll()
 				.antMatchers("/document/download/**").permitAll()
+				.antMatchers("/offer/Imgarticles/**").permitAll()
 				.anyRequest().authenticated()
 				
 

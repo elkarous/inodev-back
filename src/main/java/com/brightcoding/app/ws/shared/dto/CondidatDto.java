@@ -25,6 +25,7 @@ public class CondidatDto  {
    private String phoneEtronger;
    private List<OriginEntity> origins;
 	private String userId;
+	private boolean recommended;
     
     private String familyPhone ;
 	
@@ -274,6 +275,16 @@ public class CondidatDto  {
 
 	public void setOrigins(List<OriginEntity> origins) {
 		this.origins = origins;
+	}
+
+
+	public boolean isRecommended() {
+		return recommended;
+	}
+
+
+	public void setRecommended(boolean recommended) {
+		this.recommended = recommended;
 	}
 
 

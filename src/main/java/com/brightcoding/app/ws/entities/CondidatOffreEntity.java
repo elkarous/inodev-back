@@ -14,9 +14,7 @@ public class CondidatOffreEntity {
    
     @OneToOne
     CondidatEntity condidatEntity;
-    @OneToOne
-    OfferEntity offer;
-
+    
     
     @OneToMany
     List<DocumentEntity> documents;
@@ -33,14 +31,6 @@ public class CondidatOffreEntity {
   //getter and setters
 
 
-	public OfferEntity getOffer() {
-		return offer;
-	}
-
-	public void setOffer(OfferEntity offer) {
-		this.offer = offer;
-	}
-
 	public CondidatEntity getCondidatEntity() {
 		return condidatEntity;
 	}
@@ -54,8 +44,26 @@ public class CondidatOffreEntity {
   private Status status;
     
     private float note;
+    private float noteinterview;
+    private float notePortugal;
+    
+    public float getNoteinterview() {
+		return noteinterview;
+	}
 
-    public Status getStatus() {
+	public void setNoteinterview(float noteinterview) {
+		this.noteinterview = noteinterview;
+	}
+
+	public float getNotePortugal() {
+		return notePortugal;
+	}
+
+	public void setNotePortugal(float notePortugal) {
+		this.notePortugal = notePortugal;
+	}
+
+	public Status getStatus() {
 		return status;
 	}
 
