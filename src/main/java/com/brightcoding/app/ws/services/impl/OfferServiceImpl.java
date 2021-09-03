@@ -123,7 +123,16 @@ public List<OfferEntity> getOffreByDuree(String duree) {
 		return offer;	
 		
 	}
-	
+	// find offer by supervisor
+	@Override
+	public List<OfferEntity> getOffreBySupervisor(String supervisor) {
+		
+		List<OfferEntity> offer = offerRepository.findBySupervisor(supervisor);
+		
+	    
+		return offer;	
+		
+	}
 	
 
 

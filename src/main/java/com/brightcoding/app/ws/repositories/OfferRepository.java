@@ -83,6 +83,9 @@ public interface OfferRepository extends JpaRepository<OfferEntity, Integer> {
 	List<OfferEntity> findByDuree(String duree);
 
 
+	List<OfferEntity> findBySupervisor(String supervisor);
+
+
 	
 	
  	

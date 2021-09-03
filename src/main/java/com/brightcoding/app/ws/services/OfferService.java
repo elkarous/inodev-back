@@ -34,6 +34,8 @@ public interface OfferService {
 
 	List<OfferEntity> findBysearch(@Param(value = "specialite")String nom, @PathVariable(value = "duree") String duree,@Param(value = "niveau")String niveau);
 
+	List<OfferEntity> getOffreBySupervisor(String supervisor);
+
 	
 
 

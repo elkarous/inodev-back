@@ -47,7 +47,7 @@ public class OfferEntity implements Serializable {
     private String duree;
     private String niveau;
     private Long prix;
-    private Long supervisor;
+    private String supervisor;
     private String processus;
     @OneToOne(cascade = CascadeType.ALL )
     CondidatOffreEntity condidatoffre;
@@ -61,19 +61,21 @@ public class OfferEntity implements Serializable {
 
   //getter and setters
 
-	public Long getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(Long supervisor) {
-        this.supervisor = supervisor;
-    }
+	
 
     public Integer getId() {
         return id;
     }
 
-    public List<Event> getEvent() {
+    public String getSupervisor() {
+		return supervisor;
+	}
+
+	public void setSupervisor(String supervisor) {
+		this.supervisor = supervisor;
+	}
+
+	public List<Event> getEvent() {
         return event;
     }
 
@@ -185,7 +187,7 @@ public class OfferEntity implements Serializable {
 
     public OfferEntity(Integer id, String image, String acronym, String type, String offerId, String nom,
 			 Date dateDebut, Date dateFin, String description, String video, String duree,
-			String niveau, Long prix, Long supervisor, String processus, CondidatOffreEntity condidatoffre,
+			String niveau, Long prix, String supervisor, String processus, CondidatOffreEntity condidatoffre,
 			List<SkillsEntity> skills, List<Event> event) {
 		super();
 		this.id = id;

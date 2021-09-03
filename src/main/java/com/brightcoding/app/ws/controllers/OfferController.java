@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.brightcoding.app.ws.shared.dto.OfferDto;
 
-
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 @RestController
@@ -73,7 +74,7 @@ public class OfferController {
 		
 		 @GetMapping(path="/Imgarticles/{id}")
 		    public byte[] getPhoto(@PathVariable("id") int id) throws Exception{
-		        OfferEntity offer= offerRepo.findById(id).get();
+		        OfferEntity offer= offerRepository.findById(id).get();
 		        return Files.readAllBytes(Paths.get("D:/inodev/inodev-back/src/web/spe/"+offer.getImage()));
 		    }
 		
@@ -87,6 +88,12 @@ public class OfferController {
 				public List<OfferEntity> getOffreByNiveau( @PathVariable ("niveau") String niveau) {
 					return offerService.getOffreByNiveau(niveau);
 				}
+				// get offer by supervisor 
+				@GetMapping("/findBysupervisor/{supervisor}")
+				public List<OfferEntity> getOffreBySupervisor( @PathVariable ("supervisor") String supervisor) {
+					return offerService.getOffreBySupervisor(supervisor);
+				}
+				
 				// get offer by duree
 				//http://localhost:8081/offer/findByDurre/{duree}
 				@GetMapping("/findByDurre/{duree}")
