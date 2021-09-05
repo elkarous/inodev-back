@@ -18,9 +18,13 @@ import java.util.Optional;
 public interface OfferRepository extends JpaRepository<OfferEntity, Integer> {
 
 	Optional<OfferEntity> findById(String offerId);
+
 	
 	
    // List findBysearch(@Param(value = "specialite")String nom, @Param(value = "niveau")String niveau);
+
+
+	Optional<OfferEntity> findByAcronym(String offerId);
 
 	/*
     OffreEntity findByOffreId(@Param(value = "id") String id);

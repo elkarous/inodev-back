@@ -15,10 +15,6 @@ public interface OfferService {
 
 	OfferDto createOffre(OfferDto offerDto);
 
-	
-
-
-
 	void deleteOffre(int OfferId);
 
 	OfferDto updateOffre(int Id, OfferDto OfferDto);

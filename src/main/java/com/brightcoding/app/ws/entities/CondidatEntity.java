@@ -38,7 +38,8 @@ public class CondidatEntity  implements Serializable {
     private String nationality;
     @Column(nullable=true)
     private AuthProvider authProvider;
-   
+    @Column(nullable=true)
+    private boolean recommended=false;
 	@Column(nullable=true)
 	private String userId;
     @Column(nullable=true, length=50)
@@ -89,7 +90,18 @@ public class CondidatEntity  implements Serializable {
 	}
 
 
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
+
+	public boolean isRecommended() {
+		return recommended;
+	}
+
+
+	public void setRecommended(boolean recommended) {
+		this.recommended = recommended;
+	}
+
 
 
 	public void setOrigins(List<OriginEntity> origins) {

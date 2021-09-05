@@ -68,7 +68,7 @@ public class CondidatController {
 
      @PostMapping("/add")
     public CondidatDto createCondidat(  @RequestBody CondidatDto condidatDto) {
-    	 condidatDto.setRole(Role.Admin);
+    	
          return condidatService.createCondidat(condidatDto);
 
 

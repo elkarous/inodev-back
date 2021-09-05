@@ -1,5 +1,7 @@
 package com.brightcoding.app.ws.controllers;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.brightcoding.app.ws.shared.dto.ProjectDto;
+import com.brightcoding.app.ws.entities.OfferEntity;
+import com.brightcoding.app.ws.entities.Project;
 import com.brightcoding.app.ws.repositories.ProjectRepository;
 import com.brightcoding.app.ws.services.ProjectService;
 
@@ -51,5 +55,10 @@ public class ProjectController {
 		public ProjectDto updateProject( @PathVariable ("id" ) Long id, @RequestBody ProjectDto ProjectDto) {
 			return projectService.updateproject(id, ProjectDto);
 		}
+	    @GetMapping(path="/Imgarticles/{id}")
+	    public byte[] getPhoto(@PathVariable("id") Long id) throws Exception{
+	        Project offer= repository.findById(id).get();
+	        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/spe/"+offer.getNom()));
+	    }
 	    
 }

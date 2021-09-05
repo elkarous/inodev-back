@@ -1,5 +1,6 @@
 package com.brightcoding.app.ws.entities;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -49,19 +50,44 @@ public class OfferEntity implements Serializable {
     private Long prix;
     private String supervisor;
     private String processus;
-    @OneToOne(cascade = CascadeType.ALL )
-    CondidatOffreEntity condidatoffre;
+    
     @OneToMany(cascade = CascadeType.ALL )
     private List<SkillsEntity> skills;
   
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     private List<Event> event;
-   
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CondidatOffreEntity> candidtes;
 
 
   //getter and setters
+ public List<CondidatOffreEntity> getCandidtes() {
+		return candidtes;
+	}
 
-	
+	public void setCandidtes(List<CondidatOffreEntity> candidtes) {
+		this.candidtes = candidtes;
+	}
+
+	public String getOfferId() {
+		return offerId;
+	}
+
+	public void setOfferId(String offerId) {
+		this.offerId = offerId;
+	}
+
+	public String getOrganisation() {
+		return organisation;
+	}
+
+	public void setOrganisation(String organisation) {
+		this.organisation = organisation;
+	}
+
+
+
+
 
     public Integer getId() {
         return id;
@@ -206,18 +232,12 @@ public class OfferEntity implements Serializable {
 		this.prix = prix;
 		this.supervisor = supervisor;
 		this.processus = processus;
-		this.condidatoffre = condidatoffre;
+	
 		this.skills = skills;
 		this.event = event;
 	}
 
-	public CondidatOffreEntity getCondidatoffre() {
-		return condidatoffre;
-	}
 
-	public void setCondidatoffre(CondidatOffreEntity condidatoffre) {
-		this.condidatoffre = condidatoffre;
-	}
 
 	public List<SkillsEntity> getSkills() {
         return skills;
