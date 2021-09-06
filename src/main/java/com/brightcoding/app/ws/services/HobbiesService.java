@@ -11,6 +11,8 @@ public interface HobbiesService {
 
     HobbiesDto getHobbies(Long HobbiesId);
     HobbiesDto updateHobbies(Long Id, HobbiesDto HobbiesDto);
-    void deleteHobbies(long HobbiesId);
+  
+
+	void deleteHobbies(Long id, Long idCondidat);
 
 }

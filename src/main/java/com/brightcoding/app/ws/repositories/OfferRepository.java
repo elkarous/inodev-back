@@ -3,6 +3,8 @@ package com.brightcoding.app.ws.repositories;
 import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.SubDecipline;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +18,14 @@ import java.util.Optional;
 public interface OfferRepository extends JpaRepository<OfferEntity, Integer> {
 
 	Optional<OfferEntity> findById(String offerId);
+
+	
+	
+   // List findBysearch(@Param(value = "specialite")String nom, @Param(value = "niveau")String niveau);
+
+
+	Optional<OfferEntity> findByAcronym(String offerId);
+
 	/*
     OffreEntity findByOffreId(@Param(value = "id") String id);
     /*@Query("SELECT t FROM OffreEntity t where t.id = :id")
@@ -72,6 +82,15 @@ public interface OfferRepository extends JpaRepository<OfferEntity, Integer> {
             "where t.duree = :duree and t.type = :type and t.dateFin >= current_date")
     List findBynsnull(@Param(value = "duree")String duree, @Param(value = "type")String type);*/
 
+	List<OfferEntity> findByNiveau(String niveau);
+
+	List<OfferEntity> findByDuree(String duree);
+
+
+	List<OfferEntity> findBySupervisor(String supervisor);
+
+
+	
 	
  	
 

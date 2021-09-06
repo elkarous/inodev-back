@@ -31,7 +31,7 @@ public class Project implements Serializable{
 		 @Temporal(TemporalType.DATE)
 		    private Date endDate;
 
-		 private String partener;
+		
 		 private String orginistaion;
 
 		 
@@ -113,13 +113,7 @@ public class Project implements Serializable{
 			this.offers = offers;
 		}
 
-		public String getPartener() {
-			return partener;
-		}
-
-		public void setPartener(String partener) {
-			this.partener = partener;
-		}
+	
 
 		public String getOrginistaion() {
 			return orginistaion;

@@ -1,5 +1,6 @@
 package com.brightcoding.app.ws.entities;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -47,18 +48,20 @@ public class OfferEntity implements Serializable {
     private String duree;
     private String niveau;
     private Long prix;
+
     private String priceDetails;
     
 
-	private Long supervisor;
+
+    private String supervisor;
     private String processus;
-    @OneToOne(cascade = CascadeType.ALL )
-    CondidatOffreEntity condidatoffre;
+    
     @OneToMany(cascade = CascadeType.ALL )
     private List<SkillsEntity> skills;
   
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     private List<Event> event;
+
     
     @OneToMany
     List<DocumentEntity> documents;
@@ -78,26 +81,58 @@ public class OfferEntity implements Serializable {
 		return priceDetails;
 	}
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CondidatOffreEntity> candidtes;
+
+
 	public void setPriceDetails(String priceDetails) {
 		this.priceDetails = priceDetails;
 	}
 
 
-  
+  //getter and setters
+ public List<CondidatOffreEntity> getCandidtes() {
+		return candidtes;
+	}
 
-	public Long getSupervisor() {
-        return supervisor;
-    }
+	public void setCandidtes(List<CondidatOffreEntity> candidtes) {
+		this.candidtes = candidtes;
+	}
 
-    public void setSupervisor(Long supervisor) {
-        this.supervisor = supervisor;
-    }
+	public String getOfferId() {
+		return offerId;
+	}
+
+	public void setOfferId(String offerId) {
+		this.offerId = offerId;
+	}
+
+	public String getOrganisation() {
+		return organisation;
+	}
+
+	public void setOrganisation(String organisation) {
+		this.organisation = organisation;
+	}
+
+
+
+
+
 
     public Integer getId() {
         return id;
     }
 
-    public List<Event> getEvent() {
+    public String getSupervisor() {
+		return supervisor;
+	}
+
+	public void setSupervisor(String supervisor) {
+		this.supervisor = supervisor;
+	}
+
+	public List<Event> getEvent() {
         return event;
     }
 
@@ -209,7 +244,7 @@ public class OfferEntity implements Serializable {
 
     public OfferEntity(Integer id, String image, String acronym, String type, String offerId, String nom,
 			 Date dateDebut, Date dateFin, String description, String video, String duree,
-			String niveau, Long prix, Long supervisor, String processus, CondidatOffreEntity condidatoffre,
+			String niveau, Long prix, String supervisor, String processus, CondidatOffreEntity condidatoffre,
 			List<SkillsEntity> skills, List<Event> event) {
 		super();
 		this.id = id;
@@ -228,18 +263,12 @@ public class OfferEntity implements Serializable {
 		this.prix = prix;
 		this.supervisor = supervisor;
 		this.processus = processus;
-		this.condidatoffre = condidatoffre;
+	
 		this.skills = skills;
 		this.event = event;
 	}
 
-	public CondidatOffreEntity getCondidatoffre() {
-		return condidatoffre;
-	}
 
-	public void setCondidatoffre(CondidatOffreEntity condidatoffre) {
-		this.condidatoffre = condidatoffre;
-	}
 
 	public List<SkillsEntity> getSkills() {
         return skills;

@@ -66,7 +66,13 @@ public class QuestionController {
     }
 
     //http://localhost:8081/question/{id}
-
+    
+    @DeleteMapping("/{idCondidat}/{id}")
+   	@ResponseBody 
+   	public void deleteQuestion(@PathVariable("idCondidat") Long idCondidat,@PathVariable("id") int id ){
+       	educationService.deleteQuestion(id,idCondidat);
+   	}
+/*
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteQuestion(@PathVariable(name="id") String educationId) {
 
@@ -74,6 +80,7 @@ public class QuestionController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    */
     //http://localhost:8081/question/{id}
     @PutMapping(
             path="/{id}",

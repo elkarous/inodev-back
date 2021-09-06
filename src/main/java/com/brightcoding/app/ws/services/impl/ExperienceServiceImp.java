@@ -1,6 +1,7 @@
 package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.EducationEntity;
 import com.brightcoding.app.ws.entities.ExperienceEntity;
 import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
@@ -79,6 +80,14 @@ public class ExperienceServiceImp implements ExperienceService {
     }
 
     @Override
+    public void deleteExperience(int id,Long idCondidat) {
+    	ExperienceEntity experience=experienceRepository.findById(id).get();
+    	CondidatEntity condidat=condidatRepository.findById(idCondidat).get();
+    	condidat.getEducation().remove(experience);
+    	condidatRepository.save(condidat);
+		
+	}
+    /*
     public void deleteExperience(String experienceId) {
 
         ExperienceEntity education = experienceRepository.findByExperienceId(experienceId);
@@ -87,7 +96,7 @@ public class ExperienceServiceImp implements ExperienceService {
 
         experienceRepository.delete(education);
 
-    }
+    }*/
     @Override
     public ExperienceDto updateExperience(String id, ExperienceDto educationDto) {
 

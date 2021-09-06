@@ -11,5 +11,7 @@ public interface SkillsService {
 
     SkillsDto getSkills(String skillsId);
     SkillsDto updateSkills(String Id, SkillsDto skillsDto);
-    void deleteSkills(String skillsId);
+   
+
+	void deleteSkills(int id, Long idCondidat);
 }

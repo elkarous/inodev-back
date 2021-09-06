@@ -90,6 +90,14 @@ public class SkillsController {
 
 
     //http://localhost:8081/skills/{id}
+    
+    
+    @DeleteMapping("/{idCondidat}/{id}")
+   	@ResponseBody 
+   	public void deleteSkills(@PathVariable("idCondidat") Long idCondidat,@PathVariable("id") int id ){
+       	educationService.deleteSkills(id,idCondidat);
+   	}
+    /*
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteSkills(@PathVariable(name="id") String educationId) {
 
@@ -97,6 +105,7 @@ public class SkillsController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    */
     //http://localhost:8081/skills/{id}
     @PutMapping(
             path="/{id}",

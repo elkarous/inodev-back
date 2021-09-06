@@ -170,14 +170,22 @@ public class DocumentController {
     }
 
   //http://localhost:8081/document/{id}
+    
+    
+    @DeleteMapping("/{idCondidat}/{id}")
+	@ResponseBody 
+	public void deleteDocument(@PathVariable("idCondidat") Long idCondidat,@PathVariable("id") int id ){
+    	educationService.deleteDocument(id,idCondidat);
+	}
 
-    @DeleteMapping("/{id}")
+
+  /*  @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDocument(@PathVariable(name="id") String educationId) {
 
         educationService.deleteDocument(educationId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    }*/
   //http://localhost:8081/document/{id}
 
     @PutMapping(

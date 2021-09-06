@@ -14,4 +14,13 @@ public interface DocumentService {
     void deleteDocument(String documentId);
 
 	DocumentDto createDocument(DocumentDto document);
+
+  //  void deleteDocument(String documentId);
+
+	
+
+	
+
+	void deleteDocument(int id, Long idCondidat);
+
 }

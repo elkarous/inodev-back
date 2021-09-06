@@ -8,116 +8,134 @@ import com.brightcoding.app.ws.entities.AnneeEducationEntity;
 import java.util.Date;
 import java.util.List;
 
+
+
 public class EducationDto
 {
 
 
 
-   
-    private long id;
-    private String nomFaculte;
-    private String pays;
-    private Date dateDebut;
-    private Date dateFin;
-    private String nomDiplome;
-    private String specialite;
-    private String niveau;
-   
-    List<AnneeEducationEntity> annees;
-    
-    
-    public List<AnneeEducationEntity> getAnnees() {
-		return annees;
-	}
+	    private long id;
+	    private String nomFaculte;
+	    private String pays;
 
-	public void setAnnees(List<AnneeEducationEntity> annees) {
-		this.annees = annees;
-	}
+	    
+	    private Date dateDebut;
+	    private Date dateFin;
+	    private String nomDiplome;
+	    private String specialite;
+	    private String niveau;
+	    
+	
+	 private   List<AnneeEducationEntity> annees;
+	  //getter and setters
+	    
+	    public List<AnneeEducationEntity> getAnnees() {
+			return annees;
+		}
 
+		public void setAnnees(List<AnneeEducationEntity> annees) {
+			this.annees = annees;
+		}
 
-    private String educationId;
-	private Object condidat;
-
-
-    public String getEducationId() {
-        return educationId;
-    }
-
-    public void setEducationId(String educationId) {
-        this.educationId = educationId;
-    }
+	
+	    private String educationId;
 
 
+	    public String getEducationId() {
+	        return educationId;
+	    }
+
+	    public void setEducationId(String educationId) {
+	        this.educationId = educationId;
+	    }
 
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public String getNomFaculte() {
-        return nomFaculte;
-    }
-   
-    public void setNomFaculte(String nomFaculte) {
-        this.nomFaculte = nomFaculte;
-    }
+	    public long getId() {
+	        return id;
+	    }
 
-    public String getPays() {
-        return pays;
-    }
+	    public void setId(long id) {
+	        this.id = id;
+	    }
 
-    public void setPays(String pays) {
-        this.pays = pays;
-    }
+	    public String getNomFaculte() {
+	        return nomFaculte;
+	    }
+	   
+	    public void setNomFaculte(String nomFaculte) {
+	        this.nomFaculte = nomFaculte;
+	    }
 
-    public Date getDateDebut() {
-        return dateDebut;
-    }
+	    public String getPays() {
+	        return pays;
+	    }
 
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
+	    public void setPays(String pays) {
+	        this.pays = pays;
+	    }
 
-    public Date getDateFin() {
-        return dateFin;
-    }
+	    public Date getDateDebut() {
+	        return dateDebut;
+	    }
 
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
-    }
+	    public void setDateDebut(Date dateDebut) {
+	        this.dateDebut = dateDebut;
+	    }
 
-    public String getNomDiplome() {
-        return nomDiplome;
-    }
+	    public Date getDateFin() {
+	        return dateFin;
+	    }
 
-    public void setNomDiplome(String nomDiplome) {
-        this.nomDiplome = nomDiplome;
-    }
+	    public void setDateFin(Date dateFin) {
+	        this.dateFin = dateFin;
+	    }
 
-    public String getSpecialite() {
-        return specialite;
-    }
+	    public String getNomDiplome() {
+	        return nomDiplome;
+	    }
 
-    public void setSpecialite(String specialite) {
-        this.specialite = specialite;
-    }
+	    public void setNomDiplome(String nomDiplome) {
+	        this.nomDiplome = nomDiplome;
+	    }
 
-    public String getNiveau() {
-        return niveau;
-    }
+	    public String getSpecialite() {
+	        return specialite;
+	    }
 
-    public void setNiveau(String niveau) {
-        this.niveau = niveau;
-    }
+	    public void setSpecialite(String specialite) {
+	        this.specialite = specialite;
+	    }
 
-	public void setCondidat(CondidatDto condidatDto) {
-		this.condidat = condidat;
-		
-	}
-    
+	    public String getNiveau() {
+	        return niveau;
+	    }
+
+	    public void setNiveau(String niveau) {
+	        this.niveau = niveau;
+	    }
+
+		public EducationDto(long id, String nomFaculte, String pays, Date dateDebut, Date dateFin, String nomDiplome,
+				String specialite, String niveau, List<AnneeEducationEntity> annees, String educationId) {
+			super();
+			this.id = id;
+			this.nomFaculte = nomFaculte;
+			this.pays = pays;
+			this.dateDebut = dateDebut;
+			this.dateFin = dateFin;
+			this.nomDiplome = nomDiplome;
+			this.specialite = specialite;
+			this.niveau = niveau;
+			this.annees = annees;
+			this.educationId = educationId;
+		}
+
+		public EducationDto() {
+			// TODO Auto-generated constructor stub
+		}
+	    
+	    
     
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.brightcoding.app.ws.entities.AnneeEducationEntity;
 import com.brightcoding.app.ws.entities.CondidatOffreEntity;
 import com.brightcoding.app.ws.entities.EducationEntity;
+import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.repositories.CondidatOffreRepository;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.EducationRepository;
@@ -54,11 +55,14 @@ public class NoteServiceImpl implements NoteService{
 		CondidatOffreEntity condidatOffreEntity=new CondidatOffreEntity ();
 
 		condidatOffreEntity.setCondidatEntity(condidatRepository.findById(id).get());
-		condidatOffreEntity.setOffer(offreRepository.findById(offerid).get());
+	
 
 		condidatOffreEntity.setNote(calculNote(id)*3);
 				
 		condidatOffreRepository.save(condidatOffreEntity);
+		OfferEntity offer =offreRepository.findById(offerid).get();
+	offer.getCandidtes().add(condidatOffreEntity);
+	offreRepository.save(offer);
 		return condidatOffreEntity ;
 		
 	}

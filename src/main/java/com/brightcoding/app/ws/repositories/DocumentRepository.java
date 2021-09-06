@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface DocumentRepository extends CrudRepository<DocumentEntity, Long> {
+public interface DocumentRepository extends CrudRepository<DocumentEntity, Integer> {
    // List<DocumentEntity> findByCondidat(CondidatEntity currentCondidat);
 
     DocumentEntity findByDocumentId(String documentId);

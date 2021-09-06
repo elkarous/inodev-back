@@ -11,5 +11,7 @@ public interface ExperienceService {
 
     ExperienceDto getExperience(String experienceId);
     ExperienceDto updateExperience(String Id, ExperienceDto experienceDto);
-    void deleteExperience(String experienceId);
+  
+
+	void deleteExperience(int id, Long idCondidat);
 }

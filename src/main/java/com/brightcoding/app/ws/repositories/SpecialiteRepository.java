@@ -2,6 +2,7 @@ package com.brightcoding.app.ws.repositories;
 
 import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
+import com.brightcoding.app.ws.entities.SubDecipline;
 import com.brightcoding.app.ws.responses.SpecialiteResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,5 @@ public interface SpecialiteRepository extends JpaRepository<SpecialiteEntity, In
    
     @Query("SELECT MAX (t.id) FROM OfferEntity t")
     Integer maxId();
+	SpecialiteEntity findByNom(String nom);
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,8 +31,9 @@ public class EducationEntity implements Serializable {
     private String specialite;
     private String niveau;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    List<AnneeEducationEntity> annees;
+    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY, orphanRemoval = true
+)
+    private List<AnneeEducationEntity> annees;
   //getter and setters
     
     public List<AnneeEducationEntity> getAnnees() {
@@ -120,6 +122,25 @@ public class EducationEntity implements Serializable {
     public void setNiveau(String niveau) {
         this.niveau = niveau;
     }
+
+	public EducationEntity() {
+		super();
+	}
+
+	public EducationEntity(long id, String nomFaculte, String pays, Date dateDebut, Date dateFin, String nomDiplome,
+			String specialite, String niveau, List<AnneeEducationEntity> annees, String educationId) {
+		super();
+		this.id = id;
+		this.nomFaculte = nomFaculte;
+		this.pays = pays;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.nomDiplome = nomDiplome;
+		this.specialite = specialite;
+		this.niveau = niveau;
+		this.annees = annees;
+		this.educationId = educationId;
+	}
     
     
 

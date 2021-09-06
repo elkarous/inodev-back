@@ -1,5 +1,6 @@
 package com.brightcoding.app.ws.services;
 
+import com.brightcoding.app.ws.entities.EducationEntity;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import com.brightcoding.app.ws.shared.dto.EducationDto;
 
@@ -12,5 +13,15 @@ public interface EducationService {
 
     EducationDto getEducation(String educationId);
     EducationDto updateEducation(String Id, EducationDto educationDto);
-    void deleteEducation(String educationId);
+   // void deleteEducation(String educationId);
+
+	
+
+	
+
+	void deleteEducation(long id);
+
+	void deleteEducation(Long id, Long idCondidat);
+
+
 }

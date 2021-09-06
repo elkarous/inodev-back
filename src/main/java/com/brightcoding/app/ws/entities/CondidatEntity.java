@@ -38,7 +38,8 @@ public class CondidatEntity  implements Serializable {
     private String nationality;
     @Column(nullable=true)
     private AuthProvider authProvider;
-   
+    @Column(nullable=true)
+    private boolean recommended=false;
 	@Column(nullable=true)
 	private String userId;
     @Column(nullable=true, length=50)
@@ -66,20 +67,20 @@ public class CondidatEntity  implements Serializable {
     private String photo;
     @Column(nullable=true)
     private   Application application;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
     private List<EducationEntity> education;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExperienceEntity> experience;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
     private List<SkillsEntity> skills;
-    @OneToOne(cascade = CascadeType.ALL )
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
     CondidatOffreEntity condidatoffre;
 
   
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> question;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
     private List<DocumentEntity> document;
     @OneToMany(cascade = CascadeType.ALL )
     private List<OriginEntity> origins;
@@ -89,11 +90,26 @@ public class CondidatEntity  implements Serializable {
 	}
 
 
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
+
+	public boolean isRecommended() {
+		return recommended;
+	}
+
+
+	public void setRecommended(boolean recommended) {
+		this.recommended = recommended;
+	}
+
+
+
 	public void setOrigins(List<OriginEntity> origins) {
 		this.origins = origins;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL )
+
 
     private List<Hobbies> hobbies ;
     

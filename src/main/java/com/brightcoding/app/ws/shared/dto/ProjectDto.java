@@ -17,7 +17,7 @@ public class ProjectDto {
 		 private String acronyme;
 		 private String partenar;
 		 private Date endDate;
-		
+		private String orginistaion;
 		 public String getPartenar() {
 			return partenar;
 		}
@@ -109,6 +109,16 @@ public class ProjectDto {
 
 		public void setOffers(List<OfferDto> offers) {
 			this.offers = offers;
+		}
+
+
+		public String getOrginistaion() {
+			return orginistaion;
+		}
+
+
+		public void setOrginistaion(String orginistaion) {
+			this.orginistaion = orginistaion;
 		}
 
 	}

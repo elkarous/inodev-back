@@ -140,9 +140,9 @@ public class CondidatServiceImp implements CondidatService {
 
             condidatEntity.setUserId(util.generateStringId(32));
 
-            CondidatEntity newCondidat = condidatRepository.save(condidatEntity);
+             condidatRepository.save(condidatEntity);
 
-            CondidatDto condidatDto =  modelMapper.map(newCondidat, CondidatDto.class);
+          
         	
         
         

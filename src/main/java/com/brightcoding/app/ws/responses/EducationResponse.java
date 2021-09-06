@@ -1,5 +1,6 @@
 package com.brightcoding.app.ws.responses;
 
+import com.brightcoding.app.ws.entities.AnneeEducationEntity;
 import com.brightcoding.app.ws.entities.EducationEntity;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
 
@@ -8,9 +9,33 @@ import java.util.List;
 
 public class EducationResponse {
 
-    private Integer id;
+
+    private long id;
     private String nomFaculte;
+    private String pays;
+
+    
+    private Date dateDebut;
+    private Date dateFin;
+    private String nomDiplome;
+    private String specialite;
+    private String niveau;
+    
+
+    private List<AnneeEducationEntity> annees;
+  //getter and setters
+    
+    public List<AnneeEducationEntity> getAnnees() {
+		return annees;
+	}
+
+	public void setAnnees(List<AnneeEducationEntity> annees) {
+		this.annees = annees;
+	}
+
+
     private String educationId;
+
 
     public String getEducationId() {
         return educationId;
@@ -20,34 +45,21 @@ public class EducationResponse {
         this.educationId = educationId;
     }
 
-    private String pays;
-    private Date dateDebut;
-    private Date dateFin;
-    private String nomDiplome;
-    private String specialite;
-    private String niveau;
 
-    public CondidatResponse getCondidatResponse() {
-        return condidatResponse;
-    }
 
-    public void setCondidatResponse(CondidatResponse condidatResponse) {
-        this.condidatResponse = condidatResponse;
-    }
 
-    private CondidatResponse condidatResponse;
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
     public String getNomFaculte() {
         return nomFaculte;
     }
-
+   
     public void setNomFaculte(String nomFaculte) {
         this.nomFaculte = nomFaculte;
     }
@@ -100,4 +112,24 @@ public class EducationResponse {
         this.niveau = niveau;
     }
 
+	public EducationResponse(long id, String nomFaculte, String pays, Date dateDebut, Date dateFin, String nomDiplome,
+			String specialite, String niveau, List<AnneeEducationEntity> annees, String educationId) {
+		super();
+		this.id = id;
+		this.nomFaculte = nomFaculte;
+		this.pays = pays;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.nomDiplome = nomDiplome;
+		this.specialite = specialite;
+		this.niveau = niveau;
+		this.annees = annees;
+		this.educationId = educationId;
+	}
+
+	public EducationResponse() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    
 }

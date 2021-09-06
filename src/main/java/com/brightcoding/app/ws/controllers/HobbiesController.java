@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brightcoding.app.ws.entities.Hobbies;
@@ -45,10 +46,22 @@ public class HobbiesController {
 	}
 	//http://localhost:8081/hobbies/{id}
 	//delete hobbies by id 
+	
+	 @DeleteMapping("/{idCondidat}/{id}")
+		@ResponseBody 
+		public void deleteHobbies(@PathVariable("idCondidat") Long idCondidat,@PathVariable("id") long id ){
+		 hobbiesService.deleteHobbies(id,idCondidat);
+		}
+
+	    
+	
+	
+	/*
 	@DeleteMapping("/{id}")
 	public void deleteHobbies(long id) {
 		 hobbiesService.deleteHobbies(id);
 	}
+	*/
 	//http://localhost:8081/hobbies/{id}
 	//update one hobbies
 	@PutMapping("/{id}")

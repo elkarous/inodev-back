@@ -46,29 +46,27 @@ public class SpecialiteController {
     Utils util;
   //http://localhost:8081/specialite
     @GetMapping
-    public List getAllspef() {
+    public List<SpecialiteEntity> getAllspef() {
     
-        List offres = repository.findAll();
+    	List<SpecialiteEntity> offres = repository.findAll();
 
         return offres;
     }
     //http://localhost:8081/specialite/a/{name}
     @GetMapping("/a/{name}")
-    public List getNom(@PathVariable(value = "name")String name)
+    public List<SpecialiteEntity> getNom(@PathVariable(value = "name")String name)
     {
         List offre = new ArrayList<>();
         repository.findByName(name) .forEach(offre::add);
 
         return offre;
     }
-  /*  @GetMapping("/o/{id}")
-    public List getofrreID(@PathVariable(value = "id")Integer id)
-    {
-        List offre = new ArrayList<>();
-        repository.findByoffreID(id).forEach(offre::add);
-
-        return offre;
-    }*/
+ 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id")int id ) {
+    	repository.deleteById(id);
+    }
+    
   //http://localhost:8081/specialite/getAll
     @GetMapping ("/getAll")
     public ResponseEntity<List<String>> getAll()
@@ -155,14 +153,8 @@ public class SpecialiteController {
         SpecialiteEntity offre = repository.findById(id).get();
         return Files.readAllBytes(Paths.get("D:/inodev/inodev-back/src/web/spe/"+offre.getImage()));
     }
-  //http://localhost:8081/specialite/{id}
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable(value = "id") String Id)
-    {
-        SpecialiteEntity off = repository.findBySpecialiteId(Id);
-        repository.delete(off);
-        return ("ok");
-    }
+
+   
   //http://localhost:8081/specialite/edit/{id}
     @PutMapping("edit/{id}")
     public String update(@PathVariable("id") String id, @RequestBody SpecialiteEntity specialite) {
