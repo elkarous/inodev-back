@@ -18,8 +18,17 @@ public class DocumentEntity implements Serializable{
     private Integer id;
     private String  documentId;
     private String nom;
+    private String type;
  
   //getter and setters
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public Integer getId() {
         return id;

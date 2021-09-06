@@ -7,7 +7,10 @@ public class DocumentDto {
     private Integer id;
     private String  documentId;
     private String nom;
-    private CondidatDto condidat;
+    private String type;
+    
+
+	private CondidatDto condidat;
 
     public Integer getId() {
         return id;
@@ -24,6 +27,13 @@ public class DocumentDto {
     public void setDocumentId(String documentId) {
         this.documentId = documentId;
     }
+    public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
     public String getNom() {
         return nom;

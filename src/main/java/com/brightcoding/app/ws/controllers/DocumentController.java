@@ -1,5 +1,7 @@
 package com.brightcoding.app.ws.controllers;
 
+import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.DocumentEntity;
 import com.brightcoding.app.ws.entities.OfferEntity;
 import com.brightcoding.app.ws.repositories.DocumentRepository;
 import com.brightcoding.app.ws.requests.DocumentRequest;
@@ -8,6 +10,10 @@ import com.brightcoding.app.ws.responses.UserResponse;
 import com.brightcoding.app.ws.services.DocumentService;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
 import com.brightcoding.app.ws.shared.dto.DocumentDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.modelmapper.ModelMapper;
@@ -76,15 +82,16 @@ public class DocumentController {
   //http://localhost:8081/document
 
     @PostMapping(
-            consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
-            produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
+        
     )
-    public ResponseEntity<DocumentResponse> StoreEducation(@RequestPart("file") MultipartFile file, Principal principale) {
-        boolean isExit = new File(context.getRealPath("src/web/doc/")).exists();
+    public DocumentDto StoreEducation(@RequestPart("file") MultipartFile file, @RequestPart(value = "body") String principale) throws JsonMappingException, JsonProcessingException {
+    	DocumentDto educationDto = new ObjectMapper().readValue(principale, DocumentDto.class);
+
+    	boolean isExit = new File(context.getRealPath("src/web/doc/")).exists();
         if (!isExit)
         {
             new File (context.getRealPath("src/web/doc/")).mkdir();
-            System.out.println("mk dir.............");
+            
         }
         if (file.getName() != null) {
             String filename = file.getOriginalFilename();
@@ -93,7 +100,7 @@ public class DocumentController {
             String distfile = "src/web/doc/"+ file.getOriginalFilename();
             try
             {
-                System.out.println("Image");
+               
                 FileUtils.writeByteArrayToFile(serverFile,file.getBytes());
                 Files.copy(file.getInputStream(),
                         Paths.get(distfile),
@@ -103,32 +110,25 @@ public class DocumentController {
                 e.printStackTrace();
             }
         }
-        ModelMapper modelMapper = new ModelMapper();
+      
 
-        DocumentDto educationDto = modelMapper.map(file, DocumentDto.class);
         educationDto.setNom(file.getOriginalFilename());
-
-        DocumentDto createEducation = educationService.createDocument(educationDto, principale.getName());
+      
+        DocumentDto createEducation = educationService.createDocument(educationDto);
         createEducation.setNom(file.getOriginalFilename());
 
-        DocumentResponse newEducation = modelMapper.map(createEducation, DocumentResponse.class);
+        
 
-        newEducation.setNom(file.getOriginalFilename());
-        return new ResponseEntity<DocumentResponse>(newEducation, HttpStatus.CREATED);
+        return createEducation;
     }
   //http://localhost:8081/document/{id}
 
 
     @GetMapping("/{id}")
-    public  ResponseEntity<DocumentResponse> getOneDocument(@PathVariable(name="id") String educationId) {
+    public  DocumentDto getOneDocument(@PathVariable(name="id") String educationId) {
 
-        DocumentDto educationDto = educationService.getDocument(educationId);
+    	return educationService.getDocument(educationId);
 
-        ModelMapper modelMapper = new ModelMapper();
-
-        DocumentResponse educationResponse = modelMapper.map(educationDto, DocumentResponse.class);
-
-        return new ResponseEntity<DocumentResponse>(educationResponse, HttpStatus.OK);
     }
   //http://localhost:8081/document/doc/{id}
 

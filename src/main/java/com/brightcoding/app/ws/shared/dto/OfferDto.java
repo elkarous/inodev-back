@@ -26,9 +26,18 @@ public class OfferDto {
 	    private String offerId;
 	    private String nom;
 	    private String organisation;
+	    private String priceDetails;
 
 	  
-	    private Date dateDebut;
+	    public String getPriceDetails() {
+			return priceDetails;
+		}
+
+		public void setPriceDetails(String priceDetails) {
+			this.priceDetails = priceDetails;
+		}
+
+		private Date dateDebut;
 	    private Date startdateoffer;
 	    public Date getStartdateoffer() {
 			return startdateoffer;
@@ -49,8 +58,17 @@ public class OfferDto {
 	  
 	    List<CondidatOffreDto> condidatoffre;
 	    private List<SkillsDto> skills;
+	    private List<DocumentDto> documents;
 	
-	   private Project project;
+	   public List<DocumentDto> getDocuments() {
+			return documents;
+		}
+
+		public void setDocuments(List<DocumentDto> documents) {
+			this.documents = documents;
+		}
+
+	private Project project;
 	   
 	    private List<Event> event;
 	  

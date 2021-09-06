@@ -3,6 +3,8 @@ package com.brightcoding.app.ws.controllers;
 
 
 
+import com.brightcoding.app.ws.entities.OfferEntity;
+import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.services.OfferService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.brightcoding.app.ws.shared.dto.OfferDto;
 
-
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 @RestController

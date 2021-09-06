@@ -47,7 +47,10 @@ public class OfferEntity implements Serializable {
     private String duree;
     private String niveau;
     private Long prix;
-    private Long supervisor;
+    private String priceDetails;
+    
+
+	private Long supervisor;
     private String processus;
     @OneToOne(cascade = CascadeType.ALL )
     CondidatOffreEntity condidatoffre;
@@ -56,10 +59,31 @@ public class OfferEntity implements Serializable {
   
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     private List<Event> event;
-   
-
-
+    
+    @OneToMany
+    List<DocumentEntity> documents;
+    
   //getter and setters
+    
+    
+    public List<DocumentEntity> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(List<DocumentEntity> documents) {
+		this.documents = documents;
+	}
+   
+	public String getPriceDetails() {
+		return priceDetails;
+	}
+
+	public void setPriceDetails(String priceDetails) {
+		this.priceDetails = priceDetails;
+	}
+
+
+  
 
 	public Long getSupervisor() {
         return supervisor;

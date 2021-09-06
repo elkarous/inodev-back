@@ -46,14 +46,14 @@ public class DocumentServiceImp implements DocumentService {
 
 
     @Override
-    public DocumentDto createDocument(DocumentDto document, String email) {
+    public DocumentDto createDocument(DocumentDto document) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
+       
 
         ModelMapper modelMapper = new ModelMapper();
-        CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);
+       
         document.setDocumentId(util.generateStringId(30));
-        document.setCondidat(condidatDto);
+      
 
         DocumentEntity documentEntity = modelMapper.map(document, DocumentEntity.class);
 

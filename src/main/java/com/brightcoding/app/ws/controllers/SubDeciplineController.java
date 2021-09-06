@@ -133,8 +133,7 @@ public class SubDeciplineController {
 	@GetMapping("/sub/{subDecpline}")
 
 	//http://localhost:8081/subDecipline/{subDecpline}
-	@GetMapping("/{subDecpline}")
-
+	
 	public List<OfferEntity> findOffrebySub( @PathVariable("subDecpline") String nom) {
 		return subDeciplineService.findOffrebySub(nom);
 	}
