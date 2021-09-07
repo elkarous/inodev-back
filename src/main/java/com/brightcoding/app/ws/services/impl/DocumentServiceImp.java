@@ -2,6 +2,7 @@ package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.DocumentEntity;
+import com.brightcoding.app.ws.entities.EducationEntity;
 import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.repositories.DocumentRepository;
@@ -46,14 +47,14 @@ public class DocumentServiceImp implements DocumentService {
 
 
     @Override
-    public DocumentDto createDocument(DocumentDto document, String email) {
+    public DocumentDto createDocument(DocumentDto document) {
 
-        CondidatEntity currentCondidat = condidatRepository.findByEmail(email).get();
+       
 
         ModelMapper modelMapper = new ModelMapper();
-        CondidatDto condidatDto = modelMapper.map(currentCondidat, CondidatDto.class);
+       
         document.setDocumentId(util.generateStringId(30));
-        document.setCondidat(condidatDto);
+      
 
         DocumentEntity documentEntity = modelMapper.map(document, DocumentEntity.class);
 
@@ -78,7 +79,14 @@ public class DocumentServiceImp implements DocumentService {
     }
 
     @Override
-    public void deleteDocument(String documentId) {
+    public void deleteDocument(int id,Long idCondidat) {
+    	DocumentEntity document=documentRepository.findById(id).get();
+    	CondidatEntity condidat=condidatRepository.findById(idCondidat).get();
+    	condidat.getEducation().remove(document);
+    	condidatRepository.save(condidat);
+		
+	}
+  /*  public void deleteDocument(String documentId) {
 
         DocumentEntity document = documentRepository.findByDocumentId(documentId);
 
@@ -86,7 +94,7 @@ public class DocumentServiceImp implements DocumentService {
 
         documentRepository.delete(document);
 
-    }
+    }*/
     @Override
     public DocumentDto updateDocument(String id, DocumentDto documentDto) {
 

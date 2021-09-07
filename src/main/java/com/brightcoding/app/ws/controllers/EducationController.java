@@ -59,17 +59,16 @@ public class EducationController {
     @PostMapping(
            "/{id}"
     )
-    public ResponseEntity<EducationResponse> StoreEducation(@RequestBody EducationRequest educationRequest, @PathVariable("id") String principale) {
+    public EducationDto adddEducation(@PathVariable String id , @RequestBody EducationDto educationDto) {
 
-        ModelMapper modelMapper = new ModelMapper();
+        
 
-        EducationDto educationDto = modelMapper.map(educationRequest, EducationDto.class);
-        EducationDto createEducation = educationService.createEducation(educationDto,principale );
+        educationService.createEducation(educationDto, id);
+        
 
-        EducationResponse newEducation = modelMapper.map(createEducation, EducationResponse.class);
-
-        return new ResponseEntity<EducationResponse>(newEducation, HttpStatus.CREATED);
+        return educationDto;
     }
+
     //http://localhost:8081/users/education/{id}
 
     @GetMapping("/{id}")
@@ -85,15 +84,23 @@ public class EducationController {
     }
 
     //http://localhost:8081/users/education/{id}
+    @DeleteMapping("/{idCondidat}/{id}")
+	@ResponseBody 
+	public void deleteEducation(@PathVariable("idCondidat") Long idCondidat,@PathVariable("id") Long id ){
+    	educationService.deleteEducation(id,idCondidat);
+	}
 
-
+/*
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteEducation(@PathVariable(name="id") String educationId) {
+    public void deleteEducation(@PathVariable("id")long id) {
+    	educationService.deleteEducation(id);
+	}*/
+   /* public ResponseEntity<?> deleteEducation(@PathVariable(name="id") String educationId) {
 
         educationService.deleteEducation(educationId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    }*/
     //http://localhost:8081/users/education/{id}
 
     @PutMapping(
@@ -101,19 +108,15 @@ public class EducationController {
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
             produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}
     )
-    public ResponseEntity<EducationResponse> updateEducation(@PathVariable String id , @RequestBody EducationRequest educationRequest) {
+    public EducationDto updateEducation(@PathVariable String id , @RequestBody EducationDto educationDto) {
 
-        EducationDto educationDto = new EducationDto();
-
-        BeanUtils.copyProperties(educationRequest, educationDto);
+        
 
         EducationDto updateEducation = educationService.updateEducation(id, educationDto);
 
-        EducationResponse educationResponse = new EducationResponse();
+        
 
-        BeanUtils.copyProperties(updateEducation, educationResponse);
-
-        return new ResponseEntity<EducationResponse>(educationResponse, HttpStatus.ACCEPTED);
+        return educationDto;
     }
 
 }

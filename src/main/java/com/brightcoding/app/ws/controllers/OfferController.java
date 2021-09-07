@@ -3,8 +3,12 @@ package com.brightcoding.app.ws.controllers;
 
 
 
+
+
 import com.brightcoding.app.ws.entities.CondidatOffreEntity;
 import com.brightcoding.app.ws.entities.OfferEntity;
+
+
 
 import com.brightcoding.app.ws.repositories.OfferRepository;
 import com.brightcoding.app.ws.services.OfferService;
@@ -24,10 +28,14 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+
+
 import java.util.*;
 
 import javax.servlet.ServletContext;
@@ -38,11 +46,13 @@ public class OfferController {
 	@Autowired
 	OfferService offerService;
 	@Autowired
+
 	OfferRepository offerRepo;
 	 @Autowired
 	    Utils util;
 	 @Autowired
 	    ServletContext context;
+
 	//http://localhost:8081/offer
 	
 	//get all Offer 
@@ -67,7 +77,7 @@ public class OfferController {
 		//delete Offer by id 
 		@DeleteMapping("/{id}")
 		public void deleteOffre(@PathVariable("id")int id) {
-			 offerService.deleteOffre(id);;
+			 offerService.deleteOffre(id);
 		}
 		//http://localhost:8081/offer/{id}
 		//update one Offer
@@ -76,12 +86,21 @@ public class OfferController {
 			return offerService.updateOffre(Id, OfferDto);
 		}
 		
+
+	// find offer by specialite 
+		//http://localhost:8081/offer/{specialite}
+		@GetMapping("/getbyspe/{specialite}")
+		public List<OfferEntity> findOffrebySpe( @PathVariable("specialite") String nom) {
+			return offerService.findOffrebySpe(nom);
+		}
+
 		//get image de l'offer 
 		
 		 @GetMapping(path="/Imgarticles/{id}")
 		    public byte[] getPhoto(@PathVariable("id") int id) throws Exception{
-		        OfferEntity offer= offerRepo.findById(id).get();
+     OfferEntity offer= offerRepo.findById(id).get();
 		        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/spe/"+offer.getImage()));
+
 		    }
 		 
 		 @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
@@ -127,16 +146,113 @@ public class OfferController {
 			@GetMapping("/getCondidates/{acronym}")
 			public List<CondidatOffreEntity> getCondidatesByacromym( @PathVariable ("acronym") String acronym) {
 		
+
+
 				return offerRepo.findByAcronym(acronym).get().getCandidtes();
 			}
+
 	
 	
-	
-	
-	
-	
-	
-	
+		//http://localhost:8081/offer/findBy/{niveau}
+				//get Offer by niveau
+				@GetMapping("/findBy/{niveau}")
+				public List<OfferEntity> getOffreByNiveau( @PathVariable ("niveau") String niveau) {
+					return offerService.getOffreByNiveau(niveau);
+				}
+				// get offer by supervisor 
+				@GetMapping("/findBysupervisor/{supervisor}")
+				public List<OfferEntity> getOffreBySupervisor( @PathVariable ("supervisor") String supervisor) {
+					return offerService.getOffreBySupervisor(supervisor);
+				}
+				
+				// get offer by duree
+				//http://localhost:8081/offer/findByDurre/{duree}
+				@GetMapping("/findByDurre/{duree}")
+				public List<OfferEntity> getOffreByDuree( @PathVariable ("duree") String duree) {
+					return offerService.getOffreByDuree(duree);
+				}
+	// search offer
+	// 	http://localhost:8081/offer/search/{specialite}/{niveau}/{duree}
+				@GetMapping("/search/{specialite}/{duree}/{niveau}")
+				public List getBysearch(@PathVariable("specialite") String nom ,@PathVariable ("duree")String duree, @PathVariable("niveau") String niveau) 
+				{
+				   List offer = new ArrayList<>();
+		        if ((nom.contentEquals("null"))&& (niveau.contentEquals("null"))&& (duree.contentEquals("null"))) {
+		 
+		        	offerService.getAllOffre().forEach(offer::add);
+		        }
+		        else if (niveau.contentEquals("null") && duree.contentEquals("null"))
+		        {
+		             offer = offerService.findOffrebySpe(nom);
+					
+		        }
+		        else if (nom.contentEquals("null")&& duree.contentEquals("null"))
+		        {
+		        	
+		             offer = offerService.getOffreByNiveau(niveau);
+			        	System.out.println(niveau);
+		        }
+		        else if (nom.contentEquals("null")&& niveau.contentEquals("null"))
+		        {
+		             offer = offerService.getOffreByDuree(duree);
+		        }
+		        else if (nom.contentEquals("null"))
+		        {
+		    	
+		    		for(OfferEntity offerD : offerService.getOffreByDuree(duree)){
+			        	System.out.println(offerService.getOffreByDuree(duree));
+			        	System.out.println(offerD.getNiveau());
+		    			if(offerD.getNiveau().equals(niveau)) {
+		    				offer.add(offerD);
+				        
+
+		    			}
+		    		}
+		    		
+
+
+
+		        }
+		        else if (duree.contentEquals("null"))
+		        {
+		        	for(OfferEntity offerD : offerService.findOffrebySpe(nom)){
+			        	System.out.println(offerService.findOffrebySpe(nom));
+			        	System.out.println(offerD.getNiveau());
+		    			if(offerD.getNiveau().equals(niveau)) {
+		    				offer.add(offerD);
+				        
+
+		    			}
+		    		}
+		        }
+		        else if (niveau.contentEquals("null"))
+		        {
+		        	for(OfferEntity offerD : offerService.findOffrebySpe(nom)){
+			        	System.out.println(offerService.findOffrebySpe(nom));
+			        	System.out.println(offerD.getDuree());
+		    			if(offerD.getDuree().equals(duree)) {
+		    				offer.add(offerD);
+				        
+
+		    			}
+		    		}
+		        }
+		        else {
+
+
+		        	for(OfferEntity offerD : offerService.findOffrebySpe(nom)){
+			        	System.out.println(offerService.findOffrebySpe(nom));
+			        	System.out.println(offerD.getDuree());
+		    			if(offerD.getDuree().equals(duree) && offerD.getNiveau().equals(niveau)) {
+		    				offer.add(offerD);
+				        
+
+		    			}
+		    		}
+		        }
+		        return offer;
+				}
+}
 	
 	
 	
@@ -356,4 +472,4 @@ public class OfferController {
         return ("ok");
 
     }*/
-}
+

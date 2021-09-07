@@ -67,20 +67,19 @@ public class CondidatEntity  implements Serializable {
     private String photo;
     @Column(nullable=true)
     private   Application application;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
     private List<EducationEntity> education;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExperienceEntity> experience;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
     private List<SkillsEntity> skills;
-    @OneToMany(cascade = CascadeType.ALL )
-    private List<CondidatOffreEntity> condidatoffre;
+
 
   
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> question;
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
     private List<DocumentEntity> document;
     @OneToMany(cascade = CascadeType.ALL )
     private List<OriginEntity> origins;
@@ -89,6 +88,9 @@ public class CondidatEntity  implements Serializable {
 		return origins;
 	}
 
+
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
 
 	public boolean isRecommended() {
 		return recommended;
@@ -100,11 +102,13 @@ public class CondidatEntity  implements Serializable {
 	}
 
 
+
 	public void setOrigins(List<OriginEntity> origins) {
 		this.origins = origins;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL )
+
 
     private List<Hobbies> hobbies ;
     

@@ -134,7 +134,6 @@ public class SubDeciplineController {
 
 	//http://localhost:8081/subDecipline/{subDecpline}
 
-
 	public List<OfferEntity> findOffrebySub( @PathVariable("subDecpline") String nom) {
 		return subDeciplineService.findOffrebySub(nom);
 	}

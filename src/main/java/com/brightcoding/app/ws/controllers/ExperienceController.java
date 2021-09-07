@@ -79,6 +79,15 @@ public class ExperienceController {
     }
 
     //http://localhost:8081/experience/{id}
+    @DeleteMapping("/{idCondidat}/{id}")
+	@ResponseBody 
+	public void deleteExperience(@PathVariable("idCondidat") Long idCondidat,@PathVariable("id") int id ){
+    	educationService.deleteExperience(id,idCondidat);
+	}
+
+    
+    
+    /*
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteExperience(@PathVariable(name="id") String educationId) {
@@ -88,6 +97,8 @@ public class ExperienceController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     //http://localhost:8081/experience/{id}
+     * 
+     */
     @PutMapping(
             path="/{id}",
             consumes={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},

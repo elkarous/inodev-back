@@ -26,9 +26,18 @@ public class OfferDto {
 	    private String offerId;
 	    private String nom;
 	    private String organisation;
+	    private String priceDetails;
 
 	  
-	    private Date dateDebut;
+	    public String getPriceDetails() {
+			return priceDetails;
+		}
+
+		public void setPriceDetails(String priceDetails) {
+			this.priceDetails = priceDetails;
+		}
+
+		private Date dateDebut;
 	    private Date startdateoffer;
 	    public Date getStartdateoffer() {
 			return startdateoffer;
@@ -44,13 +53,22 @@ public class OfferDto {
 	    private String duree;
 	    private String niveau;
 	    private Long prix;
-	    private Long supervisor;
+	    private String supervisor;
 	    private String processus;
 	  
 	   private  List<CondidatOffreDto> candidtes;
 	    private List<SkillsDto> skills;
+	    private List<DocumentDto> documents;
 	
-	   private Project project;
+	   public List<DocumentDto> getDocuments() {
+			return documents;
+		}
+
+		public void setDocuments(List<DocumentDto> documents) {
+			this.documents = documents;
+		}
+
+	private Project project;
 	   
 	    private List<Event> event;
 	  
@@ -63,11 +81,11 @@ public class OfferDto {
 			this.project = project;
 		}
 
-		public Long getSupervisor() {
+		public String getSupervisor() {
 	        return supervisor;
 	    }
 
-	    public void setSupervisor(Long supervisor) {
+	    public void setSupervisor(String supervisor) {
 	        this.supervisor = supervisor;
 	    }
 
@@ -241,10 +259,12 @@ public class OfferDto {
 	        super();
 	    }
 
-		public OfferDto(Integer id, String image, String acronym, String adress, String type, String offerId,
-				String nom, String organisation, Date dateDebut, Date startdateoffer, Date dateFin, String description,
-				String video, String duree, String niveau, Long prix, Long supervisor, String processus,
-				List<CondidatOffreDto> candidtes, List<SkillsDto> skills, Project project, List<Event> event) {
+
+		public OfferDto(Integer id, String image, String type, String offerId, String nom, String organisation,
+				Date dateDebut, Date dateFin, String description, String video, String duree, String niveau, Long prix,
+				String supervisor, String processus, List<CondidatOffreDto> condidatoffre, List<SkillsDto> skills,
+				Project project, List<Event> event) {
+
 			super();
 			this.id = id;
 			this.image = image;

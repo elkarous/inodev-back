@@ -12,5 +12,7 @@ public interface QuestionService {
 
     QuestionDto getQuestion(String questionId);
     QuestionDto updateQuestion(String Id, QuestionDto questionDto);
-    void deleteQuestion(String questionId);
+    
+
+	void deleteQuestion(int id, Long idCondidat);
 }

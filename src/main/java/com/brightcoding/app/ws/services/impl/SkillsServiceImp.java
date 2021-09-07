@@ -1,6 +1,7 @@
 package com.brightcoding.app.ws.services.impl;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
+import com.brightcoding.app.ws.entities.QuestionEntity;
 import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.entities.SkillsEntity;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
@@ -77,6 +78,14 @@ public class SkillsServiceImp implements SkillsService {
     }
 
     @Override
+    
+    public void deleteSkills(int id,Long idCondidat) {
+    	SkillsEntity skills=educationRepository.findById(id).get();
+    	CondidatEntity condidat=condidatRepository.findById(idCondidat).get();
+    	condidat.getEducation().remove(skills);
+    	condidatRepository.save(condidat);
+    }
+    /*
     public void deleteSkills(String educationId) {
 
         SkillsEntity education = educationRepository.findBySkillsId(educationId);
@@ -86,6 +95,7 @@ public class SkillsServiceImp implements SkillsService {
         educationRepository.delete(education);
 
     }
+    */
     @Override
     public SkillsDto updateSkills(String id, SkillsDto educationDto) {
 

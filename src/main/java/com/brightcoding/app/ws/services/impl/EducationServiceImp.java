@@ -1,10 +1,12 @@
 package com.brightcoding.app.ws.services.impl;
 
 
+import com.brightcoding.app.ws.entities.AnneeEducationEntity;
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.EducationEntity;
 import com.brightcoding.app.ws.entities.Role;
 import com.brightcoding.app.ws.repositories.EducationRepository;
+import com.brightcoding.app.ws.repositories.AnneeEducationRepositories;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.services.EducationService;
 import com.brightcoding.app.ws.shared.Utils;
@@ -30,6 +32,8 @@ public class EducationServiceImp implements EducationService {
     @Autowired
     CondidatRepository condidatRepository;
 
+    @Autowired
+    AnneeEducationRepositories anneeEducationRepository;
     @Autowired
     Utils util;
 
@@ -81,15 +85,32 @@ public class EducationServiceImp implements EducationService {
     }
 
     @Override
+    public void deleteEducation(Long id,Long idCondidat) {
+    	EducationEntity education=educationRepository.findById(id).get();
+    	CondidatEntity condidat=condidatRepository.findById(idCondidat).get();
+    	condidat.getEducation().remove(education);
+    	condidatRepository.save(condidat);
+		
+	}
+   /* public void deleteEducation(long id) {
+    	
+    	educationRepository.deleteById(id);
+
+		*/
+	
+    /*
     public void deleteEducation(String educationId) {
 
         EducationEntity education = educationRepository.findByEducationId(educationId);
 
         if(education == null) throw new RuntimeException("education not found");
+        for (AnneeEducationEntity anne : education.getAnnees()) {
+        	anneeEducationRepository.deleteById(anne.getId());
+        }
+        
+        educationRepository.deleteById(education.getId());
 
-        educationRepository.delete(education);
-
-    }
+    }*/
     @Override
     public EducationDto updateEducation(String id, EducationDto educationDto) {
 
@@ -104,7 +125,7 @@ public class EducationServiceImp implements EducationService {
         educationEntity.setPays(educationDto.getPays());
         educationEntity.setSpecialite(educationDto.getSpecialite());
         educationEntity.setNomFaculte(educationDto.getNomFaculte());
-
+        educationEntity.setAnnees(educationDto.getAnnees());
         EducationEntity educ = educationRepository.save(educationEntity);
 
         EducationDto educt = new EducationDto();
@@ -114,6 +135,15 @@ public class EducationServiceImp implements EducationService {
         return educt;
     }
 
+
+	@Override
+	public void deleteEducation(long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
 
 
 }

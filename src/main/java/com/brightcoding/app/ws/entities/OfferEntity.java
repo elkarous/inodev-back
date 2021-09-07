@@ -48,7 +48,12 @@ public class OfferEntity implements Serializable {
     private String duree;
     private String niveau;
     private Long prix;
-    private Long supervisor;
+
+    private String priceDetails;
+    
+
+
+    private String supervisor;
     private String processus;
     
     @OneToMany(cascade = CascadeType.ALL )
@@ -56,13 +61,37 @@ public class OfferEntity implements Serializable {
   
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     private List<Event> event;
+
+    
+    @OneToMany
+    List<DocumentEntity> documents;
+    
+  //getter and setters
+    
+    
+    public List<DocumentEntity> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(List<DocumentEntity> documents) {
+		this.documents = documents;
+	}
+   
+	public String getPriceDetails() {
+		return priceDetails;
+	}
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<CondidatOffreEntity> candidtes;
 
 
-  //getter and setters
+	public void setPriceDetails(String priceDetails) {
+		this.priceDetails = priceDetails;
+	}
 
-	public List<CondidatOffreEntity> getCandidtes() {
+
+  //getter and setters
+ public List<CondidatOffreEntity> getCandidtes() {
 		return candidtes;
 	}
 
@@ -90,19 +119,22 @@ public class OfferEntity implements Serializable {
 
 
 
-	public Long getSupervisor() {
-        return supervisor;
-    }
 
-    public void setSupervisor(Long supervisor) {
-        this.supervisor = supervisor;
-    }
+
 
     public Integer getId() {
         return id;
     }
 
-    public List<Event> getEvent() {
+    public String getSupervisor() {
+		return supervisor;
+	}
+
+	public void setSupervisor(String supervisor) {
+		this.supervisor = supervisor;
+	}
+
+	public List<Event> getEvent() {
         return event;
     }
 
@@ -208,7 +240,7 @@ public class OfferEntity implements Serializable {
 
     public OfferEntity(Integer id, String image, String acronym, String type, String offerId, String nom,
 			 Date dateDebut, Date dateFin, String description, String video, String duree,
-			String niveau, Long prix, Long supervisor, String processus, CondidatOffreEntity condidatoffre,
+			String niveau, Long prix, String supervisor, String processus, CondidatOffreEntity condidatoffre,
 			List<SkillsEntity> skills, List<Event> event) {
 		super();
 		this.id = id;
