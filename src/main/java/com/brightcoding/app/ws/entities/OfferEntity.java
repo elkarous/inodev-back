@@ -70,6 +70,8 @@ public class OfferEntity implements Serializable {
 		this.candidtes = candidtes;
 	}
 
+	
+
 	public String getOfferId() {
 		return offerId;
 	}
@@ -128,13 +130,7 @@ public class OfferEntity implements Serializable {
         this.type = type;
     }
 
-    public String getofferId() {
-        return offerId;
-    }
-
-    public void setofferId(String offerId) {
-        this.offerId = offerId;
-    }
+   
 
     public String getNom() {
         return nom;

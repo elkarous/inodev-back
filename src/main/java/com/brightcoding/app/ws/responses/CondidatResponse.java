@@ -18,7 +18,7 @@ public class CondidatResponse {
     private String gender;
 
     private Date date_birthday;
-
+   
     private String nationality;
     private boolean recommended;
     private AuthProvider authProvider;
@@ -48,7 +48,7 @@ public class CondidatResponse {
 
     private List<SkillsDto> skills;
 
-    List<CondidatOffreDto> condidatoffre;
+    private List<CondidatOffreEntity> condidatoffre;
 
 
     private List<QuestionDto> question;
@@ -133,11 +133,11 @@ public class CondidatResponse {
         this.encryptedPassword = encryptedPassword;
     }
 
-    public List<CondidatOffreDto> getCondidatoffre() {
+    public List<CondidatOffreEntity> getCondidatoffre() {
         return condidatoffre;
     }
 
-    public void setCondidatoffre(List<CondidatOffreDto> condidatoffre) {
+    public void setCondidatoffre(List<CondidatOffreEntity> condidatoffre) {
         this.condidatoffre = condidatoffre;
     }
 

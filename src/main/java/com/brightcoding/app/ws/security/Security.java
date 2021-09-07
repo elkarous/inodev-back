@@ -3,7 +3,7 @@ package com.brightcoding.app.ws.security;
 
 
 
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -44,17 +44,19 @@ public class Security extends WebSecurityConfigurerAdapter  {
 				.cors().and()
 				.csrf().disable()
 				.authorizeRequests()
-				
+				.antMatchers("/ichat").permitAll()
 				.antMatchers("/condidat/img/**").permitAll()
 				.antMatchers("/document/doc/**").permitAll()
 				.antMatchers("/document/download/**").permitAll()
 				.antMatchers("/offer/Imgarticles/**").permitAll()
+				.antMatchers("/specialite/Imgarticles/**").permitAll()
 				.anyRequest().authenticated()
 				
 
 				.and()
 				.addFilter(getAuthenticationFilter())
 				.addFilter(new AuthorizationFilter(authenticationManager()))
+				
 				.sessionManagement()
 			    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}

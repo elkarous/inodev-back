@@ -5,12 +5,18 @@ import com.brightcoding.app.ws.entities.CondidatOffreEntity;
 import com.brightcoding.app.ws.entities.OfferEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 public interface CondidatOffreRepository extends JpaRepository<CondidatOffreEntity, Long> {
+	
+	
+	 @Query("SELECT c  FROM  CondidatOffreEntity c where c.condidat.id =:id ")
+	    List<CondidatOffreEntity> getApplication(@Param("id") long id);
+	
 
   /*  @Query("SELECT t.statut FROM CondidatOffreEntity t where t.offre.id = :offre and t.condidat.id = :condidat")
     Integer findreg(Integer offre, Long condidat);

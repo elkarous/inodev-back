@@ -1,14 +1,13 @@
 package com.brightcoding.app.ws.controllers;
 
-import com.brightcoding.app.ws.entities.OfferEntity;
-import com.brightcoding.app.ws.entities.Project;
+
 import com.brightcoding.app.ws.entities.SpecialiteEntity;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
-import com.brightcoding.app.ws.repositories.OfferRepository;
+
 import com.brightcoding.app.ws.repositories.SpecialiteRepository;
-import com.brightcoding.app.ws.responses.CondidatResponse;
+
 import com.brightcoding.app.ws.shared.Utils;
-import com.brightcoding.app.ws.shared.dto.CondidatDto;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,7 +28,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/specialite")
@@ -38,8 +37,7 @@ public class SpecialiteController {
     SpecialiteRepository repository;
     @Autowired
     CondidatRepository condidatRepository;
-    @Autowired
-    OfferRepository oRepository;
+   
     @Autowired
     ServletContext context;
     @Autowired
@@ -114,7 +112,7 @@ public class SpecialiteController {
        
         File serverFile = new File (context.getRealPath("/src/web/spe/"+File.separator+newFileName));
         System.out.println("erreur ok ");
-        String distfile = "D:/inodev/inodev-back/src/web/spe/"+ file.getOriginalFilename();
+        String distfile = "C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/spe/"+ file.getOriginalFilename();
         try
         {
            

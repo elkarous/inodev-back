@@ -41,6 +41,23 @@ public class CondidatOffreController {
     ServletContext context;
     @Autowired
     Utils util;
+    
+    
+    
+    
+    @GetMapping("/{id}")
+    public CondidatOffreEntity getCondidat(@PathVariable("id")long id) {
+    	return repository.findById(id).get();
+    }
+    
+    @PutMapping( )
+
+    public CondidatOffreEntity  modifiercondidat(@RequestBody CondidatOffreEntity condidatDto) {
+    	condidatDto.setScore(condidatDto.getNote()+condidatDto.getNoteinterview()+condidatDto.getNotePortugal());
+         return repository.save( condidatDto);
+
+    }
+    
 /*    @PostMapping("/{id}")
     public String create (@PathVariable(name="id") Integer offreId, @RequestBody Status specialite, Principal principale) throws JsonParseException, JsonMappingException, Exception
     {

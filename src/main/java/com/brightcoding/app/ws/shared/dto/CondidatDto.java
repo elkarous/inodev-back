@@ -47,7 +47,7 @@ public class CondidatDto  {
  
     private List<SkillsEntity> skills;
 
-    List<CondidatOffreEntity> condidatoffre;
+    private List<CondidatOffreEntity> condidatoffre;
 
 
     private List<QuestionEntity> question;

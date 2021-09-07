@@ -19,7 +19,7 @@ public class CondidatOffreDto {
 
     private float noteinterview;
     private float notePortugal;
-   
+    private float score;
 
 	public CondidatEntity getCondidatEntity() {
 		return condidatEntity;
@@ -92,6 +92,14 @@ public class CondidatOffreDto {
 
 	public void setNotePortugal(float notePortugal) {
 		this.notePortugal = notePortugal;
+	}
+
+	public float getScore() {
+		return score;
+	}
+
+	public void setScore(float score) {
+		this.score = score;
 	}
     
     }

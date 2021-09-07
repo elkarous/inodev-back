@@ -5,6 +5,9 @@ import java.util.List;
 
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
+
+
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -17,5 +20,9 @@ public interface CondidatService extends UserDetailsService {
     UserDetails loadUserByUsername(String email);
     void delete(String userId);
 	String getUserID(String email);
-	
+	  CondidatEntity connect(CondidatEntity user) ;
+
+	  
+	    
+	     CondidatEntity disconnect(CondidatEntity user);
 }

@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import com.brightcoding.app.ws.entities.CondidatEntity;
 import com.brightcoding.app.ws.entities.CondidatOffreEntity;
 import com.brightcoding.app.ws.entities.Role;
+import com.brightcoding.app.ws.repositories.CondidatOffreRepository;
 import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -38,6 +39,8 @@ public class CondidatController {
     CondidatService condidatService;
     @Autowired
     CondidatRepository repository;
+    @Autowired
+    CondidatOffreRepository repo;
     @Autowired
     ServletContext context;
     @Autowired
@@ -208,6 +211,14 @@ public class CondidatController {
     	
     }
     
+    
+    @GetMapping("/application/{id}")
+    public List<CondidatOffreEntity> getApplication(@PathVariable("id") long id) {
+    	
+    	
+    	return repo.getApplication(id);
+    	
+    }
     
     
     

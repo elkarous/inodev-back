@@ -7,6 +7,9 @@ import com.brightcoding.app.ws.repositories.CondidatRepository;
 import com.brightcoding.app.ws.services.CondidatService;
 import com.brightcoding.app.ws.shared.Utils;
 import com.brightcoding.app.ws.shared.dto.CondidatDto;
+
+
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -173,5 +176,37 @@ public class CondidatServiceImp implements CondidatService {
 
 		return list ;
 	}
+	 @Override
+	    public CondidatEntity connect(CondidatEntity user)  {
+		 CondidatEntity dbUser = condidatRepository.findByEmail(user.getEmail()).get();
+
+	        if (dbUser != null) {
+
+	            if (dbUser.getConnected()) {
+	                throw new RuntimeException("This user is already connected: " + dbUser.getFirstName());
+	            }
+
+	            dbUser.setConnected(true);
+	            return condidatRepository.save(dbUser);
+	        }
+
+	        user.setConnected(true);
+	        return condidatRepository.save(user);
+	    }
+
+	    @Override
+	    public CondidatEntity disconnect(CondidatEntity user) {
+	        if (user == null) {
+	            return null;
+	        }
+
+	        CondidatEntity dbUser = condidatRepository.findByEmail(user.getEmail()).get();
+	        if (dbUser == null) {
+	            return user;
+	        }
+
+	        dbUser.setConnected(false);
+	        return condidatRepository.save(dbUser);
+	    }
 
 }

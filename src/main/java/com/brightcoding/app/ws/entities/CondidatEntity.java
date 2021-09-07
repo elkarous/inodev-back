@@ -38,7 +38,7 @@ public class CondidatEntity  implements Serializable {
     private String nationality;
     @Column(nullable=true)
     private AuthProvider authProvider;
-    @Column(nullable=true)
+    private Boolean connected = false;
     private boolean recommended=false;
 	@Column(nullable=true)
 	private String userId;
@@ -73,8 +73,8 @@ public class CondidatEntity  implements Serializable {
     private List<ExperienceEntity> experience;
     @OneToMany(cascade = CascadeType.ALL )
     private List<SkillsEntity> skills;
-    @OneToOne(cascade = CascadeType.ALL )
-    CondidatOffreEntity condidatoffre;
+    @OneToMany(cascade = CascadeType.ALL )
+    private List<CondidatOffreEntity> condidatoffre;
 
   
 
@@ -112,21 +112,24 @@ public class CondidatEntity  implements Serializable {
     
 //getter and setters and constructors
     
-    public CondidatOffreEntity getCondidatoffre() {
-  		return condidatoffre;
-  	}
-
-
-  	public void setCondidatoffre(CondidatOffreEntity condidatoffre) {
-  		this.condidatoffre = condidatoffre;
-  	}
+ 
   	
     public long getId() {
 		return id;
 	}
     
 
-    public List<ExperienceEntity> getExperience() {
+    public List<CondidatOffreEntity> getCondidatoffre() {
+		return condidatoffre;
+	}
+
+
+	public void setCondidatoffre(List<CondidatOffreEntity> condidatoffre) {
+		this.condidatoffre = condidatoffre;
+	}
+
+
+	public List<ExperienceEntity> getExperience() {
         return experience;
     }
 
@@ -305,11 +308,15 @@ public class CondidatEntity  implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-    public String toString() {
-        return "Condidat [firstName=" + firstName + ", photo=" + photo + ", phone=" + phone + ", lastName=" + lastName + ", date_birthday=" + date_birthday
-                + ", gender=" + gender + ", nationality=" + nationality + ", email=" + getEmail()+ ", userId=" + getUserId() + "]";
-    }
+
+	public Boolean getConnected() {
+		return connected;
+	}
+
+
+	public void setConnected(Boolean connected) {
+		this.connected = connected;
+	}
 
 
 }

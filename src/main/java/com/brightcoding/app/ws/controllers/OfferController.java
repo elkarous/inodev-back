@@ -114,7 +114,7 @@ public class OfferController {
 		            e.printStackTrace();
 		        }
 		        BeanUtils.copyProperties(offre, off);
-		        off.setofferId(util.generateStringId(30));
+		        off.setOfferId(util.generateStringId(30));
 		        off.setImage(newFileName);
 				
 		        offerRepo.save(off);

@@ -11,12 +11,21 @@ public class CondidatOffreEntity {
     @GeneratedValue
     Long id;
     String condidatoffreId;
+   @ManyToOne
+   private CondidatEntity condidat;
    
-    @OneToOne
-    CondidatEntity condidatEntity;
-    
-    
-    @OneToMany
+   private boolean recommended;
+     
+   private String recommendedText;
+    public CondidatEntity getCondidat() {
+	return condidat;
+}
+
+public void setCondidat(CondidatEntity condidat) {
+	this.condidat = condidat;
+}
+
+	@OneToMany
     List<DocumentEntity> documents;
     
     
@@ -31,18 +40,12 @@ public class CondidatOffreEntity {
   //getter and setters
 
 
-	public CondidatEntity getCondidatEntity() {
-		return condidatEntity;
-	}
 
-	public void setCondidatEntity(CondidatEntity condidatEntity) {
-		this.condidatEntity = condidatEntity;
-	}
 
 	LocalDateTime registeredAt;
 
   private Status status;
-    
+  private float score;
     private float note;
     private float noteinterview;
     private float notePortugal;
@@ -105,6 +108,30 @@ public class CondidatOffreEntity {
     public void setRegisteredAt(LocalDateTime registeredAt) {
         this.registeredAt = registeredAt;
     }
+
+	public boolean isRecommended() {
+		return recommended;
+	}
+
+	public void setRecommended(boolean recommended) {
+		this.recommended = recommended;
+	}
+
+	public String getRecommendedText() {
+		return recommendedText;
+	}
+
+	public void setRecommendedText(String recommendedText) {
+		this.recommendedText = recommendedText;
+	}
+
+	public float getScore() {
+		return score;
+	}
+
+	public void setScore(float score) {
+		this.score = score;
+	}
     }
 
   
