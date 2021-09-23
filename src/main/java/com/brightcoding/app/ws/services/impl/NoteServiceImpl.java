@@ -59,11 +59,12 @@ CondidatEntity candidate=condidatRepository.findById(id).get();
 	
 
 		condidatOffreEntity.setNote(calculNote(id)*3);
-				
-		condidatOffreRepository.save(condidatOffreEntity);
-		candidate.getCondidatoffre().add(condidatOffreEntity);
-		condidatRepository.save(candidate);
+		condidatOffreEntity.setCondidat(candidate);
 		OfferEntity offer =offreRepository.findById(offerid).get();
+		condidatOffreEntity.setOffer(offer.getAcronym());
+		condidatOffreRepository.save(condidatOffreEntity);
+	
+	
 	offer.getCandidtes().add(condidatOffreEntity);
 	offreRepository.save(offer);
 		return condidatOffreEntity ;

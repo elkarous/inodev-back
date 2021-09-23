@@ -50,7 +50,7 @@ public class Security extends WebSecurityConfigurerAdapter  {
 				.antMatchers("/document/**").permitAll()
 				.antMatchers("/document/download/**").permitAll()
 				.antMatchers("/offer/Imgarticles/**").permitAll()
-
+				.antMatchers("/Project/Imgarticles/**").permitAll()
 
 				.antMatchers("/specialite/Imgarticles/**").permitAll()
 				.antMatchers("/subDecipline/Imgarticles/**").permitAll()

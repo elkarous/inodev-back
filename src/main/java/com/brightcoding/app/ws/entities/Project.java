@@ -26,7 +26,7 @@ public class Project implements Serializable{
 		 private String description;
 		 private String nom ;
 		 private String acronyme;
-
+		 private String image;
 		 private String partenar;
 		 @Temporal(TemporalType.DATE)
 		    private Date endDate;
@@ -121,6 +121,14 @@ public class Project implements Serializable{
 
 		public void setOrginistaion(String orginistaion) {
 			this.orginistaion = orginistaion;
+		}
+
+		public String getImage() {
+			return image;
+		}
+
+		public void setImage(String image) {
+			this.image = image;
 		}
 
 		

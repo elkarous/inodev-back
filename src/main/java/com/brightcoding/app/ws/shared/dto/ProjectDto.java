@@ -16,6 +16,7 @@ public class ProjectDto {
 		 private String nom ;
 		 private String acronyme;
 		 private String partenar;
+		 private String image;
 		 private Date endDate;
 		private String orginistaion;
 		 public String getPartenar() {
@@ -119,6 +120,16 @@ public class ProjectDto {
 
 		public void setOrginistaion(String orginistaion) {
 			this.orginistaion = orginistaion;
+		}
+
+
+		public String getImage() {
+			return image;
+		}
+
+
+		public void setImage(String image) {
+			this.image = image;
 		}
 
 	}

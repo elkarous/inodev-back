@@ -115,4 +115,11 @@ public class DocumentServiceImp implements DocumentService {
     }
 
 
+	@Override
+	public void deleteDocument(String documentId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

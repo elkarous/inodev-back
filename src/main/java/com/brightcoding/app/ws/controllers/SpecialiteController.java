@@ -149,17 +149,15 @@ public class SpecialiteController {
     @GetMapping(path="/Imgarticles/{id}")
     public byte[] getPhoto(@PathVariable("id") int id) throws Exception{
         SpecialiteEntity offre = repository.findById(id).get();
-        return Files.readAllBytes(Paths.get("D:/inodev/inodev-back/src/web/spe/"+offre.getImage()));
+        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/spe/"+offre.getImage()));
     }
 
    
   //http://localhost:8081/specialite/edit/{id}
-    @PutMapping("edit/{id}")
-    public String update(@PathVariable("id") String id, @RequestBody SpecialiteEntity specialite) {
-        System.out.println("Update Article with ID = " + id + "...");
-        SpecialiteEntity article = repository.findBySpecialiteId(id);
-            article.setNom(specialite.getNom());
-        repository.save(article);
+    @PutMapping("/edit")
+    public String update( @RequestBody SpecialiteEntity specialite) {
+ 
+        repository.save(specialite);
             return ("ok");
 
     }

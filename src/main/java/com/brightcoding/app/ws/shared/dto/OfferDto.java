@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 
 import com.brightcoding.app.ws.entities.Event;
 import com.brightcoding.app.ws.entities.Project;
+import com.brightcoding.app.ws.entities.SkillsEntity;
 import com.brightcoding.app.ws.entities.SubDecipline;
 
 
@@ -28,7 +29,7 @@ public class OfferDto {
 	    private String organisation;
 	    private String priceDetails;
 
-	  
+	 
 	    public String getPriceDetails() {
 			return priceDetails;
 		}
@@ -57,7 +58,7 @@ public class OfferDto {
 	    private String processus;
 	  
 	   private  List<CondidatOffreDto> candidtes;
-	    private List<SkillsDto> skills;
+	    private List<SkillsEntity> skills;
 	    private List<DocumentDto> documents;
 	
 	   public List<DocumentDto> getDocuments() {
@@ -68,18 +69,12 @@ public class OfferDto {
 			this.documents = documents;
 		}
 
-	private Project project;
+
 	   
 	    private List<Event> event;
 	  
 			
-	    public Project getProject() {
-			return project;
-		}
-
-		public void setProject(Project project) {
-			this.project = project;
-		}
+	  
 
 		public String getSupervisor() {
 	        return supervisor;
@@ -223,13 +218,7 @@ public class OfferDto {
 			this.candidtes = candidtes;
 		}
 
-		public List<SkillsDto> getSkills() {
-	        return skills;
-	    }
-
-	    public void setSkills(List<SkillsDto> skills) {
-	        this.skills = skills;
-	    }
+		
 
 	 
 
@@ -260,34 +249,15 @@ public class OfferDto {
 	    }
 
 
-		public OfferDto(Integer id, String image, String type, String offerId, String nom, String organisation,
-				Date dateDebut, Date dateFin, String description, String video, String duree, String niveau, Long prix,
-				String supervisor, String processus, List<CondidatOffreDto> condidatoffre, List<SkillsDto> skills,
-				Project project, List<Event> event) {
+		
+		
 
-			super();
-			this.id = id;
-			this.image = image;
-			this.acronym = acronym;
-			this.adress = adress;
-			this.type = type;
-			this.offerId = offerId;
-			this.nom = nom;
-			this.organisation = organisation;
-			this.dateDebut = dateDebut;
-			this.startdateoffer = startdateoffer;
-			this.dateFin = dateFin;
-			this.description = description;
-			this.video = video;
-			this.duree = duree;
-			this.niveau = niveau;
-			this.prix = prix;
-			this.supervisor = supervisor;
-			this.processus = processus;
-			this.candidtes = candidtes;
+		public List<SkillsEntity> getSkills() {
+			return skills;
+		}
+
+		public void setSkills(List<SkillsEntity> skills) {
 			this.skills = skills;
-			this.project = project;
-			this.event = event;
 		}
 
 	

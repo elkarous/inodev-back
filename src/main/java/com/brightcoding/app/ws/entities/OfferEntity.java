@@ -32,15 +32,10 @@ public class OfferEntity implements Serializable {
     private String organisation;
     private String adress;
 
-   
-
-
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
     @Temporal(TemporalType.DATE)
     private Date dateFin;
-   
-
 	@Temporal(TemporalType.DATE)
     private Date startdateoffer;
     private String description;
@@ -61,9 +56,12 @@ public class OfferEntity implements Serializable {
   
     @OneToMany(cascade = CascadeType.ALL,mappedBy="offer" )
     private List<Event> event;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CondidatOffreEntity> candidtes;
 
     
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL )
     List<DocumentEntity> documents;
     
   //getter and setters
@@ -71,6 +69,37 @@ public class OfferEntity implements Serializable {
     
     public List<DocumentEntity> getDocuments() {
 		return documents;
+	}
+
+	public OfferEntity(Integer id, String image, String acronym, String type, String offerId, String nom,
+			String organisation, String adress, Date dateDebut, Date dateFin, Date startdateoffer, String description,
+			String video, String duree, String niveau, Long prix, String priceDetails, String supervisor,
+			String processus, List<SkillsEntity> skills, List<Event> event, List<CondidatOffreEntity> candidtes,
+			List<DocumentEntity> documents) {
+		super();
+		this.id = id;
+		this.image = image;
+		this.acronym = acronym;
+		this.type = type;
+		this.offerId = offerId;
+		this.nom = nom;
+		this.organisation = organisation;
+		this.adress = adress;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.startdateoffer = startdateoffer;
+		this.description = description;
+		this.video = video;
+		this.duree = duree;
+		this.niveau = niveau;
+		this.prix = prix;
+		this.priceDetails = priceDetails;
+		this.supervisor = supervisor;
+		this.processus = processus;
+		this.skills = skills;
+		this.event = event;
+		this.candidtes = candidtes;
+		this.documents = documents;
 	}
 
 	public void setDocuments(List<DocumentEntity> documents) {
@@ -81,9 +110,7 @@ public class OfferEntity implements Serializable {
 		return priceDetails;
 	}
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<CondidatOffreEntity> candidtes;
-
+   
 
 	public void setPriceDetails(String priceDetails) {
 		this.priceDetails = priceDetails;

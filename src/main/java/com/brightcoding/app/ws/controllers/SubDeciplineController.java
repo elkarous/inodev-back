@@ -72,8 +72,8 @@ public class SubDeciplineController {
 		String newFileName = FilenameUtils.getBaseName(filename)+"."+FilenameUtils.getExtension(filename);
 
 		File serverFile = new File (context.getRealPath("/src/web/spe/"+File.separator+newFileName));
-		System.out.println("erreur ok ");
-		String distfile = "D:/inodev/inodev-back/src/web/spe/"+ file.getOriginalFilename();
+		
+		String distfile = "C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/spe/"+ file.getOriginalFilename();
 		try
 		{
 
@@ -102,7 +102,7 @@ public class SubDeciplineController {
 	 @GetMapping(path="/Imgarticles/{id}")
 	    public byte[] getPhoto(@PathVariable("id") long id) throws Exception{
 	        SubDecipline subdecipline= subdeciplineRepo.findById(id).get();
-	        return Files.readAllBytes(Paths.get("D:/inodev/inodev-back/src/web/spe/"+subdecipline.getImage()));
+	        return Files.readAllBytes(Paths.get("C:/Users/ASUS/Documents/GitHub/inodev-back/src/web/spe/"+subdecipline.getImage()));
 	    }
 		
 	

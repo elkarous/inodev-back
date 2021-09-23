@@ -123,14 +123,7 @@ public class CondidatEntity  implements Serializable {
 	}
     
 
-    public List<CondidatOffreEntity> getCondidatoffre() {
-		return condidatoffre;
-	}
-
-
-	public void setCondidatoffre(List<CondidatOffreEntity> condidatoffre) {
-		this.condidatoffre = condidatoffre;
-	}
+  
 
 
 	public List<ExperienceEntity> getExperience() {

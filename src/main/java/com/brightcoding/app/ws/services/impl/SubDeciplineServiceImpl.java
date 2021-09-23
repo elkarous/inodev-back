@@ -68,7 +68,9 @@ public class SubDeciplineServiceImpl implements SubDeciplineService {
 			throw new RuntimeException("no subdecipline with this id ");
 		}
 		else {
-			subDecipline = subDeciplineRepository.save(subDecipline);
+			ModelMapper modelMapper = new ModelMapper();
+			SubDecipline sub=modelMapper.map(subDeciplineDto, SubDecipline.class);
+		      subDeciplineRepository.save(sub);
 		}
 		
 		

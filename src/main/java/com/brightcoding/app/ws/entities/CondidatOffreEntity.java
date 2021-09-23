@@ -11,6 +11,7 @@ public class CondidatOffreEntity {
     @GeneratedValue
     Long id;
     String condidatoffreId;
+    private String offer;
    @ManyToOne
    private CondidatEntity condidat;
    
@@ -131,6 +132,14 @@ public void setCondidat(CondidatEntity condidat) {
 
 	public void setScore(float score) {
 		this.score = score;
+	}
+
+	public String getOffer() {
+		return offer;
+	}
+
+	public void setOffer(String offer) {
+		this.offer = offer;
 	}
     }
 
